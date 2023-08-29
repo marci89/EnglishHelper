@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AccountService {
   baseUrl = environment.apiUrl;
   private readonly USER_STORAGE_KEY = 'user';
   private currentUserSource = new BehaviorSubject<User | null>(null);

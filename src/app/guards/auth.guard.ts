@@ -1,14 +1,14 @@
 import { CanActivateFn } from '@angular/router';
-import { AuthService } from '../services/common/auth.service';
+import { AccountService } from '../services/common/account.service';
 import { inject } from '@angular/core';
 import { map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
+  const accountService = inject(AccountService);
   const toastr = inject(ToastrService);
 
-  return authService.currentUser$.pipe(
+  return accountService.currentUser$.pipe(
     map(user => {
       if (user) return true
       else {

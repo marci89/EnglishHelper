@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './services/common/auth.service';
+import { AccountService } from './services/common/account.service';
 import { User } from './interfaces/user-interface';
 
 @Component({
@@ -9,7 +9,7 @@ import { User } from './interfaces/user-interface';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.setCurrentUser();
@@ -20,6 +20,6 @@ export class AppComponent implements OnInit {
     const userString = localStorage.getItem('user');
     if (!userString) return;
     const user: User = JSON.parse(userString);
-    this.authService.setCurrentUser(user);
+    this.accountService.setCurrentUser(user);
   }
 }

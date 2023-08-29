@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/interfaces/user-interface';
-import { AuthService } from 'src/app/services/common/auth.service';
+import { AccountService } from 'src/app/services/common/account.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,10 @@ import { AuthService } from 'src/app/services/common/auth.service';
 export class HeaderComponent {
   loginRequest: LoginRequest = {} as LoginRequest;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public accountService: AccountService, private router: Router) { }
 
   login() {
-    this.authService.login(this.loginRequest).subscribe({
+    this.accountService.login(this.loginRequest).subscribe({
       next: _ => {
         this.router.navigateByUrl('/words');
       }
@@ -22,7 +22,7 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.authService.logout();
+    this.accountService.logout();
     this.router.navigateByUrl("/");
   }
 
