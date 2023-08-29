@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,6 +13,8 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { SharedModule } from './modules/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    BsDropdownModule
+    SharedModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
