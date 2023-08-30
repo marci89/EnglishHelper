@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginRequest, User } from '../../interfaces/user-interface';
+import { LoginRequest, RegistrationRequest, User } from '../../interfaces/user-interface';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -29,6 +29,16 @@ export class AccountService {
   logout() {
     localStorage.removeItem(this.USER_STORAGE_KEY);
     this.currentUserSource.next(null);
+  }
+
+  register(request: RegistrationRequest) {
+    return this.http.post<User>(this.baseUrl + 'account/register', request).pipe(
+      map(user => {
+        if (user) {
+          this.setCurrentUser(user);
+        }
+      })
+    )
   }
 
   setCurrentUser(user: User) {

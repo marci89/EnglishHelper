@@ -8,13 +8,14 @@ import { WordEditComponent } from './components/words/word-edit/word-edit.compon
 import { WordListComponent } from './components/words/word-list/word-list.component';
 import { GroupListComponent } from './components/groups/group-list/group-list.component';
 import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SharedModule } from './modules/shared.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     GroupListComponent,
     GroupEditComponent,
     UserListComponent,
-    HomeComponent
+    HomeComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: [

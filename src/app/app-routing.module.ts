@@ -5,9 +5,11 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
 import { WordEditComponent } from './components/words/word-edit/word-edit.component';
 import { authGuard } from './guards/auth.guard';
+import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'register', component: UserRegisterComponent },
 
   {
     path: '',
