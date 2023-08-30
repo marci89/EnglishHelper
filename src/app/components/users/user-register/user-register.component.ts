@@ -49,6 +49,7 @@ export class UserRegisterComponent implements OnInit {
         this.router.navigateByUrl('/words');
       },
       error: error => {
+        this.serverError = error.error;
 
       }
     })

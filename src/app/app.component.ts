@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './services/common/account.service';
 import { User } from './interfaces/user-interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ import { User } from './interfaces/user-interface';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, public translate: TranslateService)
+  {
+    translate.addLangs(['en', 'hu']);
+    translate.setDefaultLang('en');
+  }
 
   ngOnInit(): void {
     this.setCurrentUser();
