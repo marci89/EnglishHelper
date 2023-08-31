@@ -1,11 +1,32 @@
 {
-  "LOGIN": "Login",
-  "USERNAME": "Username",
-  "PASSWORD" : "Password",
-  "USERS": "Users",
+  "Login": "Login",
+  "Logout": "Logout",
+  "Registration": "Registration",
+  "Save": "Save",
+  "Cancel": "Cancel",
+  "Edit": "Edit",
 
-  "GROUPS": "Groups",
-  "WORDS" : "Words"
+  "Username": "Username",
+  "Password": "Password",
+  "ConfirmPassword": "Confirm password",
+  "Email": "Email",
+  "Users": "Users",
 
+  "Words" : "Words",
+
+  "InvalidRequest": "The request is invalid.",
+  "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
+
+  "InvalidPasswordOrUsername" : "Invalid password or username.",
+  "UsernameRequired": "Username is required.",
+  "UsernameMaxLength": "Please enter a username with a maximum of 50 characters.",
+  "UsernameExists": "Username is already taken. Please choose a different one.",
+  "PasswordRequired": "Password is required.",
+  "InvalidPasswordFormat": "Password must be at least 4 characters long.",
+  "ConfirmPasswordRequired": "Please confirm your password.",
+  "PasswordNotMatch": "Passwords do not match.",
+  "EmailRequired": "Email is required.",
+  "EmailExists": "Email is already registered. Please use a different email.",
+  "InvalidEmailFormat": "Please enter a valid email address."
 
 }

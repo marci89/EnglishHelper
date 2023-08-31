@@ -1,11 +1,31 @@
 {
-  "LOGIN": "Bejelentkezés",
-  "USERNAME": "Felhasználónév",
-  "PASSWORD" : "Jelszó",
-  "USERS": "Felhasználók",
+  "Login": "Bejelentkezés",
+  "Logout": "Kijelentkezés",
+  "Registration": "Regisztráció",
+  "Save": "Mentés",
+  "Cancel": "Mégse",
+  "Edit": "Szerkesztés",
 
-  "GROUPS": "Csoportok",
-  "WORDS" : "Szavak"
+  "Username": "Felhasználónév",
+  "Password": "Jelszó",
+  "ConfirmPassword": "Megerősítő Jelszó",
+  "Email": "Email cím",
+  "Users": "Felhasználók",
 
+  "Words": "Szavak",
 
+  "InvalidRequest": "Érvénytelen kérés.",
+  "ServerError": "Hoppá! Valami hiba történt. Kérlek, próbáld újra később.",
+
+  "InvalidPasswordOrUsername": "Érvénytelen jelszó vagy felhasználónév.",
+  "UsernameRequired": "A felhasználónév megadása kötelező.",
+  "UsernameMaxLength": "Kérlek, adj meg felhasználónevet legfeljebb 50 karakter hosszúságban.",
+  "UsernameExists": "Ez a felhasználónév már foglalt. Kérlek, válassz másikat.",
+  "PasswordRequired": "A jelszó megadása kötelező.",
+  "InvalidPasswordFormat": "A jelszónak legalább 4 karakter hosszúnak kell lennie.",
+  "ConfirmPasswordRequired": "Megerősítő jelszó megadása kötelező.",
+  "PasswordNotMatch": "A jelszavak nem egyeznek.",
+  "EmailRequired": "Az email cím megadása kötelező.",
+  "EmailExists": "Ez az email cím már regisztrálva van. Kérlek, használj másik email címet.",
+  "InvalidEmailFormat": "Kérlek, adj meg egy érvényes email címet."
 }

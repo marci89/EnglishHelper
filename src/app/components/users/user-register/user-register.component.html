@@ -4,52 +4,51 @@
       <div class="card">
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
-            <h2 class="text-center">Registration</h2>
+            <h2 class="text-center">{{'Registration' | translate }}</h2>
             <hr>
 
-            <div *ngIf="serverError" class="text-danger">
-              {{ serverError }}
+            <div *ngIf="serverError" class="alert alert-danger">
+              {{ serverError | translate}}
             </div>
 
             <div class="mb-3">
-              <label for="username">Username</label>
-              <input type="text" class="form-control" formControlName="username">
+              <label for="username">{{'Username' | translate }}</label>
+              <input type="text" class="form-control" formControlName="username"  maxlength="50">
               <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('username')?.hasError('required')">Username is required.</p>
+                <p *ngIf="registerForm.get('username')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="username">email</label>
+              <label for="email"> {{'Email' | translate }} </label>
               <input type="text" class="form-control" formControlName="email">
               <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('email')?.hasError('required')">Email is required.</p>
-                <p *ngIf="registerForm.get('email')?.hasError('email')">Please enter a valid email address.</p>
+                <p *ngIf="registerForm.get('email')?.hasError('required')">{{'EmailRequired' | translate }}</p>
+                <p *ngIf="registerForm.get('email')?.hasError('email')"> {{'InvalidEmailFormat' | translate }}</p>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="password">Password</label>
+              <label for="password">{{'Password' | translate }}</label>
               <input type="password" class="form-control" formControlName="password">
               <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</p>
-                <p *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 4 characters long.</p>
-                <p *ngIf="registerForm.get('password')?.hasError('maxlength')">Password cannot exceed 8 characters.</p>
+                <p *ngIf="registerForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
+                <p *ngIf="registerForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="confirmPassword">Confirm password</label>
+              <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
               <input type="password" class="form-control" formControlName="confirmPassword">
               <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('confirmPassword')?.hasError('required')">Confirm password is required.</p>
-                <p *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')">Passwords do not match.</p>
+                <p *ngIf="registerForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' | translate }}</p>
+                <p *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate }}</p>
               </div>
             </div>
 
             <div class="text-center">
-              <button [disabled]="!registerForm.valid" class="btn btn-success me-2" type="submit">Register</button>
-              <button class="btn btn-danger" (click)="cancel()" type="button">Cancel</button>
+              <button [disabled]="!registerForm.valid" class="btn btn-success me-2" type="submit">{{'Registration' | translate }}</button>
+              <button class="btn btn-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</button>
             </div>
           </form>
         </div>

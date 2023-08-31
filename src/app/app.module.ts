@@ -6,8 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { WordEditComponent } from './components/words/word-edit/word-edit.component';
 import { WordListComponent } from './components/words/word-list/word-list.component';
-import { GroupListComponent } from './components/groups/group-list/group-list.component';
-import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { HomeComponent } from './components/home/home.component';
@@ -24,8 +22,6 @@ import { UserRegisterComponent } from './components/users/user-register/user-reg
     HeaderComponent,
     WordEditComponent,
     WordListComponent,
-    GroupListComponent,
-    GroupEditComponent,
     UserListComponent,
     HomeComponent,
     UserRegisterComponent

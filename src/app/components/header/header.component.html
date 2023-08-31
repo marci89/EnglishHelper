@@ -11,31 +11,28 @@
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <ng-container *ngIf="accountService.currentUser$| async">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/users" routerLinkActive="active"> {{'USERS' | translate }} </a>
+          <a class="nav-link" routerLink="/users" routerLinkActive="active"> {{'Users' | translate }} </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/groups" routerLinkActive="active"> {{'GROUPS' | translate }} </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/words" routerLinkActive="active"> {{'WORDS' | translate }} </a>
+          <a class="nav-link" routerLink="/words" routerLinkActive="active"> {{'Words' | translate }} </a>
         </li>
       </ng-container>
       </ul>
 
       <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>Welcome {{user.username}}</a>
+        <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>{{user.username}}</a>
         <div class="dropdown-menu" *dropdownMenu>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
+          <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
         </div>
       </div>
 
       <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
         autocomplete="off">
         <input name="username" [(ngModel)]="loginRequest.username" class="form-control me-2" type="text"
-          placeholder="Username">
+        [placeholder]="'Username' | translate">
         <input name="password" [(ngModel)]="loginRequest.password" class="form-control me-2" type="password"
-          placeholder="Password">
-        <button class="btn btn-success" type="submit"> {{'LOGIN' | translate }}</button>
+        [placeholder]="'Password' | translate">
+        <button class="btn btn-success" type="submit"> {{'Login' | translate }}</button>
       </form>
 
 
