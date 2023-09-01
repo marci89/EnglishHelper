@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from './services/common/account.service';
 import { User } from './interfaces/user-interface';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './services/common/language.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private accountService: AccountService, public translate: TranslateService)
+  constructor(
+  private accountService: AccountService,
+   public translate: TranslateService,
+   private languageService: LanguageService)
   {
-    translate.addLangs(['en', 'hu']);
-    translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
     this.setCurrentUser();
+    this.languageService.initialize();
   }
 
   //Setting the user from a cookie if the user have already logged in before
