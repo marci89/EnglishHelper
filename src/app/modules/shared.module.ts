@@ -6,6 +6,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [],
@@ -25,14 +26,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    DropdownModule,
   ],
   exports: [
     BsDropdownModule,
     HttpClientModule,
     ToastrModule,
     NgxSpinnerModule,
-    TranslateModule
+    TranslateModule,
+    DropdownModule
 
   ]
 })
