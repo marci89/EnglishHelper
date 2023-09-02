@@ -21,6 +21,7 @@
 
   "InvalidRequest": "Érvénytelen kérés.",
   "ServerError": "Hoppá! Valami hiba történt. Kérlek, próbáld újra később.",
+  "AccessDenied": "Hozzáférés megtagadva",
 
   "InvalidPasswordOrUsername": "Érvénytelen jelszó vagy felhasználónév.",
   "UsernameRequired": "A felhasználónév megadása kötelező.",

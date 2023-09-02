@@ -21,6 +21,7 @@
 
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
+  "AccessDenied": "Access Denied.",
 
   "InvalidPasswordOrUsername" : "Invalid password or username.",
   "UsernameRequired": "Username is required.",

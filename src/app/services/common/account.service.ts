@@ -42,7 +42,24 @@ export class AccountService {
   }
 
   setCurrentUser(user: User) {
+    if (user && user.token) {
+    const role = this.getDecodedToken(user.token).role;
+    user.role = role;
     localStorage.setItem(this.USER_STORAGE_KEY, JSON.stringify(user))
     this.currentUserSource.next(user);
+    } else {
+      console.error('user.token is undefined or null');
+    }
+  }
+
+  getDecodedToken(token: string) {
+    try {
+      const tokenPayloadBase64 = token.split('.')[1];
+      const tokenPayloadJson = atob(tokenPayloadBase64);
+      return JSON.parse(tokenPayloadJson);
+    } catch (error) {
+      console.error('Error decoding JWT token:', error);
+      return null;
+    }
   }
 }

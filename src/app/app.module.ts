@@ -14,6 +14,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SharedModule } from './modules/shared.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
+import { HasRoleDirective } from './directives/has-role.directive';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UserRegisterComponent } from './components/users/user-register/user-reg
     WordListComponent,
     UserListComponent,
     HomeComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    HasRoleDirective
   ],
   imports: [
     BrowserModule,
