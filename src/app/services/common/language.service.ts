@@ -14,17 +14,17 @@ export class LanguageService {
     this.translate.addLangs(['en', 'hu']);
     this.translate.setDefaultLang('en');
 
-    const storedLanguage = localStorage.getItem('selectedLanguage');
-    const defaultLanguage = storedLanguage || this.translate.getDefaultLang();
-    const languageCodes = this.translate.getLangs();
+    const storedLanguage = localStorage.getItem('selectedLanguage') || this.translate.getDefaultLang();
+    this.translate.use(storedLanguage);
 
+    const languageCodes = this.translate.getLangs();
     this.languages = languageCodes.map(code => ({
       name: this.getLanguageName(code),
       code: code
     }));
 
     // Set the selectedLanguage to the default language
-    this.selectedLanguage = this.languages.find(language => language.code === defaultLanguage);
+    this.selectedLanguage = this.languages.find(language => language.code === storedLanguage);
   }
 
   switchLanguage(lang: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { LoginRequest } from 'src/app/interfaces/user-interface';
 import { AccountService } from 'src/app/services/common/account.service';
 import { LanguageService } from 'src/app/services/common/language.service';
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
     public accountService: AccountService,
     private router: Router,
     public translate: TranslateService,
-    private languageService: LanguageService) { }
+    private languageService: LanguageService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.languages = this.languageService.getLanguages();
@@ -30,6 +32,9 @@ export class HeaderComponent implements OnInit {
     this.accountService.login(this.loginRequest).subscribe({
       next: _ => {
         this.router.navigateByUrl('/words');
+      },
+      error: error => {
+        this.toastr.error(this.translate.instant(error.error));
       }
     })
   }

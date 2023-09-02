@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/services/common/account.service';
 
@@ -16,7 +17,8 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private accountService: AccountService,
      private toastr: ToastrService,
-     private router: Router
+     private router: Router,
+     public translate: TranslateService
      ) { }
 
   ngOnInit(): void {
@@ -43,10 +45,10 @@ export class UserRegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe({
       next: response => {
-        this.router.navigateByUrl('/words');
+        this.toastr.success(this.translate.instant('RegisterSuccess'))
+        this.router.navigateByUrl('/home');
       },
       error: error => {
         this.serverError = error.error;
