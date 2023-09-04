@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,7 @@ import { DropdownModule } from 'primeng/dropdown';
     CommonModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
@@ -35,7 +37,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ToastrModule,
     NgxSpinnerModule,
     TranslateModule,
-    DropdownModule
+    DropdownModule,
+    PaginationModule
 
   ]
 })

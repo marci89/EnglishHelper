@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Pagination, PaginationRequest } from 'src/app/interfaces/common/common.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,7 +10,13 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: User[] = [];
+  users: User[] | undefined = [];
+  pagination: Pagination | undefined;
+  paginationRequest: PaginationRequest = {
+    pageNumber: 1,
+    pageSize: 3
+  };
+
   private userSubscription: Subscription | undefined;
 
   constructor(private userService: UserService) { }
@@ -19,15 +26,24 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   getUsers() {
-    this.userSubscription =  this.userService.getUsers().subscribe({
-      next: users => {
-        this.users = users;
+    this.userSubscription = this.userService.getUsers(this.paginationRequest).subscribe({
+      next: response => {
+        this.users = response.result;
+        this.pagination = response.pagination
       },
       error: error => {
         console.error('Error fetching users:', error);
       }
     })
   }
+
+  pageChanged(event: any) {
+    if (this.paginationRequest.pageNumber !== event.page) {
+      this.paginationRequest.pageNumber = event.page;
+      this.getUsers();
+    }
+  }
+
 
   ngOnDestroy() {
     if (this.userSubscription) {
