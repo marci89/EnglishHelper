@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Language } from '../../interfaces/common/common.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  private languages: any[] = [];
-  private selectedLanguage: any | undefined;
+  private languages: Language[] = [];
+  private selectedLanguage: Language | undefined;
 
   constructor(private translate: TranslateService) {}
 
@@ -21,7 +22,7 @@ export class LanguageService {
     this.languages = languageCodes.map(code => ({
       name: this.getLanguageName(code),
       code: code
-    }));
+    } as Language));
 
     // Set the selectedLanguage to the default language
     this.selectedLanguage = this.languages.find(language => language.code === storedLanguage);
@@ -32,11 +33,11 @@ export class LanguageService {
     localStorage.setItem('selectedLanguage', lang);
   }
 
-  getLanguages(): any[] {
+  getLanguages(): Language[] {
     return this.languages;
   }
 
-  getSelectedLanguage(): any | undefined {
+  getSelectedLanguage(): Language | undefined {
     return this.selectedLanguage;
   }
 

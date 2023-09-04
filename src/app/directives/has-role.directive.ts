@@ -1,7 +1,7 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { AccountService } from '../services/common/account.service';
-import { User } from '../interfaces/user-interface';
+import { LoginUser } from '../interfaces/user.interface';
 
 @Directive({
   selector: '[appHasRole]'
@@ -16,7 +16,7 @@ export class HasRoleDirective implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.accountService.currentUser$.pipe(take(1)).subscribe((user: User | null) => {
+    this.accountService.currentUser$.pipe(take(1)).subscribe((user: LoginUser | null) => {
       if (user && this.checkRole(user)) {
         this.viewContainerRef.createEmbeddedView(this.templateRef);
       } else {
@@ -25,7 +25,7 @@ export class HasRoleDirective implements OnInit {
     });
   }
 
-  private checkRole(user: User | null): boolean {
+  private checkRole(user: LoginUser | null): boolean {
     return user !== null && user.role === this.appHasRole;
   }
 }

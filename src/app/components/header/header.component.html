@@ -28,8 +28,8 @@
 
       <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
         autocomplete="off">
-        <input name="username" [(ngModel)]="loginRequest.username" class="form-control me-2" type="text"
-        [placeholder]="'Username' | translate">
+        <input name="username" [(ngModel)]="loginRequest.identifier" class="form-control me-2" type="text"
+        [placeholder]="'UsernameOrEmail' | translate">
         <input name="password" [(ngModel)]="loginRequest.password" class="form-control me-2" type="password"
         [placeholder]="'Password' | translate">
         <button class="btn btn-success" type="submit"> {{'Login' | translate }}</button>

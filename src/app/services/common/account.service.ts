@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginRequest, RegistrationRequest, User } from '../../interfaces/user-interface';
+import { LoginRequest, RegistrationRequest, LoginUser } from '../../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,14 +10,14 @@ import { HttpClient } from '@angular/common/http';
 export class AccountService {
   baseUrl = environment.apiUrl;
   private readonly USER_STORAGE_KEY = 'user';
-  private currentUserSource = new BehaviorSubject<User | null>(null);
+  private currentUserSource = new BehaviorSubject<LoginUser | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
   login(request: LoginRequest) {
-    return this.http.post<User>(this.baseUrl + 'Account/login', request).pipe(
-      map((response: User) => {
+    return this.http.post<LoginUser>(this.baseUrl + 'Account/login', request).pipe(
+      map((response: LoginUser) => {
         if (!response) {
           return;
         }
@@ -32,7 +32,7 @@ export class AccountService {
   }
 
   register(request: RegistrationRequest) {
-    return this.http.post<User>(this.baseUrl + 'account/register', request).pipe(
+    return this.http.post<LoginUser>(this.baseUrl + 'account/register', request).pipe(
       map(user => {
         if (user) {
           this.setCurrentUser(user);
@@ -41,7 +41,7 @@ export class AccountService {
     )
   }
 
-  setCurrentUser(user: User) {
+  setCurrentUser(user: LoginUser) {
     if (user && user.token) {
     const role = this.getDecodedToken(user.token).role;
     user.role = role;

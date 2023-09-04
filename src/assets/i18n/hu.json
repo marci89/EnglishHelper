@@ -24,6 +24,9 @@
   "AccessDenied": "Hozzáférés megtagadva",
 
   "InvalidPasswordOrUsername": "Érvénytelen jelszó vagy felhasználónév.",
+  "InvalidPasswordOrUsernameOrEmail" : "Érvénytelen jelszó vagy felhasználónév vagy email cím.",
+  "UsernameOrEmailRequired": "A felhasználónév vagy email cím megadása kötelező.",
+  "UsernameOrEmail": "Felhasználónév/email",
   "UsernameRequired": "A felhasználónév megadása kötelező.",
   "UsernameMaxLength": "Kérlek, adj meg felhasználónevet legfeljebb 50 karakter hosszúságban.",
   "UsernameExists": "Ez a felhasználónév már foglalt. Kérlek, válassz másikat.",

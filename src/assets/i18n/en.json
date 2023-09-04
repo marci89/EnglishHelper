@@ -23,7 +23,10 @@
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
   "AccessDenied": "Access Denied.",
 
-  "InvalidPasswordOrUsername" : "Invalid password or username.",
+  "InvalidPasswordOrUsername": "Invalid password or username.",
+  "InvalidPasswordOrUsernameOrEmail" : "Invalid password or username or email.",
+  "UsernameOrEmailRequired": "Username or Email is required",
+  "UsernameOrEmail": "Username/email",
   "UsernameRequired": "Username is required.",
   "UsernameMaxLength": "Please enter a username with a maximum of 50 characters.",
   "UsernameExists": "Username is already taken. Please choose a different one.",

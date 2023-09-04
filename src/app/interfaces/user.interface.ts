@@ -1,11 +1,20 @@
-export interface User {
+export interface LoginUser {
   username: string;
   role: string;
   token: string;
 }
 
+export interface User {
+  id: number;
+  role: string;
+  username: string;
+  email: string;
+  created: Date;
+  lastActive: Date;
+}
+
 export interface LoginRequest {
-  username?: string;
+  identifier?: string;
   password?: string;
 }
 
