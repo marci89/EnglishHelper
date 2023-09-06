@@ -1,8 +1,3 @@
-export interface Language {
-  name: string;
-  code: string;
-}
-
 export interface PaginationRequest {
   pageNumber: number;
   pageSize: number;
@@ -16,6 +11,14 @@ export interface Pagination {
 }
 
 export class PaginatedResult<T> {
-  result?: T;
+  result?: T[];
   pagination?: Pagination
+}
+
+export class PagedList<T> {
+  items?: T[];
+  currentPage?: number;
+  totalPages?: number;
+  pageSize?: number;
+  totalCount?: number;
 }

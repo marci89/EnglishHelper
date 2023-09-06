@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, delay, finalize, identity } from 'rxjs';
-import { BusyService } from '../services/common/busy.service';
+import { BusyService } from '../services/busy.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable()

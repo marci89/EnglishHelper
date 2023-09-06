@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from 'src/app/services/common/account.service';
+import { AccountService } from 'src/app/common/services/account.service';
 
 @Component({
   selector: 'app-user-register',

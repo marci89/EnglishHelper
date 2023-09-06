@@ -10,11 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { JwtInterceptor } from './common/interceptors/jwt.interceptor';
 import { SharedModule } from './modules/shared.module';
-import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
-import { HasRoleDirective } from './directives/has-role.directive';
+import { HasRoleDirective } from './common/directives/has-role.directive';
 
 
 @NgModule({

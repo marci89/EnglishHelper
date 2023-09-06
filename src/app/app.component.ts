@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from './services/common/account.service';
+import { AccountService } from './common/services/account.service';
 import { LoginUser } from './interfaces/user.interface';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from './services/common/language.service';
+import { LanguageService } from './common/services/language.service';
 
 @Component({
   selector: 'app-root',

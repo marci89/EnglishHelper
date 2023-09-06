@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { LoginRequest } from 'src/app/interfaces/user.interface';
-import { AccountService } from 'src/app/services/common/account.service';
-import { LanguageService } from 'src/app/services/common/language.service';
+import { AccountService } from 'src/app/common/services/account.service';
+import { LanguageService } from 'src/app/common/services/language.service';
 
 @Component({
   selector: 'app-header',

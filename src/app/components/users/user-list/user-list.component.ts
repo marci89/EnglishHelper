@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Pagination, PaginationRequest } from 'src/app/interfaces/common/common.interface';
+import { Pagination, PaginationRequest } from 'src/app/common/interfaces/pagination.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 
