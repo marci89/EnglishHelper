@@ -4,17 +4,19 @@ import { environment } from 'src/environments/environment';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { LoginUser } from '../interfaces/account.interface';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
-  baseUrl = environment.apiUrl;
+export class AccountService extends BaseService {
   private readonly USER_STORAGE_KEY = 'user';
   private currentUserSource = new BehaviorSubject<LoginUser | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    super();
+   }
 
   login(request: LoginRequest) {
     return this.http.post<LoginUser>(this.baseUrl + 'Account/login', request).pipe(

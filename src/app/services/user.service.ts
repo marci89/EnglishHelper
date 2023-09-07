@@ -4,13 +4,16 @@ import { environment } from 'src/environments/environment';
 import { ListUserWithFilterRequest, User } from '../interfaces/user.interface';
 import { map } from 'rxjs';
 import { PagedList, PaginatedResult } from '../common/interfaces/pagination.interface';
+import { BaseService } from '../common/services/base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+export class UserService extends BaseService {
+
+  constructor(private http: HttpClient) {
+    super();
+   }
 
   //User list filter initalization
   InitUserListFilter(): ListUserWithFilterRequest {
@@ -25,29 +28,10 @@ export class UserService {
   }
   //Get users with filter
   getUsers(request: ListUserWithFilterRequest) {
-    const params = new HttpParams()
-      .set('pageNumber', request.pageNumber.toString())
-      .set('pageSize', request.pageSize.toString())
-      .set('username', request.username.toString())
-      .set('email', request.email.toString())
-      .set('fieldName', request.fieldName.toString())
-      .set('isDescending', request.isDescending.toString());
+    const params = this.createParams(request);
 
-    return this.http.get<PagedList<User>>(`${this.baseUrl}users`, { params }).pipe(
+    return this.http.get<PagedList<User>>(this.baseUrl + 'users', { params }).pipe(
       map((response: PagedList<User>) => this.mapPagedListToPaginatedResult(response))
     );
-  }
-
-  //Generic PagedList to PaginatedResult mapper
-  private mapPagedListToPaginatedResult<T>(response: PagedList<T>): PaginatedResult<T> {
-    return {
-      result: response.items,
-      pagination: {
-        currentPage: response.currentPage,
-        totalPages: response.totalPages,
-        itemsPerPage: response.pageSize,
-        totalItems: response.totalCount,
-      },
-    };
   }
 }
