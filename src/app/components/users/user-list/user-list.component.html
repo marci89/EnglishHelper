@@ -43,8 +43,8 @@
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.role }}</td>
-        <td>{{ user.created | date}}</td>
-        <td>{{ user.lastActive | date}}</td>
+        <td>{{ user.created | utcToLocalDate}}</td>
+        <td>{{ user.lastActive | utcToLocalDate:'yyyy.MM.dd.hh:mm:ss'}}</td>
       </tr>
     </ng-template>
   </p-table>

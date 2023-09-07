@@ -15,6 +15,7 @@ import { SharedModule } from './modules/shared.module';
 import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 import { HasRoleDirective } from './common/directives/has-role.directive';
+import { UtcToLocalDatePipe } from './common/pipes/utc-to-local-date.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HasRoleDirective } from './common/directives/has-role.directive';
     UserListComponent,
     HomeComponent,
     UserRegisterComponent,
-    HasRoleDirective
+    HasRoleDirective,
+    UtcToLocalDatePipe
   ],
   imports: [
     BrowserModule,
