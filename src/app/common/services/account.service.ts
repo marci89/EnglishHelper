@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginRequest, RegistrationRequest, LoginUser } from '../../interfaces/user.interface';
+import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
+import { LoginUser } from '../interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root'

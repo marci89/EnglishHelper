@@ -1,9 +1,4 @@
-export interface LoginUser {
-  username: string;
-  role: string;
-  token: string;
-}
-
+import { PaginationRequest } from '../common/interfaces/pagination.interface';
 export interface User {
   id: number;
   role: string;
@@ -21,5 +16,10 @@ export interface LoginRequest {
 export interface RegistrationRequest {
   username: string;
   password: string;
+  email: string;
+}
+
+export interface ListUserWithFilterRequest extends PaginationRequest {
+  username: string;
   email: string;
 }

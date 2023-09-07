@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { User } from '../interfaces/user.interface';
+import { ListUserWithFilterRequest, User } from '../interfaces/user.interface';
 import { map } from 'rxjs';
 import { PagedList, PaginatedResult, PaginationRequest } from '../common/interfaces/pagination.interface';
 
@@ -14,10 +14,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(request: PaginationRequest) {
+  getUsers(request: ListUserWithFilterRequest) {
     const params = new HttpParams()
       .set('pageNumber', request.pageNumber.toString())
-      .set('pageSize', request.pageSize.toString());
+      .set('pageSize', request.pageSize.toString())
+      .set('username', request.username.toString())
+      .set('email', request.email.toString());
 
     return this.http.get<PagedList<User>>(`${this.baseUrl}users`, { params }).pipe(
       map((response: PagedList<User>) => this.mapPagedListToPaginatedResult(response))

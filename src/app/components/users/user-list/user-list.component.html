@@ -1,3 +1,36 @@
+<div class="text-center mt-3">
+  <h2>Users - {{pagination?.totalItems}} found</h2>
+</div>
+
+<div class="container mt-3" *ngIf="filter">
+  <div class="card col-12">
+    <div class="card-body">
+      <form #form="ngForm" class="mb-3" (ngSubmit)="getUsers()" autocomplete="off">
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <label for="username">{{ 'Username' | translate }}</label>
+              <input type="text" class="form-control" name="username" [(ngModel)]="filter.username">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="email">{{ 'Email' | translate }}</label>
+              <input type="text" class="form-control" name="email" [(ngModel)]="filter.email">
+            </div>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <button class="btn btn-primary mt-auto" type="submit">{{ 'Filter' | translate }}</button>
+            <button class="btn btn-primary mx-2 mt-auto" type="button" (click)="resetFilters()">{{ 'FilterReset' | translate }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 <ul>
   <li *ngFor="let user of users">
     {{user.id}} - {{user.username}}

@@ -9,6 +9,9 @@
   "Cancel": "Mégse",
   "Edit": "Szerkesztés",
 
+  "Filter": "Szűrés",
+  "FilterReset": "Szűrés törlése",
+
   "Username": "Felhasználónév",
   "Password": "Jelszó",
   "ConfirmPassword": "Megerősítő Jelszó",

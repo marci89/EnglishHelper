@@ -9,6 +9,11 @@
   "Cancel": "Cancel",
   "Edit": "Edit",
 
+  "Filter": "Filter",
+  "FilterReset": "Reset filter",
+
+
+
   "Username": "Username",
   "Password": "Password",
   "ConfirmPassword": "Confirm password",
