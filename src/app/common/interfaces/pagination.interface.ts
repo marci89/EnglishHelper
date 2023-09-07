@@ -1,5 +1,11 @@
+//sorting request for server
+export interface SortingRequest{
+  fieldName: string;
+  isDescending : boolean;
+}
+
 //Basic server request for paginating
-export interface PaginationRequest {
+export interface PaginationRequest extends SortingRequest {
   pageNumber: number;
   pageSize: number;
 }
@@ -26,4 +32,6 @@ export interface PagedList<T> {
   pageSize: number;
   totalCount: number;
 }
+
+
 

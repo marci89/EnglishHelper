@@ -5,9 +5,11 @@
   "Login": "Login",
   "Logout": "Logout",
   "Registration": "Registration",
+  "Created": "Created",
+  "LastActive": "Last active",
   "Save": "Save",
-  "Cancel": "Cancel",
   "Edit": "Edit",
+  "Cancel": "Cancel",
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",
@@ -18,6 +20,7 @@
   "Password": "Password",
   "ConfirmPassword": "Confirm password",
   "Email": "Email",
+  "Role": "Role",
   "Users": "Users",
 
   "RegisterSuccess" : "You Have Successfully Registered.",

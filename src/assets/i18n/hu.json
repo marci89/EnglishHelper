@@ -5,9 +5,11 @@
   "Login": "Bejelentkezés",
   "Logout": "Kijelentkezés",
   "Registration": "Regisztráció",
+  "Created": "Létrehozva",
+  "LastActive": "Utoljára aktív",
   "Save": "Mentés",
-  "Cancel": "Mégse",
   "Edit": "Szerkesztés",
+  "Cancel": "Mégse",
 
   "Filter": "Szűrés",
   "FilterReset": "Szűrés törlése",
@@ -16,6 +18,7 @@
   "Password": "Jelszó",
   "ConfirmPassword": "Megerősítő Jelszó",
   "Email": "Email cím",
+  "Role": "Szerepkör",
   "Users": "Felhasználók",
 
   "RegisterSuccess" : "Sikeres regisztráció",

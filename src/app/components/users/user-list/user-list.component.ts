@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];
   pagination: Pagination = {} as Pagination;
-  filter: ListUserWithFilterRequest = { username: "", email: "", pageNumber: 1, pageSize: 5 };
+  filter: ListUserWithFilterRequest = {} as ListUserWithFilterRequest;
   private userSubscription: Subscription | undefined;
 
   constructor(
@@ -24,6 +24,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.filter = this.userService.InitUserListFilter();
     this.getUsers();
   }
 
@@ -34,7 +35,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.pagination = response.pagination
       },
       error: error => {
-        this.toastr.error(this.translate.instant(error))
+        this.toastr.error(this.translate.instant(error.error))
       }
     })
   }
@@ -45,11 +46,19 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.getUsers();
   }
 
-  pageChanged(event: any) {
+  onPageChanged(event: any) {
     event.page++;
     this.filter.pageNumber = event.page;
     this.filter.pageSize = event.rows
+    this.getUsers();
+  }
 
+  onSortChanged(event: any) {
+  const order = event.order === -1;
+    if (this.filter.fieldName === event.field &&  this.filter.isDescending === order) return;
+
+    this.filter.fieldName = event.field;
+    this.filter.isDescending = order;
     this.getUsers();
   }
 
