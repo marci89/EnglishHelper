@@ -1,8 +1,10 @@
+//Basic server request for paginating
 export interface PaginationRequest {
   pageNumber: number;
   pageSize: number;
 }
 
+//Pagination basic datas for client
 export interface Pagination {
   currentPage: number;
   itemsPerPage: number;
@@ -10,15 +12,18 @@ export interface Pagination {
   totalPages: number;
 }
 
-export class PaginatedResult<T> {
-  result?: T[];
-  pagination?: Pagination
+//Pagnation interface for client with list items
+export interface PaginatedResult<T> {
+  result: T[];
+  pagination: Pagination
 }
 
-export class PagedList<T> {
-  items?: T[];
-  currentPage?: number;
-  totalPages?: number;
-  pageSize?: number;
-  totalCount?: number;
+//pagination server response
+export interface PagedList<T> {
+  items: T[];
+  currentPage: number;
+  totalPages: number;
+  pageSize: number;
+  totalCount: number;
 }
+

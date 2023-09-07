@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { Pagination, PaginationRequest } from 'src/app/common/interfaces/pagination.interface';
+import { Pagination } from 'src/app/common/interfaces/pagination.interface';
 import { ListUserWithFilterRequest, User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,18 +12,16 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: User[] | undefined = [];
-  pagination: Pagination | undefined;
-  filter: ListUserWithFilterRequest = {
-    username: "",
-    email: "",
-    pageNumber: 1,
-    pageSize: 3
-  };
-
+  users: User[] = [];
+  pagination: Pagination = {} as Pagination;
+  filter: ListUserWithFilterRequest = { username: "", email: "", pageNumber: 1, pageSize: 5 };
   private userSubscription: Subscription | undefined;
 
-  constructor(private userService: UserService, private toastr: ToastrService,  private translate: TranslateService) { }
+  constructor(
+    private userService: UserService,
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) { }
 
   ngOnInit() {
     this.getUsers();
@@ -42,16 +40,17 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   resetFilters() {
-   this.filter.username = "";
-   this.filter.email = "";
+    this.filter.username = "";
+    this.filter.email = "";
     this.getUsers();
   }
 
   pageChanged(event: any) {
-    if (this.filter.pageNumber !== event.page) {
-      this.filter.pageNumber = event.page;
-      this.getUsers();
-    }
+    event.page++;
+    this.filter.pageNumber = event.page;
+    this.filter.pageSize = event.rows
+
+    this.getUsers();
   }
 
 

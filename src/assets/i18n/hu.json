@@ -39,5 +39,7 @@
   "PasswordNotMatch": "A jelszavak nem egyeznek.",
   "EmailRequired": "Az email cím megadása kötelező.",
   "EmailExists": "Ez az email cím már regisztrálva van. Kérlek, használj másik email címet.",
-  "InvalidEmailFormat": "Kérlek, adj meg egy érvényes email címet."
+  "InvalidEmailFormat": "Kérlek, adj meg egy érvényes email címet.",
+
+  "AllResult": "Összes találat"
 }

@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ListUserWithFilterRequest, User } from '../interfaces/user.interface';
 import { map } from 'rxjs';
-import { PagedList, PaginatedResult, PaginationRequest } from '../common/interfaces/pagination.interface';
+import { PagedList, PaginatedResult } from '../common/interfaces/pagination.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   baseUrl = environment.apiUrl;
-  paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>;
 
   constructor(private http: HttpClient) { }
 

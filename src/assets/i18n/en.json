@@ -41,6 +41,8 @@
   "PasswordNotMatch": "Passwords do not match.",
   "EmailRequired": "Email is required.",
   "EmailExists": "Email is already registered. Please use a different email.",
-  "InvalidEmailFormat": "Please enter a valid email address."
+  "InvalidEmailFormat": "Please enter a valid email address.",
 
+
+  "AllResult": "All result"
 }
