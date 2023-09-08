@@ -21,7 +21,7 @@ export class UserService extends BaseService {
       username: "",
       email: "",
       pageNumber: 1,
-      pageSize: 5,
+      pageSize: 10,
       fieldName: "username",
       isDescending: true
     };

@@ -2,7 +2,7 @@
   "Hungarian": "Magyar",
   "English": "Angol",
 
-  "LanguageDateFormat": "yyyy.MM.dd hh:mm",
+  "LanguageDateFormat": "yyyy.MM.dd HH:mm",
 
   "Login": "Bejelentkezés",
   "Logout": "Kijelentkezés",

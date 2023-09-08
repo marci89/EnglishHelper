@@ -16,6 +16,7 @@ import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 import { HasRoleDirective } from './common/directives/has-role.directive';
 import { UtcToLocalDatePipe } from './common/pipes/utc-to-local-date.pipe';
+import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UtcToLocalDatePipe } from './common/pipes/utc-to-local-date.pipe';
     HomeComponent,
     UserRegisterComponent,
     HasRoleDirective,
-    UtcToLocalDatePipe
+    UtcToLocalDatePipe,
+    TranslateDatePipe
   ],
   imports: [
     BrowserModule,
