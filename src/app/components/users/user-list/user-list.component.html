@@ -1,7 +1,7 @@
 <div class="container mt-3" *ngIf="filter">
   <div class="card col-12">
     <div class="card-body">
-      <form #form="ngForm" class="mb-3" (ngSubmit)="getUsers()" autocomplete="off">
+      <form #form="ngForm" class="mb-3" (ngSubmit)="listUser()" autocomplete="off">
         <div class="row">
           <div class="col-3">
             <div class="form-group">
@@ -31,11 +31,12 @@
   <p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }" (onSort)="onSortChanged($event)">
     <ng-template pTemplate="header">
       <tr>
-        <th  pSortableColumn="username" style="width:20%">{{ 'Username' | translate }} <p-sortIcon field="username"></p-sortIcon></th>
-        <th pSortableColumn="email" style="width:20%">{{ 'Email' | translate }} <p-sortIcon field="email"></p-sortIcon></th>
-        <th pSortableColumn="role" style="width:20%">{{ 'Role' | translate }} <p-sortIcon field="role"></p-sortIcon></th>
-        <th pSortableColumn="created" style="width:20%">{{ 'Created' | translate }} <p-sortIcon field="created"></p-sortIcon></th>
-        <th pSortableColumn="lastActive" style="width:20%">{{ 'LastActive' | translate }} <p-sortIcon field="lastActive"></p-sortIcon></th>
+        <th  pSortableColumn="username" style="width:25%">{{ 'Username' | translate }} <p-sortIcon field="username"></p-sortIcon></th>
+        <th pSortableColumn="email" style="width:25%">{{ 'Email' | translate }} <p-sortIcon field="email"></p-sortIcon></th>
+        <th pSortableColumn="role" style="width:15%">{{ 'Role' | translate }} <p-sortIcon field="role"></p-sortIcon></th>
+        <th pSortableColumn="created" style="width:15%">{{ 'Created' | translate }} <p-sortIcon field="created"></p-sortIcon></th>
+        <th pSortableColumn="lastActive" style="width:15%">{{ 'LastActive' | translate }} <p-sortIcon field="lastActive"></p-sortIcon></th>
+        <th style="width:5%"> </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
@@ -45,6 +46,7 @@
         <td>{{ user.role }}</td>
          <td>{{ user.created | utcToLocalDate | translateDate:'LanguageDateFormat'}}</td>
         <td>{{ user.lastActive | utcToLocalDate | translateDate:'LanguageDateFormat'}}</td>
+        <td><button [class]="'btn btn-danger'" (click)="openDeleteConfirmation(user.id, user.username)">{{ 'Delete' | translate }}</button></td>
       </tr>
     </ng-template>
   </p-table>

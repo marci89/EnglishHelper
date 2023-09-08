@@ -11,6 +11,15 @@
   "LastActive": "Last active",
   "Save": "Save",
   "Edit": "Edit",
+  "EditSuccess": "Edit successful",
+  "EditFailed": "Edit unsuccessful",
+  "Delete": "Delete",
+  "DeleteSuccess": "Delete successful",
+  "DeleteFailed": "Delete unsuccessful",
+  "DeleteConfirmationTitle": "Delete confirmation",
+  "DeleteConfirmationMessage": "Do you want to delete this element?",
+  "Yes": "Yes",
+  "No": "No",
   "Cancel": "Cancel",
 
   "Filter": "Filter",
@@ -32,6 +41,7 @@
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
   "AccessDenied": "Access Denied.",
+  "NotFound" : "The resource with the specified ID was not found.",
 
   "InvalidPasswordOrUsername": "Invalid password or username.",
   "InvalidPasswordOrUsernameOrEmail" : "Invalid password or username or email.",

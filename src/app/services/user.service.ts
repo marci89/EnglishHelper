@@ -1,9 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { ListUserWithFilterRequest, User } from '../interfaces/user.interface';
 import { map } from 'rxjs';
-import { PagedList, PaginatedResult } from '../common/interfaces/pagination.interface';
+import { PagedList } from '../common/interfaces/pagination.interface';
 import { BaseService } from '../common/services/base.service';
 
 @Injectable({
@@ -26,6 +25,7 @@ export class UserService extends BaseService {
       isDescending: true
     };
   }
+
   //Get users with filter
   getUsers(request: ListUserWithFilterRequest) {
     const params = this.createParams(request);
@@ -33,5 +33,10 @@ export class UserService extends BaseService {
     return this.http.get<PagedList<User>>(this.baseUrl + 'users', { params }).pipe(
       map((response: PagedList<User>) => this.mapPagedListToPaginatedResult(response))
     );
+  }
+
+  //Delete user by id
+  deleteUserById(id: number) {
+    return this.http.delete(`${this.baseUrl}users/${id}`);
   }
 }

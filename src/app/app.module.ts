@@ -18,7 +18,7 @@ import { HasRoleDirective } from './common/directives/has-role.directive';
 import { UtcToLocalDatePipe } from './common/pipes/utc-to-local-date.pipe';
 import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
 import { DialogService } from 'primeng/dynamicdialog';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 
@@ -47,6 +47,7 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
   providers: [
     MessageService,
     DialogService,
+    ConfirmationService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],

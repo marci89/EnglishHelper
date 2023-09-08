@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Pagination } from 'src/app/common/interfaces/pagination.interface';
 import { ListUserWithFilterRequest, User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
+import { ModalService } from '../../../common/services/modal.service';
 
 @Component({
   selector: 'app-user-list',
@@ -20,15 +21,17 @@ export class UserListComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private toastr: ToastrService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
     this.filter = this.userService.InitUserListFilter();
-    this.getUsers();
+    this.listUser();
   }
 
-  getUsers() {
+  // list paginated users from server
+  listUser() {
     this.userSubscription = this.userService.getUsers(this.filter).subscribe({
       next: response => {
         this.users = response.result;
@@ -40,26 +43,47 @@ export class UserListComponent implements OnInit, OnDestroy {
     })
   }
 
+  // Opening delete confirmation dialog to handle delete action
+  openDeleteConfirmation(id: number, username: string) {
+    this.modalService.openDeleteConfirmation(id, username, this.deleteUserById.bind(this));
+  }
+
+  // deleting user by id
+  public deleteUserById(id: number) {
+    this.userSubscription = this.userService.deleteUserById(id).subscribe({
+      next: _ => {
+        this.toastr.success(this.translate.instant('DeleteSuccess'))
+        this.listUser();
+      },
+      error: error => {
+        this.toastr.error(this.translate.instant(error.error))
+      }
+    })
+  }
+
+  // reseting filter inputs
   resetFilters() {
     this.filter.username = "";
     this.filter.email = "";
-    this.getUsers();
+    this.listUser();
   }
 
+  // paginating change handler
   onPageChanged(event: any) {
     event.page++;
     this.filter.pageNumber = event.page;
     this.filter.pageSize = event.rows
-    this.getUsers();
+    this.listUser();
   }
 
+  // sorting change handler
   onSortChanged(event: any) {
-  const order = event.order === -1;
-    if (this.filter.fieldName === event.field &&  this.filter.isDescending === order) return;
+    const order = event.order === -1;
+    if (this.filter.fieldName === event.field && this.filter.isDescending === order) return;
 
     this.filter.fieldName = event.field;
     this.filter.isDescending = order;
-    this.getUsers();
+    this.listUser();
   }
 
   ngOnDestroy() {

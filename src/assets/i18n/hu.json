@@ -11,6 +11,16 @@
   "LastActive": "Utoljára aktív",
   "Save": "Mentés",
   "Edit": "Szerkesztés",
+  "EditSuccess": "Sikeres szerkesztés",
+  "EditFailed": "Sikertelen szerkesztés",
+  "Delete": "Törlés",
+  "DeleteSuccess": "Sikeres törlés",
+  "DeleteFailed": "Sikertelen törlés",
+  "DeleteConfirmationTitle": "Törlés megerősítése",
+  "DeleteConfirmationMessage": "Törli ezt az elemet?",
+  "Yes": "Igen",
+  "No": "Nem",
+
   "Cancel": "Mégse",
 
   "Filter": "Szűrés",
@@ -30,6 +40,7 @@
   "InvalidRequest": "Érvénytelen kérés.",
   "ServerError": "Hoppá! Valami hiba történt. Kérlek, próbáld újra később.",
   "AccessDenied": "Hozzáférés megtagadva",
+  "NotFound" : "A megadott azonosítójú erőforrás nem található.",
 
   "InvalidPasswordOrUsername": "Érvénytelen jelszó vagy felhasználónév.",
   "InvalidPasswordOrUsernameOrEmail" : "Érvénytelen jelszó vagy felhasználónév vagy email cím.",
