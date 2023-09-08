@@ -17,6 +17,9 @@ import { UserRegisterComponent } from './components/users/user-register/user-reg
 import { HasRoleDirective } from './common/directives/has-role.directive';
 import { UtcToLocalDatePipe } from './common/pipes/utc-to-local-date.pipe';
 import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
+import { DialogService } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
     UserRegisterComponent,
     HasRoleDirective,
     UtcToLocalDatePipe,
-    TranslateDatePipe
+    TranslateDatePipe,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,8 @@ import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
     SharedModule
   ],
   providers: [
+    MessageService,
+    DialogService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],

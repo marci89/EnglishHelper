@@ -10,6 +10,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [],
@@ -33,7 +35,9 @@ import { PaginatorModule } from 'primeng/paginator';
     DropdownModule,
     TableModule,
     ButtonModule,
-    PaginatorModule
+    PaginatorModule,
+    DynamicDialogModule,
+    ToastModule
   ],
   exports: [
     BsDropdownModule,
@@ -44,8 +48,9 @@ import { PaginatorModule } from 'primeng/paginator';
     DropdownModule,
     TableModule,
     ButtonModule,
-    PaginatorModule
-
+    PaginatorModule,
+    DynamicDialogModule,
+    ToastModule
   ]
 })
 

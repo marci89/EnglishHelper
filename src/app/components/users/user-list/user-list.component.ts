@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.userSubscription = this.userService.getUsers(this.filter).subscribe({
       next: response => {
         this.users = response.result;
-        this.pagination = response.pagination
+        this.pagination = response.pagination;
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))
@@ -62,11 +62,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.getUsers();
   }
 
-
   ngOnDestroy() {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
-
 }
