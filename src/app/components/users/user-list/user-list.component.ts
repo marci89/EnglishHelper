@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   // list paginated users from server
   listUser() {
-    this.userSubscription = this.userService.getUsers(this.filter).subscribe({
+    this.userSubscription = this.userService.ListUser(this.filter).subscribe({
       next: response => {
         this.users = response.result;
         this.pagination = response.pagination;

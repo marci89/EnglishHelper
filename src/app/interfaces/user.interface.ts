@@ -23,3 +23,8 @@ export interface ListUserWithFilterRequest extends PaginationRequest {
   username: string;
   email: string;
 }
+
+export interface UpdateUserRequest {
+  id: number;
+  username: string;
+}

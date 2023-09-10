@@ -1,3 +1,68 @@
-<div style="background-color: yellow;">
-<p>user-edit works!</p>
-</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center">{{'EditProfile' | translate }}</h2>
+          <hr>
+          <form [formGroup]="userProfileForm" (ngSubmit)="updateUser()" autocomplete="off">
+            <div class="mb-3">
+              <label for="username">{{'Username' | translate }}</label>
+              <input type="text" class="form-control" formControlName="username"  maxlength="50">
+              <div *ngIf="userProfileForm.get('username')?.errors && userProfileForm.get('username')?.touched" class="text-danger">
+                <p *ngIf="userProfileForm.get('username')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <button [disabled]="!userProfileForm.valid || userProfileForm.pristine" class="btn btn-success me-2" type="submit">{{'Edit' | translate }}</button>
+            </div>
+          </form>
+
+          <hr>
+          <div class="text-center mt-2 mb-2">
+            <h4>{{user?.email}}</h4>
+            <button class="btn btn-success me-2" (click)="changeEmail()">{{'ChangeEmail' | translate }}</button>
+          </div>
+
+
+
+          <hr>
+          <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" autocomplete="off">
+
+            <div class="mb-3">
+              <label for="currentPassword">{{'CurrentPassword' | translate }}</label>
+              <input type="password" class="form-control" formControlName="currentPassword">
+              <div *ngIf="changePasswordForm.get('currentPassword')?.errors && changePasswordForm.get('currentPassword')?.touched" class="text-danger">
+                <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
+                <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="newPassword">{{'NewPassword' | translate }}</label>
+              <input type="password" class="form-control" formControlName="newPassword">
+              <div *ngIf="changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched" class="text-danger">
+                <p *ngIf="changePasswordForm.get('newPassword')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
+                <p *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
+              <input type="password" class="form-control" formControlName="confirmPassword">
+              <div *ngIf="changePasswordForm.get('confirmPassword')?.errors && changePasswordForm.get('confirmPassword')?.touched" class="text-danger">
+                <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' | translate }}</p>
+                <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate }}</p>
+              </div>
+            </div>
+            <div class="text-center">
+            <button [disabled]="!userProfileForm.valid " class="btn btn-success me-2" type="submit">{{'ChangePassword' | translate }}</button>
+            </div>
+          </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+

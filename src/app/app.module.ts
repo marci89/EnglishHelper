@@ -20,6 +20,7 @@ import { TranslateDatePipe } from './common/pipes/translate-date.pipe';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
+import { ChangeEmailComponent } from './components/users/change-email/change-email.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
     UtcToLocalDatePipe,
     TranslateDatePipe,
     UserEditComponent,
+    ChangeEmailComponent,
   ],
   imports: [
     BrowserModule,

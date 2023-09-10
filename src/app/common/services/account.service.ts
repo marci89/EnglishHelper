@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
-import { LoginUser } from '../interfaces/account.interface';
+import { ChangeEmailRequest, ChangePasswordRequest, LoginUser } from '../interfaces/account.interface';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class AccountService extends BaseService {
 
   constructor(private http: HttpClient) {
     super();
-   }
+  }
 
   login(request: LoginRequest) {
     return this.http.post<LoginUser>(this.baseUrl + 'Account/login', request).pipe(
@@ -44,12 +43,23 @@ export class AccountService extends BaseService {
     )
   }
 
+  //Change Email
+  changeEmail(request: ChangeEmailRequest) {
+    return this.http.put(this.baseUrl + 'account/changeEmail', request);
+  }
+
+  //Change password
+  changePassword(request: ChangePasswordRequest) {
+    return this.http.put(this.baseUrl + 'account/changePassword', request);
+  }
+
+
   setCurrentUser(user: LoginUser) {
     if (user && user.token) {
-    const role = this.getDecodedToken(user.token).role;
-    user.role = role;
-    localStorage.setItem(this.USER_STORAGE_KEY, JSON.stringify(user))
-    this.currentUserSource.next(user);
+      const role = this.getDecodedToken(user.token).role;
+      user.role = role;
+      localStorage.setItem(this.USER_STORAGE_KEY, JSON.stringify(user))
+      this.currentUserSource.next(user);
     } else {
       console.error('user.token is undefined or null');
     }

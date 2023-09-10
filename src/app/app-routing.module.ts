@@ -6,6 +6,7 @@ import { WordEditComponent } from './components/words/word-edit/word-edit.compon
 import { authGuard } from './common/guards/auth.guard';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 import { adminGuard } from './common/guards/admin.guard';
+import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'users', component: UserListComponent, canActivate: [adminGuard] },
+      { path: 'user/edit', component: UserEditComponent},
       { path: 'words', component: WordEditComponent }
     ]
   },
