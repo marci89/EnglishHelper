@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../interfaces/language.interface';
+import { PrimeNGConfig } from 'primeng/api';
 
 // language service
 @Injectable({
@@ -10,7 +11,7 @@ export class LanguageService {
   private languages: Language[] = [];
   private selectedLanguage: Language | undefined;
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService,  private primengConfig: PrimeNGConfig) { }
 
   // init language things
   initialize() {
@@ -34,6 +35,9 @@ export class LanguageService {
   switchLanguage(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('selectedLanguage', lang);
+
+    //if you use primeNG
+    this.translate.get('primeng').subscribe(res => this.primengConfig.setTranslation(res));
   }
 
   // Get language
