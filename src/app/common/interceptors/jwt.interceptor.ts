@@ -8,6 +8,7 @@ import {
 import { Observable, take } from 'rxjs';
 import { AccountService } from '../services/account.service';
 
+//Add bearer header all of requests for jwt auth
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 

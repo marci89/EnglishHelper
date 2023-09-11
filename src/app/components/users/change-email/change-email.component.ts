@@ -20,23 +20,25 @@ export class ChangeEmailComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-     private toastr: ToastrService,
-     private router: Router,
-     public translate: TranslateService,
-     private modalService: ModalService
-     ) { }
+    private toastr: ToastrService,
+    private router: Router,
+    public translate: TranslateService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit(): void {
-		this.initializeForm();
+    this.initForm();
   }
 
-  initializeForm() {
+  // Init form
+  initForm() {
     this.changeEmailForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     });
   }
 
+  //Change email
   changeEmail() {
     this.changeEmailRequest = {
       email: this.changeEmailForm.controls['email'].value,
@@ -54,7 +56,8 @@ export class ChangeEmailComponent implements OnInit {
     })
   }
 
-  cancel(){
+  // close teh dialog modal
+  cancel() {
     this.modalService.close();
   }
 }

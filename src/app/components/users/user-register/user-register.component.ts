@@ -22,10 +22,11 @@ export class UserRegisterComponent implements OnInit {
      ) { }
 
   ngOnInit(): void {
-		this.initializeForm();
+		this.initForm();
   }
 
-  initializeForm() {
+  //Init form
+  initForm() {
     this.registerForm = new FormGroup({
       username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -38,12 +39,14 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
+  // Password match helper
   matchValues(matchTo: string): ValidatorFn {
     return (control: AbstractControl) => {
       return control?.value === control?.parent?.get(matchTo)?.value ? null : {isMatching: true}
     }
   }
 
+  //User create (registration)
   register() {
     this.accountService.register(this.registerForm.value).subscribe({
       next: response => {
@@ -57,6 +60,7 @@ export class UserRegisterComponent implements OnInit {
     })
   }
 
+  // return home
   cancel(){
     this.router.navigateByUrl('/');
   }

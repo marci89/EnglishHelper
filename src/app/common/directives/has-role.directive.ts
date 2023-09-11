@@ -3,6 +3,7 @@ import { take } from 'rxjs';
 import { AccountService } from '../services/account.service';
 import { LoginUser } from '../interfaces/account.interface';
 
+//check role for the element and if the user has it the element will be visible
 @Directive({
   selector: '[appHasRole]'
 })

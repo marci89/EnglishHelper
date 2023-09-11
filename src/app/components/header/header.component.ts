@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
     this.selectedLanguage = this.languageService.getSelectedLanguage();
   }
 
+  // Login
   login() {
     this.accountService.login(this.loginRequest).subscribe({
       next: _ => {
@@ -39,11 +40,13 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  //Logout
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl("/");
   }
 
+  //Change language
   switchLang(lang: string) {
     this.languageService.switchLanguage(lang);
   }

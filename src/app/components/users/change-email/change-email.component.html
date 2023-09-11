@@ -8,7 +8,7 @@
 
   <div class="mb-3">
     <label for="email"> {{'Email' | translate }} </label>
-    <input type="text" class="form-control" formControlName="email">
+    <input type="text" pInputText [style]="{'width':'100%'}" formControlName="email">
     <div *ngIf="changeEmailForm.get('email')?.errors && changeEmailForm.get('email')?.touched" class="text-danger">
       <p *ngIf="changeEmailForm.get('email')?.hasError('required')">{{'EmailRequired' | translate }}</p>
       <p *ngIf="changeEmailForm.get('email')?.hasError('email')"> {{'InvalidEmailFormat' | translate }}</p>
@@ -17,7 +17,7 @@
 
   <div class="mb-3">
     <label for="password">{{'Password' | translate }}</label>
-    <input type="password" class="form-control" formControlName="password">
+    <p-password type="password"  [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" formControlName="password" styleClass="hide-password-panel" ></p-password>
     <div *ngIf="changeEmailForm.get('password')?.errors && changeEmailForm.get('password')?.touched" class="text-danger">
       <p *ngIf="changeEmailForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
       <p *ngIf="changeEmailForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="text-center">
-    <button [disabled]="!changeEmailForm.valid" class="btn btn-success me-2" type="submit">{{'Edit' | translate }}</button>
-    <button class="btn btn-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</button>
+    <p-button [disabled]="!changeEmailForm.valid" styleClass="p-button-success me-2" type="submit">{{'Edit' | translate }}</p-button>
+    <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
   </div>
 </form>

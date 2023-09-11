@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
+//It Checks auth and allows the route if the user logged in
 export const authGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const toastr = inject(ToastrService);

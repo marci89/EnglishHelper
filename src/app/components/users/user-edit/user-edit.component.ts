@@ -17,13 +17,10 @@ import { ChangeEmailComponent } from '../change-email/change-email.component';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent {
-
   loginedUser: LoginUser | null | undefined;
   user: User | null | undefined;
-
   userProfileForm: FormGroup = new FormGroup({})
   changePasswordForm: FormGroup = new FormGroup({})
-
   updateUserRequest: UpdateUserRequest = {} as UpdateUserRequest;
   changePasswordRequest: ChangePasswordRequest = {} as ChangePasswordRequest;
 
@@ -44,6 +41,7 @@ export class UserEditComponent {
     this.readUser();
   }
 
+  // Init all of forms
   initForms() {
     this.userProfileForm = new FormGroup({
       username: new FormControl('', Validators.required)
@@ -60,6 +58,7 @@ export class UserEditComponent {
     });
   }
 
+  // Password match helper
   matchValues(matchTo: string): ValidatorFn {
     return (control: AbstractControl) => {
       return control?.value === control?.parent?.get(matchTo)?.value ? null : { isMatching: true }
@@ -109,7 +108,7 @@ export class UserEditComponent {
 
   //Change email popup
   changeEmail() {
-    this.ModalService.openDialog(ChangeEmailComponent);
+    this.ModalService.openDialog(ChangeEmailComponent, 30);
   }
 
   // change password
@@ -122,6 +121,7 @@ export class UserEditComponent {
     this.accountService.changePassword(this.changePasswordRequest).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('EditSuccess'))
+        this.changePasswordForm.reset();
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))

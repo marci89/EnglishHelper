@@ -9,6 +9,7 @@ import { Observable, delay, finalize, identity } from 'rxjs';
 import { BusyService } from '../services/busy.service';
 import { environment } from 'src/environments/environment';
 
+// loader for long service calling
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 

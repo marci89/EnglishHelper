@@ -5,6 +5,7 @@ import { inject } from '@angular/core';
 import { map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
+//Allow only admin role for route
 export const adminGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const toastr = inject(ToastrService);

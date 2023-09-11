@@ -18,6 +18,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   filter: ListUserWithFilterRequest = {} as ListUserWithFilterRequest;
   private userSubscription: Subscription | undefined;
 
+  tableSize: any = 'p-datatable-sm';
+
   constructor(
     private userService: UserService,
     private toastr: ToastrService,

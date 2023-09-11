@@ -22,18 +22,20 @@
       <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
         <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>{{user.username}}  <i class="fa fa-user"></i></a>
         <div class="dropdown-menu" *dropdownMenu>
-          <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
           <a class="dropdown-item" routerLink="/user/edit">{{'Edit' | translate }}</a>
+          <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
         </div>
       </div>
 
       <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
         autocomplete="off">
-        <input name="username" [(ngModel)]="loginRequest.identifier" class="form-control me-2" type="text"
+        <input name="username" pInputText [(ngModel)]="loginRequest.identifier" class="me-2" type="text"
         [placeholder]="'UsernameOrEmail' | translate">
-        <input name="password" [(ngModel)]="loginRequest.password" class="form-control me-2" type="password"
-        [placeholder]="'Password' | translate">
-        <button class="btn btn-success" type="submit"> {{'Login' | translate }}</button>
+
+        <p-password name="password" [toggleMask]="true" [(ngModel)]="loginRequest.password" [feedback]="false"  class="me-2" type="password"
+       [placeholder]="'Password' | translate" styleClass="hide-password-panel"></p-password>
+
+        <p-button styleClass="p-button-success" type="submit"> {{'Login' | translate }}</p-button>
       </form>
 
       <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name" class="mx-2">

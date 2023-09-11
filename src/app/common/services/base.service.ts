@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PagedList, PaginatedResult } from '../interfaces/pagination.interface';
 
+// Base service class for services
 @Injectable({
   providedIn: 'root'
 })

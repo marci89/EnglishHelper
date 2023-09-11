@@ -13,6 +13,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     PaginatorModule,
     DynamicDialogModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PasswordModule,
+    InputTextModule
   ],
   exports: [
     BsDropdownModule,
@@ -54,7 +58,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     PaginatorModule,
     DynamicDialogModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PasswordModule,
+    InputTextModule
   ]
 })
 

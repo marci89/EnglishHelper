@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeEmailRequest, ChangePasswordRequest, LoginUser } from '../interfaces/account.interface';
 import { BaseService } from './base.service';
 
+//Account service
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,7 @@ export class AccountService extends BaseService {
     super();
   }
 
+  //Login function
   login(request: LoginRequest) {
     return this.http.post<LoginUser>(this.baseUrl + 'Account/login', request).pipe(
       map((response: LoginUser) => {
@@ -28,11 +30,13 @@ export class AccountService extends BaseService {
     )
   }
 
+    //Logout function
   logout() {
     localStorage.removeItem(this.USER_STORAGE_KEY);
     this.currentUserSource.next(null);
   }
 
+  // User create (registration)
   register(request: RegistrationRequest) {
     return this.http.post<LoginUser>(this.baseUrl + 'account/register', request).pipe(
       map(user => {
@@ -53,7 +57,7 @@ export class AccountService extends BaseService {
     return this.http.put(this.baseUrl + 'account/changePassword', request);
   }
 
-
+  // set the current logined user
   setCurrentUser(user: LoginUser) {
     if (user && user.token) {
       const role = this.getDecodedToken(user.token).role;
@@ -65,6 +69,7 @@ export class AccountService extends BaseService {
     }
   }
 
+  //Token decoder
   getDecodedToken(token: string) {
     try {
       const tokenPayloadBase64 = token.split('.')[1];
