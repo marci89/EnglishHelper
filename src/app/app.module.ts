@@ -21,6 +21,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 import { ChangeEmailComponent } from './components/users/change-email/change-email.component';
+import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago';
 
 
 @NgModule({
@@ -44,14 +45,17 @@ import { ChangeEmailComponent } from './components/users/change-email/change-ema
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    TimeagoModule.forRoot({formatter: { provide:
+      TimeagoFormatter, useClass: TimeagoCustomFormatter },})
   ],
   providers: [
     MessageService,
     DialogService,
     ConfirmationService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    [TimeagoIntl],
   ],
   bootstrap: [AppComponent]
 })

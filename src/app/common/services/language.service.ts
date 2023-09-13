@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../interfaces/language.interface';
 import { PrimeNGConfig } from 'primeng/api';
+import { TimeagoIntl } from 'ngx-timeago';
 
 // language service
 @Injectable({
@@ -11,12 +12,13 @@ export class LanguageService {
   private languages: Language[] = [];
   private selectedLanguage: Language | undefined;
 
-  constructor(private translate: TranslateService,  private primengConfig: PrimeNGConfig) { }
+  constructor(private translate: TranslateService, private primengConfig: PrimeNGConfig, private intl: TimeagoIntl) { }
 
   // init language things
   initialize() {
     this.translate.addLangs(['en', 'hu']);
-    this.translate.setDefaultLang('en');
+    const defaultLanguage = "en";
+    this.translate.setDefaultLang(defaultLanguage);
 
     const storedLanguage = localStorage.getItem('selectedLanguage') || this.translate.getDefaultLang();
     this.translate.use(storedLanguage);
@@ -29,6 +31,8 @@ export class LanguageService {
 
     // Set the selectedLanguage to the default language
     this.selectedLanguage = this.languages.find(language => language.code === storedLanguage);
+
+    this.switchLanguage(storedLanguage);
   }
 
   //Change langugae
@@ -38,6 +42,12 @@ export class LanguageService {
 
     //if you use primeNG
     this.translate.get('primeng').subscribe(res => this.primengConfig.setTranslation(res));
+
+    //if you use ngx-timeago
+    this.translate.get('ngx-timeago').subscribe(res => {
+      this.intl.strings = res;
+      this.intl.changes.next();
+    });
   }
 
   // Get language

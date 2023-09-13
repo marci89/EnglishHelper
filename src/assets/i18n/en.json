@@ -115,5 +115,20 @@
     "passwordPrompt": "Enter a password",
     "emptyMessage": "No results found",
     "emptyFilterMessage": "No results found"
- }
+ },
+
+  "ngx-timeago": {
+    "second": "a second ago",
+    "seconds": "%d seconds ago",
+    "minute": "a minute ago",
+    "minutes": "%d minutes ago",
+    "hour": "an hour ago",
+    "hours": "%d hours ago",
+    "day": "a day ago",
+    "days": "%d days ago",
+    "month": "a month ago",
+    "months": "%d months ago",
+    "year": "a year ago",
+    "years": "%d years ago"
+  }
 }

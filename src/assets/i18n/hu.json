@@ -114,5 +114,21 @@
     "passwordPrompt": "Adja meg a jelszót",
     "emptyMessage": "Nincs találat",
     "emptyFilterMessage": "Nincs találat"
+  },
+
+  "ngx-timeago": {
+    "second": "egy másodperce",
+    "seconds": "%d másodperce",
+    "minute": "egy perce",
+    "minutes": "%d perce",
+    "hour": "egy órája",
+    "hours": "%d órája",
+    "day": "egy napja",
+    "days": "%d napja",
+    "month": "egy hónapja",
+    "months": "%d hónapja",
+    "year": "egy éve",
+    "years": "%d éve"
   }
+
 }

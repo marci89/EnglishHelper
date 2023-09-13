@@ -16,7 +16,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 
-
 @NgModule({
   declarations: [],
   imports: [
