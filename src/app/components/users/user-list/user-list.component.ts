@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];
   pagination: Pagination = {} as Pagination;
   filter: ListUserWithFilterRequest = {} as ListUserWithFilterRequest;
-  private userSubscription: Subscription | undefined;
+  private listUserSubscription$: Subscription | undefined;
 
   tableSize: any = 'p-datatable-sm';
 
@@ -28,13 +28,25 @@ export class UserListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.filter = this.userService.InitUserListFilter();
+    this.filter = this.InitUserListFilter();
     this.listUser();
+  }
+
+   //User list filter initalization
+   InitUserListFilter(): ListUserWithFilterRequest {
+    return {
+      username: "",
+      email: "",
+      pageNumber: 1,
+      pageSize: 10,
+      fieldName: "username",
+      isDescending: true
+    };
   }
 
   // list paginated users from server
   listUser() {
-    this.userSubscription = this.userService.ListUser(this.filter).subscribe({
+    this.listUserSubscription$ = this.userService.ListUser(this.filter).subscribe({
       next: response => {
         this.users = response.result;
         this.pagination = response.pagination;
@@ -52,7 +64,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   // deleting user by id
   public deleteUserById(id: number) {
-    this.userSubscription = this.userService.deleteUserById(id).subscribe({
+  this.userService.deleteUserById(id).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('DeleteSuccess'))
         this.listUser();
@@ -89,8 +101,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
+    if (this.listUserSubscription$) {
+      this.listUserSubscription$.unsubscribe();
     }
   }
 }

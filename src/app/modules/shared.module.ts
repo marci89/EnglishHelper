@@ -44,7 +44,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ToastModule,
     ConfirmDialogModule,
     PasswordModule,
-    InputTextModule
+    InputTextModule,
   ],
   exports: [
     BsDropdownModule,
@@ -60,7 +60,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ToastModule,
     ConfirmDialogModule,
     PasswordModule,
-    InputTextModule
+    InputTextModule,
   ]
 })
 

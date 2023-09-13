@@ -1,20 +1,28 @@
-<div class="container mt-3" *ngIf="filter">
+
+  <!-- Filter panel -->
+<div class="mt-3" *ngIf="filter">
   <div class="card col-12">
     <div class="card-body">
       <form #form="ngForm" class="mb-3" (ngSubmit)="listUser()" autocomplete="off">
         <div class="row">
+
+            <!-- Username -->
           <div class="col-3">
             <div class="form-group">
               <label for="username">{{ 'Username' | translate }}</label>
               <input type="text" pInputText [style]="{'width':'100%'}" name="username" [(ngModel)]="filter.username">
             </div>
           </div>
+
+            <!-- Email -->
           <div class="col-3">
             <div class="form-group">
               <label for="email">{{ 'Email' | translate }}</label>
               <input type="text" pInputText [style]="{'width':'100%'}" name="email" [(ngModel)]="filter.email">
             </div>
           </div>
+
+            <!-- Buttons -->
           <div class="col-6 d-flex justify-content-end">
             <p-button class="mt-auto" type="submit">{{ 'Filter' | translate }}</p-button>
             <p-button class="mx-2 mt-auto" type="button" (click)="resetFilters()">{{ 'FilterReset' |
@@ -26,7 +34,7 @@
   </div>
 </div>
 
-
+  <!-- User list table -->
 <div class="mt-3">
   <p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }" [styleClass]="tableSize" (onSort)="onSortChanged($event)">
     <ng-template pTemplate="header">
@@ -51,6 +59,8 @@
     </ng-template>
   </p-table>
 </div>
+
+  <!-- Paginator -->
 <div class="d-flex justify-content-center mt-2">
   <p-paginator
     [rows]="pagination.itemsPerPage"

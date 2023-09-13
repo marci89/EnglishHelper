@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/common/services/account.service';
@@ -21,7 +20,6 @@ export class ChangeEmailComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    private router: Router,
     public translate: TranslateService,
     private modalService: ModalService
   ) { }

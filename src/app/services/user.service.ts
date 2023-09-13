@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListUserWithFilterRequest, UpdateUserRequest, User } from '../interfaces/user.interface';
-import { map } from 'rxjs';
+import {map } from 'rxjs';
 import { PagedList } from '../common/interfaces/pagination.interface';
 import { BaseService } from '../common/services/base.service';
 
@@ -11,11 +11,9 @@ import { BaseService } from '../common/services/base.service';
 })
 export class UserService extends BaseService {
 
-  user: User = {} as User;
   constructor(private http: HttpClient) {
     super();
    }
-
 
   //User list filter initalization
   InitUserListFilter(): ListUserWithFilterRequest {
@@ -29,7 +27,6 @@ export class UserService extends BaseService {
     };
   }
 
-  //Read user by id
   readUserById(id: number) {
     return this.http.get<User>(this.baseUrl + 'users/' + id);
   }

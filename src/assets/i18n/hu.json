@@ -4,6 +4,7 @@
 
   "LanguageDateFormat": "yyyy.MM.dd HH:mm",
 
+  "Home": "Kezdőoldal",
   "Login": "Bejelentkezés",
   "Logout": "Kijelentkezés",
   "Registration": "Regisztráció",
@@ -32,12 +33,14 @@
   "CurrentPassword": "Jelenlegi jelszó",
   "NewPassword": "Új jelszó",
   "EditProfile": "Profil szerkesztése",
+  "Profile": "Profil",
   "ChangeEmail": "Email megváltoztatása",
   "ChangePassword": "Jelszó megváltoztatása",
   "InvalidOldPassword": "Érvénytelen régi jelszó. Kérjük, ellenőrizze még egyszer, és próbálja újra.",
   "Email": "Email cím",
   "Role": "Szerepkör",
   "Users": "Felhasználók",
+  "EditUsername": "Felhasználónév módosítása",
 
   "RegisterSuccess" : "Sikeres regisztráció",
 

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { LoginUser } from 'src/app/common/interfaces/account.interface';
 import { AccountService } from 'src/app/common/services/account.service';
 import { UpdateUserRequest, User } from 'src/app/interfaces/user.interface';
@@ -16,13 +16,17 @@ import { ChangeEmailComponent } from '../change-email/change-email.component';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.css']
 })
-export class UserEditComponent {
+export class UserEditComponent implements OnInit, OnDestroy {
   loginedUser: LoginUser | null | undefined;
   user: User | null | undefined;
+  userEmail: string = '';
   userProfileForm: FormGroup = new FormGroup({})
   changePasswordForm: FormGroup = new FormGroup({})
   updateUserRequest: UpdateUserRequest = {} as UpdateUserRequest;
   changePasswordRequest: ChangePasswordRequest = {} as ChangePasswordRequest;
+
+  //subscription
+  private emailSubscription$: Subscription | undefined;
 
   constructor(
     private accountService: AccountService,
@@ -30,13 +34,19 @@ export class UserEditComponent {
     private toastr: ToastrService,
     private translate: TranslateService,
     private ModalService: ModalService,
-  ) {
+  ) { }
+
+  ngOnInit(): void {
+    //take logined user once
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: loginedUser => this.loginedUser = loginedUser
     });
-  }
 
-  ngOnInit(): void {
+    //email address change detection
+    this.emailSubscription$ = this.accountService.userEmail$.subscribe(email => {
+      this.userEmail = email;
+    });
+
     this.initForms();
     this.readUser();
   }
@@ -79,12 +89,13 @@ export class UserEditComponent {
     this.userService.readUserById(this.loginedUser.id).subscribe({
       next: user => {
         this.user = user;
+        this.userEmail = user.email;
         this.addValuesToUserProfileForm();
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))
       }
-    })
+    });
   }
 
   //Update user
@@ -114,7 +125,7 @@ export class UserEditComponent {
   // change password
   changePassword() {
     this.changePasswordRequest = {
-      password : this.changePasswordForm.controls['currentPassword'].value,
+      password: this.changePasswordForm.controls['currentPassword'].value,
       newPassword: this.changePasswordForm.controls['newPassword'].value,
     };
 
@@ -127,5 +138,11 @@ export class UserEditComponent {
         this.toastr.error(this.translate.instant(error.error))
       }
     })
+  }
+
+  ngOnDestroy() {
+    if (this.emailSubscription$) {
+      this.emailSubscription$.unsubscribe();
+    }
   }
 }

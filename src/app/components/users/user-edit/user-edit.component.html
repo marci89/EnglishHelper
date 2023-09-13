@@ -1,66 +1,90 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="text-center">{{'EditProfile' | translate }}</h2>
-          <hr>
-          <form [formGroup]="userProfileForm" (ngSubmit)="updateUser()" autocomplete="off">
-            <div class="mb-3">
-                <label for="username">{{ 'Username' | translate }}</label>
-                <input type="text" pInputText [style]="{'width':'100%'}" formControlName="username" maxlength="50">
-                  <div *ngIf="userProfileForm.get('username')?.errors && userProfileForm.get('username')?.touched" class="text-danger">
-                    <p *ngIf="userProfileForm.get('username')?.hasError('required')">{{ 'UsernameRequired' | translate }}</p>
-                  </div>
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="text-center">{{'EditProfile' | translate }}</h2>
+        <hr>
+        <form [formGroup]="userProfileForm" (ngSubmit)="updateUser()" autocomplete="off">
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label for="username">{{ 'Username' | translate }}</label>
+            <input type="text" pInputText [style]="{'width':'100%'}" formControlName="username" maxlength="50">
+            <div *ngIf="userProfileForm.get('username')?.errors && userProfileForm.get('username')?.touched"
+              class="text-danger">
+              <p *ngIf="userProfileForm.get('username')?.hasError('required')">{{ 'UsernameRequired' | translate }}</p>
+            </div>
+
+              <!-- Button -->
             <div class="text-center mt-2 mb-2">
-            <p-button [disabled]="!userProfileForm.valid || userProfileForm.pristine" styleClass="p-button-success"
-                type="submit">{{ 'Edit' | translate }}</p-button>
+              <p-button [disabled]="!userProfileForm.valid || userProfileForm.pristine" class="me-2"
+                type="submit">{{ 'EditUsername' | translate }}</p-button>
             </div>
           </div>
-          </form>
+        </form>
 
-          <hr>
-          <div class="text-center mt-2 mb-2">
-            <h4>{{user?.email}}</h4>
-            <p-button styleClass="p-button-success me-2" (click)="changeEmail()">{{'ChangeEmail' | translate }}</p-button>
-          </div>
+        <hr>
 
-          <hr>
-          <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" autocomplete="off">
-
-            <div class="mb-3">
-              <label for="currentPassword">{{'CurrentPassword' | translate }}</label>
-              <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" styleClass="hide-password-panel" formControlName="currentPassword"></p-password>
-              <div *ngIf="changePasswordForm.get('currentPassword')?.errors && changePasswordForm.get('currentPassword')?.touched" class="text-danger">
-                <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
-                <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="newPassword">{{'NewPassword' | translate }}</label>
-              <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" formControlName="newPassword"></p-password>
-              <div *ngIf="changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched" class="text-danger">
-                <p *ngIf="changePasswordForm.get('newPassword')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
-                <p *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
-              <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" formControlName="confirmPassword" styleClass="hide-password-panel"></p-password>
-              <div *ngIf="changePasswordForm.get('confirmPassword')?.errors && changePasswordForm.get('confirmPassword')?.touched" class="text-danger">
-                <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' | translate }}</p>
-                <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate }}</p>
-              </div>
-            </div>
-            <div class="text-center">
-            <p-button [disabled]="!changePasswordForm.valid " styleClass="p-button-success me-2" type="submit">{{'ChangePassword' | translate }}</p-button>
-            </div>
-          </form>
-          </div>
+          <!-- Email change dialog button -->
+        <div class="text-center mt-2 mb-2">
+          <h4>{{userEmail}}</h4>
+          <p-button class="me-2" (click)="changeEmail()">{{'ChangeEmail' | translate }}</p-button>
         </div>
+
+        <hr>
+        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" autocomplete="off">
+
+            <!-- Current password -->
+          <div class="mb-3">
+            <label for="currentPassword">{{'CurrentPassword' | translate }}</label>
+            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+              styleClass="hide-password-panel" formControlName="currentPassword"></p-password>
+            <div
+              *ngIf="changePasswordForm.get('currentPassword')?.errors && changePasswordForm.get('currentPassword')?.touched"
+              class="text-danger">
+              <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('required')"> {{'PasswordRequired' |
+                translate }}</p>
+              <p *ngIf="changePasswordForm.get('currentPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' |
+                translate }}</p>
+            </div>
+          </div>
+
+            <!-- New password -->
+          <div class="mb-3">
+            <label for="newPassword">{{'NewPassword' | translate }}</label>
+            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+              formControlName="newPassword"></p-password>
+            <div *ngIf="changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched"
+              class="text-danger">
+              <p *ngIf="changePasswordForm.get('newPassword')?.hasError('required')"> {{'PasswordRequired' | translate
+                }}</p>
+              <p *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')"> {{'InvalidPasswordFormat' |
+                translate }}</p>
+            </div>
+          </div>
+
+            <!-- Confirm password -->
+          <div class="mb-3">
+            <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
+            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+              formControlName="confirmPassword" styleClass="hide-password-panel"></p-password>
+            <div
+              *ngIf="changePasswordForm.get('confirmPassword')?.errors && changePasswordForm.get('confirmPassword')?.touched"
+              class="text-danger">
+              <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' |
+                translate }}</p>
+              <p *ngIf="changePasswordForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' |
+                translate }}</p>
+            </div>
+          </div>
+
+            <!-- Button -->
+          <div class="text-center">
+            <p-button [disabled]="!changePasswordForm.valid " class="me-2"
+              type="submit">{{'ChangePassword' | translate }}</p-button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
+</div>

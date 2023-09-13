@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { ChangeEmailRequest, ChangePasswordRequest, LoginUser } from '../interfaces/account.interface';
@@ -11,8 +11,14 @@ import { BaseService } from './base.service';
 })
 export class AccountService extends BaseService {
   private readonly USER_STORAGE_KEY = 'user';
+
+  //Logined user subject
   private currentUserSource = new BehaviorSubject<LoginUser | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
+
+  //User's email subject
+  private userEmailSubject$ = new BehaviorSubject<string>('');
+  userEmail$ = this.userEmailSubject$.asObservable();
 
   constructor(private http: HttpClient) {
     super();
@@ -30,7 +36,7 @@ export class AccountService extends BaseService {
     )
   }
 
-    //Logout function
+  //Logout function
   logout() {
     localStorage.removeItem(this.USER_STORAGE_KEY);
     this.currentUserSource.next(null);
@@ -47,9 +53,18 @@ export class AccountService extends BaseService {
     )
   }
 
-  //Change Email
+
+  // Change email and update the email subject
   changeEmail(request: ChangeEmailRequest) {
-    return this.http.put(this.baseUrl + 'account/changeEmail', request);
+    return this.http.put(this.baseUrl + 'account/changeEmail', request).pipe(
+      tap(email => {
+        console.log(email);
+        this.userEmailSubject$.next(request.email);
+      }),
+      catchError(error => {
+        return throwError(error);
+      })
+    );
   }
 
   //Change password

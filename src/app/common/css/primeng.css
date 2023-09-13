@@ -1,0 +1,27 @@
+
+/* Password component doesn't have password-panel (weak, medium, strong) */
+.hide-password-panel .p-password-panel {
+  display: none !important;
+}
+
+/* Dialog styles */
+.p-dialog .p-dialog-content {
+  background-color: #375A7F;
+  color: white;
+  padding: 0  !important;
+  padding-bottom: 10px !important;
+}
+
+.p-dialog .p-dialog-header {
+  background-color: #585759 !important;
+  color: white !important;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+  color: white !important;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: #585759 !important;
+  color: white !important;
+}

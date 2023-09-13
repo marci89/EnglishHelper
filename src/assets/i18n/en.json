@@ -3,7 +3,7 @@
   "English": "English",
 
   "LanguageDateFormat": "dd-MM-yyyy HH:mm",
-
+  "Home": "Home",
   "Login": "Login",
   "Logout": "Logout",
   "Registration": "Registration",
@@ -33,12 +33,14 @@
   "CurrentPassword": "Current password",
   "NewPassword": "New password",
   "EditProfile": "Edit profile",
+  "Profile": "Profile",
   "ChangeEmail": "Change email",
   "ChangePassword": "Change password",
   "InvalidOldPassword": "Invalid old password. Please double-check and try again.",
   "Email": "Email",
   "Role": "Role",
   "Users": "Users",
+  "EditUsername": "Edit username",
 
   "RegisterSuccess" : "You Have Successfully Registered.",
 
