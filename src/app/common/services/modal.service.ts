@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmEventType } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
@@ -17,12 +17,12 @@ export class ModalService {
     private translate: TranslateService
   ) { }
 
-  // Opening a modal with any component
+  // Opening a modal with any component. size is in px.
   openDialog(component: any, size?: number) {
-    const dialogSize = size || 50;
+    const dialogSize = size || 600;
 
     this.dialogRef = this.dialogService.open(component, {
-      width: `${dialogSize}%`,
+     width: `${dialogSize}px`,
       baseZIndex: 10000,
       showHeader: false,
       modal: true

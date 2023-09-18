@@ -28,25 +28,25 @@ export class UserService extends BaseService {
   }
 
   readUserById(id: number) {
-    return this.http.get<User>(this.baseUrl + 'users/' + id);
+    return this.http.get<User>(this.baseUrl + 'user/' + id);
   }
 
   //Get users with filter
   ListUser(request: ListUserWithFilterRequest) {
     const params = this.createParams(request);
 
-    return this.http.get<PagedList<User>>(this.baseUrl + 'users', { params }).pipe(
+    return this.http.get<PagedList<User>>(this.baseUrl + 'user/list', { params }).pipe(
       map((response: PagedList<User>) => this.mapPagedListToPaginatedResult(response))
     );
   }
 
   //Update user's name
   updateUser(request: UpdateUserRequest) {
-    return this.http.put(this.baseUrl + 'users', request);
+    return this.http.put(this.baseUrl + 'user', request);
   }
 
   //Delete user by id
   deleteUserById(id: number) {
-    return this.http.delete(`${this.baseUrl}users/${id}`);
+    return this.http.delete(`${this.baseUrl}user/${id}`);
   }
 }

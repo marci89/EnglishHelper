@@ -119,7 +119,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   //Change email popup
   changeEmail() {
-    this.ModalService.openDialog(ChangeEmailComponent, 30);
+    this.ModalService.openDialog(ChangeEmailComponent, 600);
   }
 
   // change password

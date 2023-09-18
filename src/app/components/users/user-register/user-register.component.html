@@ -1,6 +1,6 @@
 
   <div class="row justify-content-center">
-    <div class="col-md-5">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-5">
       <div class="card">
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
@@ -15,7 +15,7 @@
             <!-- User name -->
             <div class="mb-3">
               <label for="username">{{'Username' | translate }}</label>
-              <input type="text" pInputText [style]="{'width':'100%'}" formControlName="username"  maxlength="50">
+             <input type="text" pInputText  formControlName="username"  maxlength="50" class="form-control">
               <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-danger">
                 <p *ngIf="registerForm.get('username')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
               </div>
@@ -24,7 +24,7 @@
             <!-- Email -->
             <div class="mb-3">
               <label for="email"> {{'Email' | translate }} </label>
-              <input type="text" pInputText [style]="{'width':'100%'}" formControlName="email">
+              <input type="text" pInputText formControlName="email" class="form-control">
               <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-danger">
                 <p *ngIf="registerForm.get('email')?.hasError('required')">{{'EmailRequired' | translate }}</p>
                 <p *ngIf="registerForm.get('email')?.hasError('email')"> {{'InvalidEmailFormat' | translate }}</p>
@@ -34,7 +34,7 @@
             <!-- Password -->
             <div class="mb-3">
               <label for="password">{{'Password' | translate }}</label>
-              <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"  formControlName="password"></p-password>
+          <p-password type="password" [toggleMask]="true"  formControlName="password" inputStyleClass="form-control" [style]="{'width':'100%'}" ></p-password>
               <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-danger">
                 <p *ngIf="registerForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
                 <p *ngIf="registerForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
@@ -44,7 +44,9 @@
            <!--  Confirm password -->
             <div class="mb-3">
               <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
-            <p-password type="password" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [toggleMask]="true" formControlName="confirmPassword" styleClass="hide-password-panel"></p-password>
+            <p-password type="password" [toggleMask]="true" formControlName="confirmPassword" styleClass="hide-password-panel" inputStyleClass="form-control"
+            [style]="{'width':'100%'}" >
+          </p-password>
               <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" class="text-danger">
                 <p *ngIf="registerForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' | translate }}</p>
                 <p *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate }}</p>

@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-md-5">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-5">
     <div class="card">
       <div class="card-body">
         <h2 class="text-center">{{'EditProfile' | translate }}</h2>
@@ -9,7 +9,7 @@
           <!-- Username -->
           <div class="mb-3">
             <label for="username">{{ 'Username' | translate }}</label>
-            <input type="text" pInputText [style]="{'width':'100%'}" formControlName="username" maxlength="50">
+            <input type="text" pInputText formControlName="username" maxlength="50" class="form-control">
             <div *ngIf="userProfileForm.get('username')?.errors && userProfileForm.get('username')?.touched"
               class="text-danger">
               <p *ngIf="userProfileForm.get('username')?.hasError('required')">{{ 'UsernameRequired' | translate }}</p>
@@ -37,7 +37,7 @@
             <!-- Current password -->
           <div class="mb-3">
             <label for="currentPassword">{{'CurrentPassword' | translate }}</label>
-            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+            <p-password type="password" [toggleMask]="true" inputStyleClass="form-control" [style]="{'width':'100%'}"
               styleClass="hide-password-panel" formControlName="currentPassword"></p-password>
             <div
               *ngIf="changePasswordForm.get('currentPassword')?.errors && changePasswordForm.get('currentPassword')?.touched"
@@ -52,7 +52,7 @@
             <!-- New password -->
           <div class="mb-3">
             <label for="newPassword">{{'NewPassword' | translate }}</label>
-            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+            <p-password type="password" [toggleMask]="true" inputStyleClass="form-control" [style]="{'width':'100%'}"
               formControlName="newPassword"></p-password>
             <div *ngIf="changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched"
               class="text-danger">
@@ -66,7 +66,7 @@
             <!-- Confirm password -->
           <div class="mb-3">
             <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
-            <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+            <p-password type="password" [toggleMask]="true" inputStyleClass="form-control" [style]="{'width':'100%'}"
               formControlName="confirmPassword" styleClass="hide-password-panel"></p-password>
             <div
               *ngIf="changePasswordForm.get('confirmPassword')?.errors && changePasswordForm.get('confirmPassword')?.touched"
