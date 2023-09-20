@@ -1,64 +1,66 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<header class="navbar navbar-expand-md navbar-dark bd-navbar nav-header">
+  <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
     <a class="navbar-brand mx-2" routerLink="/" routerLinkActive="active">English Helper</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+    <!-- toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars fa-lg mx-2"></i>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-
-     <!--  Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <div class="collapse navbar-collapse" id="bdNavbar">
+          <!--  Links -->
+      <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+        <li class="nav-item col-6 col-md-auto">
+          <a class="nav-link p-2" routerLink="/" routerLinkActive="active"> {{'Home' | translate }} </a>
+        </li>
+        <!-- ng-container for authorized links -->
         <ng-container *ngIf="accountService.currentUser$| async">
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active"> {{'Home' | translate }} </a>
+           <!--  Only admin role -->
+        <li *appHasRole="'Admin'" class="nav-item col-6 col-md-auto">
+          <a class="nav-link p-2" routerLink="/users" routerLinkActive="active"> {{'Users' | translate }} </a>
         </li>
-         <!--  Only admin role -->
-        <li *appHasRole="'Admin'" class="nav-item">
-          <a class="nav-link" routerLink="/users" routerLinkActive="active"> {{'Users' | translate }} </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/words" routerLinkActive="active"> {{'Words' | translate }} </a>
+        <li class="nav-item col-6 col-md-auto">
+          <a class="nav-link p-2" routerLink="/words" routerLinkActive="active"> {{'Words' | translate }} </a>
         </li>
       </ng-container>
       </ul>
 
-       <!--  User settings dropdown -->
-      <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+      <hr class="d-md-none text-white-50">
+
+      <ul class="navbar-nav flex-row flex-wrap ms-md-auto ">
+        <li *ngIf="(accountService.currentUser$ | async) as user" class="nav-item col-6 col-md-auto mt-2">
+            <!--  User settings dropdown -->
+      <div class="dropdown" dropdown>
         <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>{{user.username}}  <i class="fa fa-user fa-lg mx-2"></i></a>
         <div class="dropdown-menu" *dropdownMenu>
           <a class="dropdown-item" routerLink="/user/edit">{{'Profile' | translate }}</a>
           <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
         </div>
       </div>
-
-       <!--  Login -->
-      <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
-        autocomplete="off">
-        <input name="username" pInputText [(ngModel)]="loginRequest.identifier" class="me-2" type="text"
-        [placeholder]="'UsernameOrEmail' | translate">
-
-        <p-password name="password" [toggleMask]="true" [(ngModel)]="loginRequest.password" [feedback]="false"  class="me-2" type="password"
-       [placeholder]="'Password' | translate" styleClass="hide-password-panel"></p-password>
-
-        <p-button styleClass="p-button-success" type="submit"> {{'Login' | translate }}</p-button>
-      </form>
-
-       <!--  Language switch -->
-      <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name" class="mx-2">
-        <ng-template pTemplate="selectedItem">
-            <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
-              <img [src]="'./assets/images/' + selectedLanguage.code + '.png'" style="width: 20px"/>
-            </div>
-        </ng-template>
-        <ng-template let-language pTemplate="item">
-            <div class="flex align-items-center gap-2" (click)="switchLang(language.code)">
-                 <img [src]="'./assets/images/' + language.code + '.png'" class="mx-2" style="width: 18px;"/>
-                 <span>{{ language.name | translate }}</span>
-            </div>
-        </ng-template>
-    </p-dropdown>
-
+        </li>
+        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto">
+           <p-button class="my-2 my-md-0 ms-md-3"  routerLink="/register"> {{'Registration' | translate }} </p-button>
+        </li>
+        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto">
+         <p-button class="my-2 my-md-0 ms-md-3"  routerLink="/login"> {{'Login' | translate }} </p-button>
+        </li>
+      <li class="nav-item col-12 col-md-auto mx-lg-2 mt-2 mt-lg-0 mt-md-0">
+         <!--  Language switch -->
+         <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name" class="mx-2">
+          <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
+                <img [src]="'./assets/images/' + selectedLanguage.code + '.png'" style="width: 20px"/>
+              </div>
+          </ng-template>
+          <ng-template let-language pTemplate="item">
+              <div class="flex align-items-center gap-2" (click)="switchLang(language.code)">
+                   <img [src]="'./assets/images/' + language.code + '.png'" class="mx-2" style="width: 18px;"/>
+                   <span>{{ language.name | translate }}</span>
+              </div>
+          </ng-template>
+      </p-dropdown>
+      </li>
+    </ul>
     </div>
-
-</nav>
+  </nav>
+</header>

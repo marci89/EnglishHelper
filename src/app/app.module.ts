@@ -22,6 +22,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 import { ChangeEmailComponent } from './components/users/change-email/change-email.component';
 import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago';
+import { UserLoginComponent } from './components/users/user-login/user-login.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } 
     TranslateDatePipe,
     UserEditComponent,
     ChangeEmailComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,

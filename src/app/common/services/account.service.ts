@@ -58,7 +58,6 @@ export class AccountService extends BaseService {
   changeEmail(request: ChangeEmailRequest) {
     return this.http.put(this.baseUrl + 'account/changeEmail', request).pipe(
       tap(email => {
-        console.log(email);
         this.userEmailSubject$.next(request.email);
       }),
       catchError(error => {

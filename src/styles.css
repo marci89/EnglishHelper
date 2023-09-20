@@ -1,4 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* Primeng theme css*/
 @import "primeng/resources/themes/bootstrap4-light-blue/theme.css";
+
+/* bootstrap custom css from common folder*/
 @import './app/common/css/bootstrap.css';
+/* Primeng custom css from common folder*/
 @import './app/common/css/primeng.css';

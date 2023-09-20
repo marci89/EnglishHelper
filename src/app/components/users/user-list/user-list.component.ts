@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { Pagination } from 'src/app/common/interfaces/pagination.interface';
 import { ListUserWithFilterRequest, User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 import { ModalService } from '../../../common/services/modal.service';
+import { AccountService } from '../../../common/services/account.service';
+import { LoginUser } from 'src/app/common/interfaces/account.interface';
 
 @Component({
   selector: 'app-user-list',
@@ -14,20 +16,26 @@ import { ModalService } from '../../../common/services/modal.service';
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];
+  loginedUser: LoginUser | null | undefined;
   pagination: Pagination = {} as Pagination;
   filter: ListUserWithFilterRequest = {} as ListUserWithFilterRequest;
-  private listUserSubscription$: Subscription | undefined;
-
-  tableSize: any = 'p-datatable-sm';
+  listUserSubscription$: Subscription | undefined;
 
   constructor(
     private userService: UserService,
     private toastr: ToastrService,
     private translate: TranslateService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
+       //take logined user once
+       this.accountService.currentUser$.pipe(take(1)).subscribe({
+        next: loginedUser => this.loginedUser = loginedUser
+      });
+
+
     this.filter = this.InitUserListFilter();
     this.listUser();
   }
