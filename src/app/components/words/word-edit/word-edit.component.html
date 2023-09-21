@@ -1,1 +1,60 @@
-<p>word-edit works!</p>
+<div class="container">
+  <form [formGroup]="editWordForm" (ngSubmit)="editWord()" autocomplete="off">
+    <h3 class="text-center mt-2">{{'EditWord' | translate }}</h3>
+    <hr>
+<!-- Any error -->
+    <div *ngIf="serverError" class="alert alert-danger">
+      {{ serverError | translate}}
+    </div>
+
+    <!-- EnglishText -->
+    <div class="mb-3">
+      <label for="englishText">{{'EnglishText' | translate }}</label>
+      <input type="text" pInputText  formControlName="englishText"  maxlength="250" class="form-control">
+       <div *ngIf="editWordForm.get('englishText')?.errors && editWordForm.get('englishText')?.touched" class="text-danger">
+         <p *ngIf="editWordForm.get('englishText')?.hasError('required')">{{'EnglishTextRequired' | translate }}</p>
+       </div>
+    </div>
+
+    <!-- Hungarian text -->
+    <div class="mb-3">
+      <label for="hungarianText">{{'HungarianText' | translate }}</label>
+      <input type="text" pInputText  formControlName="hungarianText"  maxlength="250" class="form-control">
+      <div *ngIf="editWordForm.get('hungarianText')?.errors && editWordForm.get('hungarianText')?.touched" class="text-danger">
+        <p *ngIf="editWordForm.get('hungarianText')?.hasError('required')">{{'HungarianTextRequired' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+
+    <!-- CorrectCount -->
+    <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
+      <label for="correctCount">{{'CorrectCount' | translate }}</label>
+      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" formControlName="correctCount" class="max-width" ></p-inputNumber>
+      <div *ngIf="editWordForm.get('correctCount')?.errors && editWordForm.get('correctCount')?.touched" class="text-danger">
+        <p *ngIf="editWordForm.get('correctCount')?.hasError('required')">{{'CorrectCountRequired' | translate }}</p>
+      </div>
+    </div>
+
+    <!-- IncorrectCount -->
+    <div class="mb-3 mb-3 col-lg-6 col-md-12 col-sm-12">
+      <label for="incorrectCount">{{'IncorrectCount' | translate }}</label>
+      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" formControlName="incorrectCount" class="max-width" ></p-inputNumber>
+       <div *ngIf="editWordForm.get('incorrectCount')?.errors && editWordForm.get('incorrectCount')?.touched" class="text-danger">
+         <p *ngIf="editWordForm.get('incorrectCount')?.hasError('required')">{{'IncorrectCountRequired' | translate }}</p>
+       </div>
+    </div>
+</div>
+    <!-- Buttons -->
+    <div class="text-center">
+      <p-button [disabled]="!editWordForm.valid" class="me-2" type="submit">{{'Edit' | translate }}</p-button>
+      <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+

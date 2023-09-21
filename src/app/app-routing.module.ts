@@ -8,6 +8,7 @@ import { UserRegisterComponent } from './components/users/user-register/user-reg
 import { adminGuard } from './common/guards/admin.guard';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 import { UserLoginComponent } from './components/users/user-login/user-login.component';
+import { WordComponent } from './components/words/word/word.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
     children: [
       { path: 'users', component: UserListComponent, canActivate: [adminGuard] },
       { path: 'user/edit', component: UserEditComponent},
-      { path: 'words', component: WordEditComponent }
+      { path: 'words', component: WordComponent }
     ]
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' }

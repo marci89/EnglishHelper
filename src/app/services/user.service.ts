@@ -27,12 +27,12 @@ export class UserService extends BaseService {
     };
   }
 
-  readUserById(id: number) {
+  readById(id: number) {
     return this.http.get<User>(this.baseUrl + 'user/' + id);
   }
 
   //Get users with filter
-  ListUser(request: ListUserWithFilterRequest) {
+  list(request: ListUserWithFilterRequest) {
     const params = this.createParams(request);
 
     return this.http.get<PagedList<User>>(this.baseUrl + 'user/list', { params }).pipe(
@@ -41,12 +41,12 @@ export class UserService extends BaseService {
   }
 
   //Update user's name
-  updateUser(request: UpdateUserRequest) {
+  update(request: UpdateUserRequest) {
     return this.http.put(this.baseUrl + 'user', request);
   }
 
   //Delete user by id
-  deleteUserById(id: number) {
+  delete(id: number) {
     return this.http.delete(`${this.baseUrl}user/${id}`);
   }
 }

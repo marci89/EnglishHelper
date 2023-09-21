@@ -23,6 +23,8 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
 import { ChangeEmailComponent } from './components/users/change-email/change-email.component';
 import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago';
 import { UserLoginComponent } from './components/users/user-login/user-login.component';
+import { WordComponent } from './components/words/word/word.component';
+import { WordCreateComponent } from './components/words/word-create/word-create.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { UserLoginComponent } from './components/users/user-login/user-login.com
     UserEditComponent,
     ChangeEmailComponent,
     UserLoginComponent,
+    WordComponent,
+    WordCreateComponent,
   ],
   imports: [
     BrowserModule,

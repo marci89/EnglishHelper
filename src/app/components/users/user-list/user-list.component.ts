@@ -54,7 +54,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   // list paginated users from server
   listUser() {
-    this.listUserSubscription$ = this.userService.ListUser(this.filter).subscribe({
+    this.listUserSubscription$ = this.userService.list(this.filter).subscribe({
       next: response => {
         this.users = response.result;
         this.pagination = response.pagination;
@@ -72,7 +72,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   // deleting user by id
   public deleteUserById(id: number) {
-  this.userService.deleteUserById(id).subscribe({
+  this.userService.delete(id).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('DeleteSuccess'))
         this.listUser();

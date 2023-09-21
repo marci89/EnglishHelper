@@ -86,7 +86,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   readUser() {
     if (!this.loginedUser) return;
 
-    this.userService.readUserById(this.loginedUser.id).subscribe({
+    this.userService.readById(this.loginedUser.id).subscribe({
       next: user => {
         this.user = user;
         this.userEmail = user.email;
@@ -107,7 +107,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       username: this.userProfileForm.controls['username'].value,
     };
 
-    this.userService.updateUser(this.updateUserRequest).subscribe({
+    this.userService.update(this.updateUserRequest).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('EditSuccess'))
       },
@@ -118,7 +118,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   //Change email popup
-  changeEmail() {
+  openChangeEmailDialog() {
     this.ModalService.openDialog(ChangeEmailComponent, 600);
   }
 

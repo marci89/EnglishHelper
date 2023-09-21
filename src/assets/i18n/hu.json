@@ -12,6 +12,8 @@
   "LastActive": "Utoljára aktív",
   "Save": "Mentés",
   "Edit": "Szerkesztés",
+  "SaveSuccess": "Sikeres mentés",
+  "SaveFailed": "Sikertelen mentés",
   "EditSuccess": "Sikeres szerkesztés",
   "EditFailed": "Sikertelen szerkesztés",
   "Delete": "Törlés",
@@ -41,10 +43,23 @@
   "Role": "Szerepkör",
   "Users": "Felhasználók",
   "EditUsername": "Felhasználónév módosítása",
-
   "RegisterSuccess" : "Sikeres regisztráció",
 
   "Words": "Szavak",
+  "EditWord": "Szó szerkesztése",
+  "CreateWord": "Szó létrehozása",
+  "EnglishWordExists": "Ez az angol szó már foglalt. Kérlek, használj másikat.",
+  "HungarianWordExists": "Ez a magyar szó már foglalt. Kérlek, használj másikat.",
+  "EnglishTextRequired": "Az angol szó megadása kötelező.",
+  "HungarianTextRequired": "A magyar szó megadása kötelező.",
+  "EnglishText": "Angol szó",
+  "HungarianText": "Magyar szó",
+  "CorrectCount": "Jó",
+  "IncorrectCount": "rossz",
+  "LastUse": "Utolsó használat",
+
+
+
 
   "InvalidRequest": "Érvénytelen kérés.",
   "ServerError": "Hoppá! Valami hiba történt. Kérlek, próbáld újra később.",

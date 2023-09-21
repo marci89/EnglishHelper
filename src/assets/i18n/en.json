@@ -11,6 +11,8 @@
   "LastActive": "Last active",
   "Save": "Save",
   "Edit": "Edit",
+  "SaveSuccess": "Save successful",
+  "SaveFailed": "Save unsuccessful",
   "EditSuccess": "Edit successful",
   "EditFailed": "Edit unsuccessful",
   "Delete": "Delete",
@@ -41,10 +43,21 @@
   "Role": "Role",
   "Users": "Users",
   "EditUsername": "Edit username",
-
   "RegisterSuccess" : "You Have Successfully Registered.",
 
   "Words" : "Words",
+  "EditWord": "Edit word",
+  "CreateWord": "Create word",
+  "EnglishWordExists": "This english word is already taken. Please choose a different one.",
+  "HungarianWordExists": "This hungarian word is already taken. Please choose a different one.",
+  "EnglishTextRequired": "English word is required.",
+  "HungarianTextRequired": "Hungarian word is required.",
+  "EnglishText": "English word",
+  "HungarianText": "Hungarian word",
+  "CorrectCount": "Good",
+  "IncorrectCount": "Bad",
+  "LastUse": "Last use",
+
 
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",

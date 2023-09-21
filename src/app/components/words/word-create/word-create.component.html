@@ -1,0 +1,39 @@
+<div class="card col-12 mt-3">
+  <div class="card-body">
+    <form [formGroup]="createWordForm" (ngSubmit)="CreateWord()" class="mb-3" autocomplete="off">
+      <h2 class="text-center">{{'CreateWord' | translate }}</h2>
+
+      <div class="row">
+        <!-- English word -->
+        <div class="col-12 col-md-3 mb-3">
+          <div class="form-group">
+            <label for="englishText">{{'EnglishText' | translate }}</label>
+             <input type="text" pInputText  formControlName="englishText"  maxlength="250" class="form-control">
+              <div *ngIf="createWordForm.get('englishText')?.errors && createWordForm.get('englishText')?.touched" class="text-danger">
+                <p *ngIf="createWordForm.get('englishText')?.hasError('required')">{{'EnglishTextRequired' | translate }}</p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Hungarian word -->
+        <div class="col-12 col-md-3 mb-3">
+          <div class="form-group">
+            <label for="hungarianText">{{'HungarianText' | translate }}</label>
+            <input type="text" pInputText  formControlName="hungarianText"  maxlength="250" class="form-control">
+             <div *ngIf="createWordForm.get('hungarianText')?.errors && createWordForm.get('hungarianText')?.touched" class="text-danger">
+               <p *ngIf="createWordForm.get('hungarianText')?.hasError('required')">{{'HungarianTextRequired' | translate }}</p>
+             </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-12 col-md-6 mb-3 d-flex justify-content-end mt-3">
+          <div>
+            <p-button [disabled]="!createWordForm.valid" class="mx-2 mt-2"  type="submit">{{ 'Save' | translate }}</p-button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

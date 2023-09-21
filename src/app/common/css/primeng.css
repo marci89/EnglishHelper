@@ -1,4 +1,10 @@
 
+/* managing primeng inputs size to max*/
+.max-width{
+  width: 100%;
+}
+
+
 /* Password component doesn't have password-panel (weak, medium, strong) */
 .hide-password-panel .p-password-panel {
   display: none !important;
@@ -6,14 +12,16 @@
 
 /* Dialog styles */
 .p-dialog .p-dialog-content {
-  background-color: #375A7F;
+  background-color: darkslategrey;
   color: white;
   padding: 0  !important;
   padding-bottom: 10px !important;
+  border: 1px solid white;
+
 }
 
 .p-dialog .p-dialog-header {
-  background-color: #585759 !important;
+  background-color: darkslategrey !important;
   color: white !important;
 }
 
@@ -22,6 +30,6 @@
 }
 
 .p-dialog .p-dialog-footer {
-  background-color: #585759 !important;
+  background-color: darkslategrey !important;
   color: white !important;
 }

@@ -9,7 +9,7 @@ import { DialogService } from 'primeng/dynamicdialog';
   providedIn: 'root'
 })
 export class ModalService {
-  private dialogRef: any;
+  public dialogRef: any;
 
   constructor(
     private dialogService: DialogService,
@@ -17,15 +17,18 @@ export class ModalService {
     private translate: TranslateService
   ) { }
 
-  // Opening a modal with any component. size is in px.
-  openDialog(component: any, size?: number) {
+  // Opening a modal with any component. Size is in px. Request the dialog data.
+  openDialog(component: any,  size: number,  request?: any,) {
     const dialogSize = size || 600;
 
     this.dialogRef = this.dialogService.open(component, {
-     width: `${dialogSize}px`,
+      width: `${dialogSize}px`,
       baseZIndex: 10000,
       showHeader: false,
-      modal: true
+      modal: true,
+      data: {
+        request: request
+      }
     });
   }
 
@@ -43,6 +46,7 @@ export class ModalService {
       icon: 'pi pi-trash',
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
+
       accept: () => {
         deleteMethod(id);
       },

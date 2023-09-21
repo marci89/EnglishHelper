@@ -1,1 +1,55 @@
-<p>word-list works!</p>
+<!-- word list table -->
+<div class="mt-3">
+  <p-table [value]="words"
+  [paginator]="true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="{{ 'AllResult' | translate }}: {totalRecords}"
+  [rowsPerPageOptions]="[5, 10, 25, 50]"
+  [styleClass]="'p-datatable-sm'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="englishText">{{ 'EnglishText' | translate }} <p-sortIcon
+            field="englishText"></p-sortIcon></th>
+        <th pSortableColumn="hungarianText" >{{ 'HungarianText' | translate }} <p-sortIcon
+            field="hungarianText"></p-sortIcon></th>
+        <th pSortableColumn="correctCount" >{{ 'CorrectCount' | translate }} <p-sortIcon
+            field="correctCount"></p-sortIcon></th>
+        <th pSortableColumn="incorrectCount">{{ 'IncorrectCount' | translate }} <p-sortIcon
+            field="incorrectCount"></p-sortIcon></th>
+        <th pSortableColumn="created" >{{ 'Created' | translate }} <p-sortIcon
+            field="created"></p-sortIcon></th>
+        <th pSortableColumn="lastUse" >{{ 'LastUse' | translate }} <p-sortIcon
+            field="lastUse"></p-sortIcon></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-word>
+      <tr>
+        <td>{{ word.englishText }}</td>
+        <td>{{ word.hungarianText }}</td>
+        <td>{{ word.correctCount }}</td>
+        <td>{{ word.incorrectCount }}</td>
+        <td>{{ word.created | utcToLocalDate | translateDate:'LanguageDateFormat'}}</td>
+
+        <td>
+          {{ word.lastUse !== null && word.lastUse !== '0001-01-01T00:00:00' ? (word.lastUse | utcToLocalDate | translateDate:'LanguageDateFormat') : 'N/A' }}
+        </td>
+        <td style="text-align: right;">
+          <i class="fa fa-pencil fa-lg text-info" (click)="openEditWordDialog(word.id)"></i>
+        </td>
+        <td>
+          <i class="fa fa-trash fa-lg text-danger mx-2" (click)="openDeleteConfirmation(word.id, word.englishText)"></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+      <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+  </ng-template>
+  </p-table>
+</div>

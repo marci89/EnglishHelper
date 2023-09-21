@@ -10,6 +10,9 @@ export class UtcToLocalDatePipe implements PipeTransform {
       return utcDate;
     }
 
+    // Remove the "Z" from the input date string
+    utcDate = utcDate.replace('Z', '');
+
     const utcDateTime = new Date(utcDate);
 
     // Get the local time zone offset and convert it to milliseconds
