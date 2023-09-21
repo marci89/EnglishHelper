@@ -1,7 +1,8 @@
-<div class="card col-12 mt-3">
-  <div class="card-body">
-    <form [formGroup]="createWordForm" (ngSubmit)="CreateWord()" class="mb-3" autocomplete="off">
-      <h2 class="text-center">{{'CreateWord' | translate }}</h2>
+
+<p-tabView>
+ <!--  first tab -->
+  <p-tabPanel header="{{'CreateWord' | translate }}">
+    <form [formGroup]="createWordForm" (ngSubmit)="createWord()" class="mb-3" autocomplete="off">
 
       <div class="row">
         <!-- English word -->
@@ -27,13 +28,19 @@
         </div>
 
         <!-- Buttons -->
-        <div class="col-12 col-md-6 mb-3 d-flex justify-content-end mt-3">
+        <div class="col-12 col-md-6 mb-3 d-flex justify-content-start mt-3">
           <div>
             <p-button [disabled]="!createWordForm.valid" class="mx-2 mt-2"  type="submit">{{ 'Save' | translate }}</p-button>
           </div>
         </div>
-
       </div>
     </form>
-  </div>
-</div>
+  </p-tabPanel>
+  <!--  second tab -->
+  <p-tabPanel header="{{'WordsManaging' | translate }}">
+    <p>
+      <p-button class="mx-2 mt-2" type="button" (onClick)="resetWordsResults()">{{ 'ResetResults' | translate }}</p-button>
+      <p-button class="mx-2 mt-2" type="button" styleClass="p-button-danger" (onClick)="deleteAllWord()">{{ 'DeleteAll' | translate }}</p-button>
+    </p>
+</p-tabPanel>
+</p-tabView>

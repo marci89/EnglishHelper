@@ -72,4 +72,24 @@ export class WordService extends BaseService {
       })
     );
   }
+
+  // Delete all word
+  deleteAll() {
+    return this.http.delete(`${this.baseUrl}word/deleteAll`).pipe(
+      map(() => {
+        this.WordListSource.next(null);
+      })
+    );
+  }
+
+  //Reset all word's CorrectCount and IncorrectCount property to 0
+  resetResults() {
+    return this.http.put<Word[]>(this.baseUrl + 'word/resetResults', "").pipe(
+      map(words => {
+        if (words) {
+          this.WordListSource.next(words);
+        }
+      })
+    )
+  }
 }

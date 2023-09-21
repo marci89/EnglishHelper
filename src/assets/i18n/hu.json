@@ -23,8 +23,9 @@
   "DeleteConfirmationMessage": "Törli ezt az elemet?",
   "Yes": "Igen",
   "No": "Nem",
-
   "Cancel": "Mégse",
+  "NoElementToModify": "Nincsen olyan elem amin módosítást hajthatna végre!",
+
 
   "Filter": "Szűrés",
   "FilterReset": "Szűrés törlése",
@@ -57,6 +58,10 @@
   "CorrectCount": "Jó",
   "IncorrectCount": "rossz",
   "LastUse": "Utolsó használat",
+  "WordsManaging": "Szavak menedzselése",
+  "DeleteAll": "Összes szó törlése",
+  "ResetResults": "Az összes szó eredményének visszaállítása",
+
 
 
 

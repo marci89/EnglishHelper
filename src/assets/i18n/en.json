@@ -23,6 +23,7 @@
   "Yes": "Yes",
   "No": "No",
   "Cancel": "Cancel",
+  "NoElementToModify": "There is no element that you can modify",
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",
@@ -57,6 +58,9 @@
   "CorrectCount": "Good",
   "IncorrectCount": "Bad",
   "LastUse": "Last use",
+  "WordsManaging": "Managing words",
+  "DeleteAll": "Delete all of words",
+  "ResetResults": "Reset all word results",
 
 
   "InvalidRequest": "The request is invalid.",

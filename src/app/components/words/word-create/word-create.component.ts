@@ -13,13 +13,13 @@ export class WordCreateComponent implements OnInit {
   createWordForm: FormGroup = new FormGroup({})
 
   constructor(
-     private toastr: ToastrService,
-     public translate: TranslateService,
-     private wordService: WordService
-     ) { }
+    private toastr: ToastrService,
+    public translate: TranslateService,
+    private wordService: WordService
+  ) { }
 
   ngOnInit(): void {
-		this.initForm();
+    this.initForm();
   }
 
   //Init form
@@ -31,11 +31,35 @@ export class WordCreateComponent implements OnInit {
   }
 
   //word create
-  CreateWord() {
+  createWord() {
     this.wordService.create(this.createWordForm.value).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('SaveSuccess'))
         this.createWordForm.reset();
+      },
+      error: error => {
+        this.toastr.error(this.translate.instant(error.error))
+      }
+    })
+  }
+
+  //delete all word
+  deleteAllWord() {
+    this.wordService.deleteAll().subscribe({
+      next: _ => {
+        this.toastr.success(this.translate.instant('DeleteSuccess'))
+      },
+      error: error => {
+        this.toastr.error(this.translate.instant(error.error))
+      }
+    })
+  }
+
+  //reset Results (good and bad property will be 0)
+  resetWordsResults() {
+    this.wordService.resetResults().subscribe({
+      next: _ => {
+        this.toastr.success(this.translate.instant('EditSuccess'))
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))

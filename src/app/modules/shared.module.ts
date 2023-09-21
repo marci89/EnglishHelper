@@ -15,6 +15,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [],
@@ -44,6 +45,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ConfirmDialogModule,
     PasswordModule,
     InputTextModule,
+    TabViewModule
   ],
   exports: [
     BsDropdownModule,
@@ -60,6 +62,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ConfirmDialogModule,
     PasswordModule,
     InputTextModule,
+    TabViewModule
   ]
 })
 

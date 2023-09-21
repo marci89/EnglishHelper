@@ -33,3 +33,18 @@
   background-color: darkslategrey !important;
   color: white !important;
 }
+
+
+.p-tabview-panels{
+  background-color: #585759 !important;
+  color: white !important;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+  background-color: #585759;
+  color: white;
+}
+
+.p-tabview .p-tabview-nav{
+  border:none;
+}
