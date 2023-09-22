@@ -24,6 +24,7 @@
   "No": "No",
   "Cancel": "Cancel",
   "NoElementToModify": "There is no element that you can modify",
+  "ExportToText": "Export to text",
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",

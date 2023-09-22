@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../common/services/base.service';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, of, switchMap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, map, of, switchMap } from 'rxjs';
 import { CreatewordRequest, UpdateWordRequest, Word } from '../interfaces/word.interface';
 
 //Word service
@@ -92,4 +92,14 @@ export class WordService extends BaseService {
       })
     )
   }
+
+  /// Export word list to txt file response
+  exportWordListToTextFile(): Observable<Blob> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<Blob>(`${this.baseUrl}word/ExportWordListToTextFile`, "", {
+      headers,
+      responseType: 'blob' as 'json', // Set the response type to Blob
+    });
+  }
+
 }

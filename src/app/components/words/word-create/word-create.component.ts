@@ -66,5 +66,16 @@ export class WordCreateComponent implements OnInit {
       }
     })
   }
+
+  /// download the word list text file
+  exportTextWordList() {
+    this.wordService.exportWordListToTextFile().subscribe((fileBlob: Blob) => {
+      const blobUrl = window.URL.createObjectURL(fileBlob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'word-list.txt'; // Specify the file name
+      link.click();
+    });
+  }
 }
 
