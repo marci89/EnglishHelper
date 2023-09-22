@@ -25,6 +25,13 @@
   "Cancel": "Cancel",
   "NoElementToModify": "There is no element that you can modify",
   "ExportToText": "Export to text",
+  "ImportFromText": "Import from text",
+  "NoFilesUploaded": "No files were selected for upload. Please choose a file to upload.",
+  "UploadedFileEmpty": "The selected file is empty. Please choose another file.",
+  "InvalidFileFormat": "Invalid file format. Only specific file types are allowed for upload.",
+  "UploadedFileFailed": "File upload failed. Please try again later.",
+  "InvalidFileData": "Invalid File Content.",
+
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",

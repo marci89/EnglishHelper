@@ -16,6 +16,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [],
@@ -45,7 +46,8 @@ import { TabViewModule } from 'primeng/tabview';
     ConfirmDialogModule,
     PasswordModule,
     InputTextModule,
-    TabViewModule
+    TabViewModule,
+    FileUploadModule
   ],
   exports: [
     BsDropdownModule,
@@ -62,7 +64,8 @@ import { TabViewModule } from 'primeng/tabview';
     ConfirmDialogModule,
     PasswordModule,
     InputTextModule,
-    TabViewModule
+    TabViewModule,
+    FileUploadModule
   ]
 })
 

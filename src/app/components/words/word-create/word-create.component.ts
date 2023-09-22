@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { WordService } from '../../../services/word.service';
+import { FileUpload, FileUploadErrorEvent, UploadEvent } from 'primeng/fileupload';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-word-create',
@@ -11,6 +13,10 @@ import { WordService } from '../../../services/word.service';
 })
 export class WordCreateComponent implements OnInit {
   createWordForm: FormGroup = new FormGroup({})
+  uploadUrl = environment.apiUrl + "word/importWordListFromTextFile";
+
+  //Create a viewChild to get the fileUpload to clear the file if you get an error and you will can open again.
+  @ViewChild('fileUpload', { static: false }) fileUpload: FileUpload | undefined;
 
   constructor(
     private toastr: ToastrService,
@@ -76,6 +82,16 @@ export class WordCreateComponent implements OnInit {
       link.download = 'word-list.txt'; // Specify the file name
       link.click();
     });
+  }
+
+  onUploadTextWordList(event: UploadEvent) {
+    this.toastr.success(this.translate.instant('EditSuccess'))
+  }
+
+  onUploadTextWordListError(event: FileUploadErrorEvent) {
+    this.toastr.error(this.translate.instant(event.error?.error))
+    //clear the file and you can open again.
+    this.fileUpload?.clear();
   }
 }
 

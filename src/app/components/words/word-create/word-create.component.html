@@ -38,10 +38,11 @@
   </p-tabPanel>
   <!--  second tab -->
   <p-tabPanel header="{{'WordsManaging' | translate }}">
-    <p>
-      <p-button class="mx-2 mt-2" type="button" (onClick)="resetWordsResults()">{{ 'ResetResults' | translate }}</p-button>
-      <p-button class="mx-2 mt-2" type="button" styleClass="p-button-danger" (onClick)="deleteAllWord()">{{ 'DeleteAll' | translate }}</p-button>
-      <p-button class="mx-2 mt-2" type="button" styleClass="p-button-success" (onClick)="exportTextWordList()">{{ 'ExportToText' | translate }}</p-button>
-    </p>
-</p-tabPanel>
+
+          <p-button class="mx-2 mt-2" type="button" (onClick)="resetWordsResults()">{{ 'ResetResults' | translate }}</p-button>
+          <p-button class="mx-2 mt-2" type="button" styleClass="p-button-danger" (onClick)="deleteAllWord()">{{ 'DeleteAll' | translate }}</p-button>
+          <p-button class="mx-2 mt-2" type="button" styleClass="p-button-success" (onClick)="exportTextWordList()">{{ 'ExportToText' | translate }}</p-button>
+          <p-fileUpload #fileUpload mode="basic" [auto]="true" [chooseLabel]="'ImportFromText' | translate" accept=".txt" [url]="uploadUrl" (onUpload)="onUploadTextWordList($event)" (onError)="onUploadTextWordListError($event)"></p-fileUpload>
+
+    </p-tabPanel>
 </p-tabView>
