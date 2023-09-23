@@ -25,6 +25,8 @@ import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } 
 import { UserLoginComponent } from './components/users/user-login/user-login.component';
 import { WordComponent } from './components/words/word/word.component';
 import { WordCreateComponent } from './components/words/word-create/word-create.component';
+import { WordTabMenuComponent } from './components/words/word-tab-menu/word-tab-menu.component';
+import { WordManagerComponent } from './components/words/word-manager/word-manager.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { WordCreateComponent } from './components/words/word-create/word-create.
     UserLoginComponent,
     WordComponent,
     WordCreateComponent,
+    WordTabMenuComponent,
+    WordManagerComponent,
   ],
   imports: [
     BrowserModule,
