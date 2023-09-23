@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { WordEditComponent } from './components/words/word-edit/word-edit.component';
 import { WordListComponent } from './components/words/word-list/word-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

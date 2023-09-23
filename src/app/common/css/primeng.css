@@ -48,3 +48,10 @@
 .p-tabview .p-tabview-nav{
   border:none;
 }
+
+/* Remove focus outline on Tab buttons */
+.p-tabview-nav-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}

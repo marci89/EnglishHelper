@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ export class WordCreateComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    public translate: TranslateService,
+    private translate: TranslateService,
     private wordService: WordService
   ) { }
 

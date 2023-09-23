@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ModalService } from 'src/app/common/services/modal.service';
 import { WordService } from '../../../services/word.service';
 import { UpdateWordRequest, Word } from 'src/app/interfaces/word.interface';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 
 

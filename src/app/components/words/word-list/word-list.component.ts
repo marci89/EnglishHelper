@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -21,7 +21,6 @@ export class WordListComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {

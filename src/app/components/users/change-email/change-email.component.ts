@@ -20,7 +20,7 @@ export class ChangeEmailComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    public translate: TranslateService,
+    private translate: TranslateService,
     private modalService: ModalService
   ) { }
 

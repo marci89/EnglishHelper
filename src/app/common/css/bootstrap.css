@@ -8,3 +8,18 @@
 .card-body {
   background-color: #585759 !important;
 }
+
+input:focus {
+  background-color: greenyellow; /* Replace with your desired color */
+}
+
+/* Set focus outline on all Bootstrap elements */
+.btn:focus,
+.nav-link:focus,
+.form-control:focus,
+.input-group:focus,
+.dropdown-toggle:focus,
+.navbar-toggler:focus,
+.custom-control-input:focus {
+border-color: aqua !important;
+}

@@ -1,4 +1,24 @@
-<p-button class="mx-2 mt-2" type="button" (onClick)="openResetWordsResultsConfirmation()">{{ 'ResetResults' | translate }}</p-button>
-<p-button class="mx-2 mt-2" type="button" styleClass="p-button-danger" (onClick)="openDeleteAllWordConfirmation()">{{ 'DeleteAll' | translate }}</p-button>
-<p-button class="mx-2 mt-2" type="button" styleClass="p-button-success" (onClick)="exportTextWordList()">{{ 'ExportToText' | translate }}</p-button>
-<p-fileUpload #fileUpload mode="basic" [auto]="true" [chooseLabel]="'ImportFromText' | translate" accept=".txt" [url]="uploadUrl" (onUpload)="onUploadTextWordList($event)" (onError)="onUploadTextWordListError($event)"></p-fileUpload>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p-button class="mx-2 mt-2" type="button" (onClick)="openResetWordsResultsConfirmation()">{{ 'ResetResults'
+                | translate }}</p-button>
+        </div>
+        <div class="col-md-6">
+            <p-button class="mx-2 mt-2" type="button" styleClass="p-button-danger"
+                (onClick)="openDeleteAllWordConfirmation()">{{ 'DeleteAll' | translate }}</p-button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <p-button class="mx-2 mt-2" type="button" styleClass="p-button-success" (onClick)="exportTextWordList()">{{
+                'ExportToText' | translate }}</p-button>
+        </div>
+        <div class="col-md-6 mt-2">
+            <p-fileUpload #fileUpload mode="basic" [auto]="true" [chooseLabel]="'ImportFromText' | translate"
+                accept=".txt" [url]="uploadUrl" (onUpload)="onUploadTextWordList($event)"
+                (onError)="onUploadTextWordListError($event)"></p-fileUpload>
+        </div>
+    </div>
+</div>

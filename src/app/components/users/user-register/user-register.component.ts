@@ -18,7 +18,7 @@ export class UserRegisterComponent implements OnInit {
     private accountService: AccountService,
      private toastr: ToastrService,
      private router: Router,
-     public translate: TranslateService
+     private translate: TranslateService
      ) { }
 
   ngOnInit(): void {

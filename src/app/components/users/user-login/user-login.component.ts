@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/common/services/account.service';
 
@@ -17,7 +16,6 @@ export class UserLoginComponent {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    public translate: TranslateService,
     private toastr: ToastrService) { }
 
     ngOnInit(): void {

@@ -21,7 +21,7 @@ export class WordManagerComponent {
     private toastr: ToastrService,
     private translate: TranslateService,
     private wordService: WordService,
-    private modalService: ModalService
+    private modalService: ModalService,
   ) { }
 
   // Opening delete many confirmation dialog to handle deleteAllWord action

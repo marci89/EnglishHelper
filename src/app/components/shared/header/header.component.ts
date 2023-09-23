@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/common/services/account.service';
 import { LanguageService } from 'src/app/common/services/language.service';
 
@@ -17,9 +15,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    public translate: TranslateService,
-    private languageService: LanguageService,
-    private toastr: ToastrService) { }
+    private languageService: LanguageService
+    ) { }
 
   ngOnInit() {
     this.languages = this.languageService.getLanguages();
