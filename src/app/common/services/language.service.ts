@@ -1,18 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../interfaces/language.interface';
 import { PrimeNGConfig } from 'primeng/api';
 import { TimeagoIntl } from 'ngx-timeago';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 
 // language service
 @Injectable({
   providedIn: 'root'
 })
-export class LanguageService {
+export class LanguageService implements OnInit {
   private languages: Language[] = [];
   private selectedLanguage: Language | undefined;
 
-  constructor(private translate: TranslateService, private primengConfig: PrimeNGConfig, private intl: TimeagoIntl) { }
+  constructor(
+    private translate: TranslateService,
+    private primengConfig: PrimeNGConfig,
+    private intl: TimeagoIntl,
+    private ccService: NgcCookieConsentService
+    ) { }
+
+  ngOnInit() {
+    this.configureCookieConsent();
+  }
 
   // init language things
   initialize() {
@@ -48,6 +58,31 @@ export class LanguageService {
       this.intl.strings = res;
       this.intl.changes.next();
     });
+
+    //if you use NgcCookieConsentService
+    this.configureCookieConsent();
+  }
+
+  configureCookieConsent() {
+    this.translate
+      .get(['cookie.header', 'cookie.message', 'cookie.dismiss', 'cookie.allow', 'cookie.deny', 'cookie.link', 'cookie.policy'])
+      .subscribe(data => {
+
+        // Update the content of the configuration with translated messages
+        this.ccService.getConfig().content = {
+          header: data['cookie.header'],
+          message: data['cookie.message'],
+          dismiss: data['cookie.dismiss'],
+          allow: data['cookie.allow'],
+          deny: data['cookie.deny'],
+          link: data['cookie.link'],
+          policy: data['cookie.policy']
+        };
+
+        // Reinitialize the cookie consent banner with the updated configuration
+        this.ccService.destroy(); // Remove previous cookie bar (with default messages)
+        this.ccService.init(this.ccService.getConfig());// update config with translated messages
+      });
   }
 
   // Get language

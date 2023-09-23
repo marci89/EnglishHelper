@@ -97,6 +97,16 @@
 
   "AllResult": "Összes találat",
 
+  "cookie": {
+    "header": "Sütik használata a webhelyen!",
+    "message": "Ez a webhely sütiket használ annak érdekében, hogy a lehető legjobb élményt nyújtsa az oldalunkon.",
+    "dismiss": "Értem!",
+    "allow": "Sütik engedélyezése",
+    "deny": "Elutasítás",
+    "link": "Tudj meg többet",
+    "policy": "Süti szabályzat"
+  },
+
   "primeng": {
     "startsWith": "Kezdetén tartalmazza",
     "contains": "Tartalmazza",

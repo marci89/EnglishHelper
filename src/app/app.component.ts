@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './common/services/account.service';
-import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './common/services/language.service';
 import { LoginUser } from './common/interfaces/account.interface';
 
@@ -13,11 +12,9 @@ export class AppComponent implements OnInit {
 
   constructor(
   private accountService: AccountService,
-   public translate: TranslateService,
-   private languageService: LanguageService,
-   )
-  {
-  }
+  private languageService: LanguageService
+  )
+  {}
 
   ngOnInit(): void {
     this.setCurrentUser();

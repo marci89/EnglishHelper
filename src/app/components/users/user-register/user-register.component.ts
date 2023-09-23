@@ -51,7 +51,7 @@ export class UserRegisterComponent implements OnInit {
     this.accountService.register(this.registerForm.value).subscribe({
       next: response => {
         this.toastr.success(this.translate.instant('RegisterSuccess'))
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/login');
       },
       error: error => {
         this.serverError = error.error;

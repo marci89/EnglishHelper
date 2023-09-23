@@ -17,6 +17,8 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
 import { FileUploadModule } from 'primeng/fileupload';
+import {NgcCookieConsentModule} from 'ngx-cookieconsent';
+import { cookieConfig } from '../app.config';
 
 @NgModule({
   declarations: [],
@@ -47,7 +49,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     PasswordModule,
     InputTextModule,
     TabViewModule,
-    FileUploadModule
+    FileUploadModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   exports: [
     BsDropdownModule,
@@ -65,7 +68,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     PasswordModule,
     InputTextModule,
     TabViewModule,
-    FileUploadModule
+    FileUploadModule,
+    NgcCookieConsentModule
   ]
 })
 
