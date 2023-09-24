@@ -102,4 +102,13 @@ export class WordService extends BaseService {
     });
   }
 
+  // Export word list to Excel file response
+  exportWordListToExcelFile(): Observable<Blob> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<Blob>(`${this.baseUrl}word/ExportWordListToExcelFile`, "", {
+      headers,
+      responseType: 'blob' as 'json', // Set the response type to Blob
+    });
+  }
+
 }

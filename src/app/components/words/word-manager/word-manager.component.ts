@@ -69,6 +69,17 @@ export class WordManagerComponent {
     });
   }
 
+  // Download the word list Excel file
+exportExcelWordList() {
+  this.wordService.exportWordListToExcelFile().subscribe((fileBlob: Blob) => {
+    const blobUrl = window.URL.createObjectURL(fileBlob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = 'word-list.xlsx'; // Specify the file name with .xlsx extension
+    link.click();
+  });
+}
+
   //uploader event handler
   onUploadTextWordList(event: UploadEvent) {
     this.toastr.success(this.translate.instant('EditSuccess'))
