@@ -28,8 +28,11 @@
   "No": "Nem",
   "Cancel": "Mégse",
   "NoElementToModify": "Nincsen olyan elem amin módosítást hajthatna végre!",
-  "ExportToText": "Exportálás text fájlba",
-  "ImportFromText": "Importálás text fájlból",
+  "Export": "Exportálás",
+  "ImportText": "Text file importálás",
+  "ImportExcel": "Excel importálás",
+  "ExportSuccess": "Sikeres exportálás",
+  "ImportSuccess": "Sikeres importálás",
   "NoFilesUploaded": "Nincsenek fájlok kiválasztva feltöltésre. Kérlek válassz ki egy fájlt.",
   "UploadedFileEmpty": "A kiválasztott fájl üres. Kérlek válassz egy másik fájlt.",
   "InvalidFileFormat": "Érvénytelen fájlformátum. Csak bizonyos fájltípusok engedélyezettek a feltöltéshez.",
@@ -69,7 +72,7 @@
   "LastUse": "Utolsó használat",
   "WordsManaging": "Szavak menedzselése",
   "DeleteAll": "Összes szó törlése",
-  "ResetResults": "Az összes szó eredményének visszaállítása",
+  "ResetResults": "Szavak eredmény visszaállítása",
 
 
 

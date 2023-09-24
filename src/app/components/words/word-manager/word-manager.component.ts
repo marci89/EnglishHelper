@@ -12,10 +12,12 @@ import { ModalService } from '../../../common/services/modal.service';
   styleUrls: ['./word-manager.component.css']
 })
 export class WordManagerComponent {
-  uploadUrl = environment.apiUrl + "word/importWordListFromTextFile";
+  textUploadUrl = environment.apiUrl + "word/importWordListFromTextFile";
+  excelUploadUrl = environment.apiUrl + "word/importWordListFromExcelFile";
 
   //Create a viewChild to get the fileUpload to clear the file if you get an error and you will can open again.
-  @ViewChild('fileUpload', { static: false }) fileUpload: FileUpload | undefined;
+  @ViewChild('textFileUpload', { static: false }) textFileUpload: FileUpload | undefined;
+  @ViewChild('excelFileUpload', { static: false }) excelFileUpload: FileUpload | undefined;
 
   constructor(
     private toastr: ToastrService,
@@ -66,6 +68,7 @@ export class WordManagerComponent {
       link.href = blobUrl;
       link.download = 'word-list.txt'; // Specify the file name
       link.click();
+      this.toastr.success(this.translate.instant('ExportSuccess'))
     });
   }
 
@@ -77,21 +80,35 @@ exportExcelWordList() {
     link.href = blobUrl;
     link.download = 'word-list.xlsx'; // Specify the file name with .xlsx extension
     link.click();
+    this.toastr.success(this.translate.instant('ExportSuccess'))
   });
 }
 
-  //uploader event handler
+  //text uploader event handler
   onUploadTextWordList(event: UploadEvent) {
-    this.toastr.success(this.translate.instant('EditSuccess'))
+    this.toastr.success(this.translate.instant('ImportSuccess'))
     this.listWord();
   }
 
-  //uploader event error handler
+  //text uploader event error handler
   onUploadTextWordListError(event: FileUploadErrorEvent) {
     this.toastr.error(this.translate.instant(event.error?.error))
     //clear the file and you can open again.
-    this.fileUpload?.clear();
+    this.textFileUpload?.clear();
   }
+
+    //excel uploader event handler
+    onUploadExcelWordList(event: UploadEvent) {
+      this.toastr.success(this.translate.instant('ImportSuccess'))
+      this.listWord();
+    }
+  
+    //excel uploader event error handler
+    onUploadExcelWordListError(event: FileUploadErrorEvent) {
+      this.toastr.error(this.translate.instant(event.error?.error))
+      //clear the file and you can open again.
+      this.excelFileUpload?.clear();
+    }
 
   // list words from server
   listWord() {
