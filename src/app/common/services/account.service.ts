@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChangeEmailRequest, ChangePasswordRequest, LoginUser } from '../interfaces/account.interface';
 import { BaseService } from './base.service';
+import { TranslateService } from '@ngx-translate/core';
 
 //Account service
 @Injectable({
@@ -20,7 +21,7 @@ export class AccountService extends BaseService {
   private userEmailSubject$ = new BehaviorSubject<string>('');
   userEmail$ = this.userEmailSubject$.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private translate: TranslateService) {
     super();
   }
 
@@ -44,7 +45,14 @@ export class AccountService extends BaseService {
 
   // User create (registration)
   register(request: RegistrationRequest) {
-    return this.http.post<LoginUser>(this.baseUrl + 'account/register', request).pipe(
+
+    // Get the current language from ngx-translate
+    const selectedLanguage = this.translate.currentLang;
+    const headers = new HttpHeaders({
+      'Accept-Language': selectedLanguage
+    });
+
+    return this.http.post<LoginUser>(this.baseUrl + 'account/register', request, {headers}).pipe(
       map(user => {
         if (user) {
           this.setCurrentUser(user);
