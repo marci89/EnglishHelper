@@ -6,6 +6,9 @@
   "Home": "Home",
   "Login": "Login",
   "Logout": "Logout",
+  "ForgotPassword?": "Forgot password?",
+  "ForgotPassword": "Forgot password",
+  "ResetPassword": "Reset password",
   "Registration": "Registration",
   "Created": "Created",
   "LastActive": "Last active",
@@ -37,6 +40,9 @@
   "InvalidFileFormat": "Invalid file format. Only specific file types are allowed for upload.",
   "UploadedFileFailed": "File upload failed. Please try again later.",
   "InvalidFileData": "Invalid File Content.",
+  "SendEmailFailed": "Sorry, we couldn't send your email at this time",
+  "SendResetPasswordEmailSuccess": "Email sending was successful. Please click on the link in this email to change your password.",
+  "InvalidResetToken" : "Oops! It looks like the password reset link you've used is invalid or has expired. Please double-check the link or request a new password reset email.",
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",
@@ -95,6 +101,7 @@
   "EmailRequired": "Email is required.",
   "EmailExists": "Email is already registered. Please use a different email.",
   "InvalidEmailFormat": "Please enter a valid email address.",
+  "NoUsernameOrEmailExists": "No such username or email exists",
 
 
   "AllResult": "All result",

@@ -27,6 +27,8 @@ import { WordComponent } from './components/words/word/word.component';
 import { WordCreateComponent } from './components/words/word-create/word-create.component';
 import { WordTabMenuComponent } from './components/words/word-tab-menu/word-tab-menu.component';
 import { WordManagerComponent } from './components/words/word-manager/word-manager.component';
+import { ForgotPasswordComponent } from './components/users/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { WordManagerComponent } from './components/words/word-manager/word-manag
     WordCreateComponent,
     WordTabMenuComponent,
     WordManagerComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,3 +20,14 @@ export interface ChangePasswordRequest {
   newPassword: string;
 }
 
+//forgot password
+export interface ForgotPasswordRequest {
+  identifier: string;
+}
+
+//reset password
+export interface ResetPasswordRequest {
+  password: string;
+  token?: string;
+}
+

@@ -17,7 +17,7 @@
               <label for="identifier">{{'UsernameOrEmail' | translate }}</label>
              <input type="text" pInputText formControlName="identifier" class="form-control">
               <div *ngIf="loginForm.get('identifier')?.errors && loginForm.get('identifier')?.touched" class="text-danger">
-                <p *ngIf="loginForm.get('identifier')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
+                <p *ngIf="loginForm.get('identifier')?.hasError('required')">{{'UsernameOrEmailRequired' | translate }}</p>
               </div>
             </div>
 
@@ -35,6 +35,9 @@
             <div class="text-center">
               <p-button [disabled]="!loginForm.valid" styleClass="p-button-succes me-2" type="submit">{{'Login' | translate }}</p-button>
               <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
+            </div>
+            <div class="text-center">
+              <span class="forgot-password" routerLink="/forgot-password" >{{'ForgotPassword' | translate }}</span>
             </div>
           </form>
         </div>

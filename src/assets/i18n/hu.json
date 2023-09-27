@@ -7,6 +7,9 @@
   "Home": "Kezdőoldal",
   "Login": "Bejelentkezés",
   "Logout": "Kijelentkezés",
+  "ForgotPassword?": "Elfelejtett jelszó?",
+  "ForgotPassword": "Elfelejtett jelszó",
+  "ResetPassword": "Jelszó visszaállítása",
   "Registration": "Regisztráció",
   "Created": "Létrehozva",
   "LastActive": "Utoljára aktív",
@@ -38,6 +41,9 @@
   "InvalidFileFormat": "Érvénytelen fájlformátum. Csak bizonyos fájltípusok engedélyezettek a feltöltéshez.",
   "UploadedFileFailed": "A fájl feltöltése sikertelen volt. Kérlek próbáld újra később.",
   "InvalidFileData": "Érvénytelen fájltartalom",
+  "SendEmailFailed": "Sajnos jelenleg nem tudtuk elküldeni az e-mailt.",
+  "SendResetPasswordEmailSuccess": "E-mail küldés sikeres volt. Kérlek kattints az e-mailben található linkre, hogy megváltoztathasssad a jelszavad.",
+  "InvalidResetToken" : "Hoppá! Úgy tűnik, hogy a használt jelszó-visszaállítási hivatkozás érvénytelen vagy lejárt. Kérjük, ellenőrizze még egyszer a linket, vagy kérjen új jelszó-visszaállítási e-mailt.",
 
   "Filter": "Szűrés",
   "FilterReset": "Szűrés törlése",
@@ -97,6 +103,7 @@
   "EmailRequired": "Az email cím megadása kötelező.",
   "EmailExists": "Ez az email cím már regisztrálva van. Kérlek, használj másik email címet.",
   "InvalidEmailFormat": "Kérlek, adj meg egy érvényes email címet.",
+  "NoUsernameOrEmailExists": "Nem létezik ilyen felhasználónév vagy e-mail cím",
 
   "AllResult": "Összes találat",
 

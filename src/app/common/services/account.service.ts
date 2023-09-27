@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ChangeEmailRequest, ChangePasswordRequest, LoginUser } from '../interfaces/account.interface';
+import { ChangeEmailRequest, ChangePasswordRequest, ForgotPasswordRequest, LoginUser, ResetPasswordRequest } from '../interfaces/account.interface';
 import { BaseService } from './base.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -77,6 +77,23 @@ export class AccountService extends BaseService {
   //Change password
   changePassword(request: ChangePasswordRequest) {
     return this.http.put(this.baseUrl + 'account/changePassword', request);
+  }
+
+  //Forgot password
+  forgotPassword(request: ForgotPasswordRequest){
+      // Get the current language from ngx-translate
+      const selectedLanguage = this.translate.currentLang;
+
+      const headers = new HttpHeaders({
+        'Accept-Language': selectedLanguage
+      });
+
+    return this.http.post(this.baseUrl + 'account/forgotPassword', request, {headers});
+  }
+
+    //Reset password
+    resetPassword(request: ResetPasswordRequest){
+    return this.http.put(this.baseUrl + 'account/resetPassword', request);
   }
 
   // set the current logined user

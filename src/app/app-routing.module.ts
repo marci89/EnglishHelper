@@ -9,11 +9,15 @@ import { adminGuard } from './common/guards/admin.guard';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 import { UserLoginComponent } from './components/users/user-login/user-login.component';
 import { WordComponent } from './components/words/word/word.component';
+import { ForgotPasswordComponent } from './components/users/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: 'login', component: UserLoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
 
   {
     path: '',
