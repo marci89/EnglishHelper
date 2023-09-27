@@ -17,10 +17,6 @@ export class AccountService extends BaseService {
   private currentUserSource = new BehaviorSubject<LoginUser | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
-  //User's email subject
-  private userEmailSubject$ = new BehaviorSubject<string>('');
-  userEmail$ = this.userEmailSubject$.asObservable();
-
   constructor(private http: HttpClient, private translate: TranslateService) {
     super();
   }
@@ -64,14 +60,7 @@ export class AccountService extends BaseService {
 
   // Change email and update the email subject
   changeEmail(request: ChangeEmailRequest) {
-    return this.http.put(this.baseUrl + 'account/changeEmail', request).pipe(
-      tap(email => {
-        this.userEmailSubject$.next(request.email);
-      }),
-      catchError(error => {
-        return throwError(error);
-      })
-    );
+    return this.http.put(this.baseUrl + 'account/changeEmail', request)
   }
 
   //Change password
@@ -117,6 +106,15 @@ export class AccountService extends BaseService {
     } catch (error) {
       console.error('Error decoding JWT token:', error);
       return null;
+    }
+  }
+
+  //Update current user BehaviorSubject with any property name and any value
+  updateCurrentUser(propertyName: string, newValue: any) {
+    const currentUser = this.currentUserSource.value;
+    if (currentUser) {
+      (currentUser as any)[propertyName] = newValue;
+      this.setCurrentUser(currentUser);
     }
   }
 }

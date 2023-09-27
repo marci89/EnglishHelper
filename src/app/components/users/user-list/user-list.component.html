@@ -52,7 +52,7 @@
       <tr>
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.role }}</td>
+        <td>{{ user.role | translate }}</td>
         <td>{{ user.created | utcToLocalDate | translateDate:'LanguageDateFormat'}}</td>
         <td>{{ user.lastActive | utcToLocalDate | timeago}}</td>
         <td ><p-button *ngIf="loginedUser?.id !== user.id" styleClass="p-button-danger" (click)="openDeleteConfirmation(user.id, user.username)">{{ 'Delete' | translate }}</p-button></td>

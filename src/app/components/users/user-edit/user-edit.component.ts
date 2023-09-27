@@ -19,14 +19,13 @@ import { ChangeEmailComponent } from '../change-email/change-email.component';
 export class UserEditComponent implements OnInit, OnDestroy {
   loginedUser: LoginUser | null | undefined;
   user: User | null | undefined;
-  userEmail: string = '';
   userProfileForm: FormGroup = new FormGroup({})
   changePasswordForm: FormGroup = new FormGroup({})
   updateUserRequest: UpdateUserRequest = {} as UpdateUserRequest;
   changePasswordRequest: ChangePasswordRequest = {} as ChangePasswordRequest;
 
   //subscription
-  private emailSubscription$: Subscription | undefined;
+  private CurrentUserSubscription$: Subscription | undefined;
 
   constructor(
     private accountService: AccountService,
@@ -38,13 +37,12 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     //take logined user once
-    this.accountService.currentUser$.pipe(take(1)).subscribe({
-      next: loginedUser => this.loginedUser = loginedUser
-    });
+    this.CurrentUserSubscription$ = this.accountService.currentUser$.subscribe({
+      next: loginedUser =>
+      {
+        this.loginedUser = loginedUser
+      }
 
-    //email address change detection
-    this.emailSubscription$ = this.accountService.userEmail$.subscribe(email => {
-      this.userEmail = email;
     });
 
     this.initForms();
@@ -89,7 +87,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.userService.readById(this.loginedUser.id).subscribe({
       next: user => {
         this.user = user;
-        this.userEmail = user.email;
         this.addValuesToUserProfileForm();
       },
       error: error => {
@@ -110,6 +107,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.userService.update(this.updateUserRequest).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('EditSuccess'))
+        this.accountService.updateCurrentUser('username', this.updateUserRequest.username);
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))
@@ -141,8 +139,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.emailSubscription$) {
-      this.emailSubscription$.unsubscribe();
+    if (this.CurrentUserSubscription$) {
+      this.CurrentUserSubscription$.unsubscribe();
     }
   }
 }

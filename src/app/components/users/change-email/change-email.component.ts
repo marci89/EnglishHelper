@@ -46,6 +46,7 @@ export class ChangeEmailComponent implements OnInit {
     this.accountService.changeEmail(this.changeEmailRequest).subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('EditSuccess'))
+        this.accountService.updateCurrentUser('email', this.changeEmailRequest.email);
         this.modalService.close();
       },
       error: error => {

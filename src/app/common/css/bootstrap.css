@@ -9,9 +9,6 @@
   background-color: #585759 !important;
 }
 
-input:focus {
-  background-color: greenyellow; /* Replace with your desired color */
-}
 
 /* Set focus outline on all Bootstrap elements */
 .btn:focus,

@@ -31,7 +31,8 @@
   "No": "Nem",
   "Cancel": "Mégse",
   "NoElementToModify": "Nincsen olyan elem amin módosítást hajthatna végre!",
-  "Export": "Exportálás",
+  "ExportText": "Text file exportálás",
+  "ExportExcel": "Excel exportálás",
   "ImportText": "Text file importálás",
   "ImportExcel": "Excel importálás",
   "ExportSuccess": "Sikeres exportálás",
@@ -60,6 +61,8 @@
   "InvalidOldPassword": "Érvénytelen régi jelszó. Kérjük, ellenőrizze még egyszer, és próbálja újra.",
   "Email": "Email cím",
   "Role": "Szerepkör",
+  "Admin": "Admin",
+  "Member": "Tag",
   "Users": "Felhasználók",
   "EditUsername": "Felhasználónév módosítása",
   "RegisterSuccess" : "Sikeres regisztráció",
@@ -78,7 +81,7 @@
   "LastUse": "Utolsó használat",
   "WordsManaging": "Szavak menedzselése",
   "DeleteAll": "Összes szó törlése",
-  "ResetResults": "Szavak eredmény visszaállítása",
+  "ResetResults": "Szavak eredményeinek visszaállítása",
 
 
 
