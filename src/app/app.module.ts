@@ -29,6 +29,11 @@ import { WordTabMenuComponent } from './components/words/word-tab-menu/word-tab-
 import { WordManagerComponent } from './components/words/word-manager/word-manager.component';
 import { ForgotPasswordComponent } from './components/users/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/users/reset-password/reset-password.component';
+import { LearnSettingsComponent } from './components/learn/learn-settings/learn-settings.component';
+import { LearnFlashcardModeComponent } from './components/learn/learn-flashcard-mode/learn-flashcard-mode.component';
+import { LearnTypingModeComponent } from './components/learn/learn-typing-mode/learn-typing-mode.component';
+import { LearnSelectionModeComponent } from './components/learn/learn-selection-mode/learn-selection-mode.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 
 @NgModule({
@@ -52,6 +57,11 @@ import { ResetPasswordComponent } from './components/users/reset-password/reset-
     WordManagerComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    LearnSettingsComponent,
+    LearnFlashcardModeComponent,
+    LearnTypingModeComponent,
+    LearnSelectionModeComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,

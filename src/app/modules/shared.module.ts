@@ -17,6 +17,8 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+
 import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 import { cookieConfig } from '../app.config';
 
@@ -50,6 +52,7 @@ import { cookieConfig } from '../app.config';
     InputTextModule,
     TabViewModule,
     FileUploadModule,
+    ToggleButtonModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   exports: [
@@ -69,6 +72,7 @@ import { cookieConfig } from '../app.config';
     InputTextModule,
     TabViewModule,
     FileUploadModule,
+    ToggleButtonModule,
     NgcCookieConsentModule
   ]
 })

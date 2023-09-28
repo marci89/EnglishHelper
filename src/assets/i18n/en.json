@@ -85,6 +85,26 @@
   "ResetResults": "Reset all word results",
 
 
+  "Learn": "Learn",
+  "LearnSettings": "Learn settings",
+  "WordNumber": "Word number",
+  "LanguageMode": "Language mode",
+  "EnglishToHungarian" : "English-Hungarian",
+  "HungarianToEnglish" : "Hungarian-English",
+  "LearnModeType": "Learn mode type",
+  "Flashcard": "Flashcard",
+  "Typing": "Typing",
+  "Selection": "Selection",
+  "WordOrderingType": "Order words",
+  "Start": "Start",
+  "Any": "Any",
+  "Newest": "Newest",
+  "Oldest": "Oldest",
+  "Best": "Best",
+  "Worst": "Worst",
+
+  "Statistics": "Statistics",
+
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
   "AccessDenied": "Access Denied.",

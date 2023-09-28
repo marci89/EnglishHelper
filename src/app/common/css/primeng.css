@@ -5,6 +5,27 @@
 }
 
 
+/* labeled primeng inputs fix*/
+.p-labeled-input > * {
+  display: block;
+}
+
+/* Togglebutton settings*/
+.p-togglebutton
+{
+  background-color:#4287f5  !important;
+  color: white !important;
+  border-color: aliceblue !important;
+}
+
+.p-togglebutton.p-highlight
+{
+  background-color: #3175e0 !important;
+  color: white !important;
+  border-color: aliceblue !important;
+}
+
+
 /* Password component doesn't have password-panel (weak, medium, strong) */
 .hide-password-panel .p-password-panel {
   display: none !important;
