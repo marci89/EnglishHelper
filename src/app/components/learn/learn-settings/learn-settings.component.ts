@@ -8,6 +8,8 @@ import { LearnModeType, LearnSettingsModel, ListWordForLearnRequest, WordOrderin
 import { Word } from 'src/app/interfaces/word.interface';
 import { LearnService } from 'src/app/services/learn.service';
 import { WordService } from 'src/app/services/word.service';
+import { TextToSpeechService } from '../../../services/text-to-speech.service';
+import { DropdownChangeEvent } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-learn-settings',
@@ -17,11 +19,17 @@ import { WordService } from 'src/app/services/word.service';
 export class LearnSettingsComponent implements OnInit, OnDestroy {
   words: Word[] = [];
 
-  //dropdownlists
+  //wordOrdering dropdownlist
   wordOrderingTypes: DropDownListModel[] = [];
   selectedOrder: number = 1;
+
+  //learnMode dropdownlist
   learnModeTypes: DropDownListModel[] = [];
   selectedLearnMode: number = 1;
+
+  //voices dropdownlist
+  voices: DropDownListModel[] = [];
+  selectedVoice: number = 3;
 
   serviceRequest: ListWordForLearnRequest = {} as ListWordForLearnRequest;
   model: LearnSettingsModel = {} as LearnSettingsModel;
@@ -33,7 +41,8 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private router: Router,
     private translate: TranslateService,
-    private learnService: LearnService
+    private learnService: LearnService,
+    private textToSpeechService: TextToSpeechService
 
   ) { }
 
@@ -80,6 +89,9 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
   initSettingsModel() {
     this.model.wordNumber = this.words.length;
     this.model.isEnglishToHungarian = true;
+    this.model.enableSound = true;
+    this.voices = this.textToSpeechService.listVoices();
+    this.selectedVoice = this.textToSpeechService.setDefaultVoiceIndex();
   }
 
   // list words from server
@@ -92,10 +104,21 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
     })
   }
 
+  //voices dropdown event manager
+  onVoiceChange(event: DropdownChangeEvent): void {
+    this.selectedVoice = event.value;
+    this.textToSpeechService.setVoiceIndex(event.value);
+  }
+
+  testSound() {
+    this.textToSpeechService.speak("This is my voice");
+  }
+
   //start learning
   start() {
     this.model.wordOrderingType = this.selectedOrder;
     this.model.learnModeType = this.selectedLearnMode;
+    this.textToSpeechService.setVoiceIndex(this.selectedVoice);
 
     this.learnService.setLearnSettings(this.model);
     this.routeBasedOnEnum(this.selectedLearnMode)

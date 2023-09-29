@@ -12,6 +12,7 @@ export interface LearnSettingsModel {
   isEnglishToHungarian: boolean;
   wordOrderingType: number;
   learnModeType: number;
+  enableSound: boolean;
 }
 
 //Learning mode

@@ -3,7 +3,7 @@
   <div class="card col-12">
     <div class="card-body">
       <div class="text-center mt-3 mb-3">
-        <h2>{{ 'LearnSettings' | translate }}</h2>
+        <h3>{{ 'LearnSettings' | translate }}</h3>
       </div>
       <form #form="ngForm" class="mb-3" (ngSubmit)="start()" autocomplete="off">
         <div class="container">
@@ -16,7 +16,7 @@
                 [inputStyle]="{'width':'100px'}"></p-inputNumber>
             </div>
             <!-- Language Mode -->
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mb-3 p-labeled-input">
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-3 p-labeled-input">
               <label for="isEnglishToHungarian">{{ 'LanguageMode' | translate }}</label>
               <p-toggleButton [(ngModel)]="model.isEnglishToHungarian" name="isEnglishToHungarian"
                 onLabel="{{ 'EnglishToHungarian' | translate }}"
@@ -35,7 +35,7 @@
               </p-dropdown>
             </div>
             <!-- Learn Mode -->
-            <div class=" col-lg-3 col-md-6 col-sm-12 p-labeled-input">
+            <div class=" col-lg-3 col-md-6 col-sm-12 mb-3 p-labeled-input">
               <label for="selectedLearnMode">{{ 'LearnModeType' | translate }}</label>
               <p-dropdown [options]="learnModeTypes" [(ngModel)]="selectedLearnMode" name="selectedLearnMode">
                 <ng-template let-option pTemplate="selectedItem">
@@ -47,6 +47,46 @@
               </p-dropdown>
             </div>
           </div>
+
+          <div class="row">
+            <hr>
+            <div class="text-center">
+              <h3>{{ 'SoundSettings' | translate }}</h3>
+            </div>
+            <div class="col-12 col-md-12 col-sm-6 mb-3">
+              <div class="d-flex flex-column flex-md-row">
+                <div class="p-labeled-input mb-3">
+                  <!-- Enable Sound -->
+                  <label for="enableSound">{{ 'EnableSound' | translate }}</label>
+                  <p-toggleButton [(ngModel)]="model.enableSound" name="enableSound" onLabel="{{ 'Yes' | translate }}"
+                    offLabel="{{ 'No' | translate }}">
+                  </p-toggleButton>
+                </div>
+                <div class="p-labeled-input mx-0 mx-md-4 mb-3">
+                  <!-- Select Sound -->
+                  <label for="selectSound">{{ 'SelectSound' | translate }}</label>
+                  <p-dropdown [options]="voices" [(ngModel)]="selectedVoice" name="selectedVoice"
+                    (onChange)="onVoiceChange($event)"></p-dropdown>
+                </div>
+                <!-- Test sound -->
+                <p-button type="button" class="mx-0 mx-md-4 mt-0 mt-md-4 mb-3" (click)="testSound()">{{ 'Test' | translate }}</p-button>
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           <!-- Buttons -->
