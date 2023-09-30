@@ -83,7 +83,8 @@
   "WordsManaging": "Managing words",
   "DeleteAll": "Delete all of words",
   "ResetResults": "Reset all word results",
-
+  "NoWordList": "There are currently no words saved. Please create some.",
+  "Restart": "Restart",
 
   "Learn": "Learn",
   "LearnSettings": "Learn settings",
@@ -106,6 +107,9 @@
   "EnableSound": "Enable sound",
   "SelectSound": "Select sound",
   "Test": "Test",
+  "Good": "Good",
+  "Bad": "Bad",
+  "Result": "Result",
 
   "Statistics": "Statistics",
 

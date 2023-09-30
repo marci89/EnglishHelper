@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../common/services/base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, map, of, switchMap } from 'rxjs';
-import { CreatewordRequest, UpdateWordRequest, Word } from '../interfaces/word.interface';
+import { CreatewordRequest, ListWordWithFilter, UpdateUsedWordRequest, UpdateWordRequest, Word } from '../interfaces/word.interface';
 
 //Word service
 @Injectable({
@@ -35,6 +35,13 @@ export class WordService extends BaseService {
     )
   }
 
+    // Get User's words by user id and filtering.
+    listWithFilter(request: ListWordWithFilter) {
+      const params = this.createParams(request);
+      return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`,{ params });
+    }
+
+
   //Create word and add to the subject
   create(request: CreatewordRequest) {
     return this.http.post<Word>(this.baseUrl + 'word', request).pipe(
@@ -60,6 +67,11 @@ export class WordService extends BaseService {
         return of(updatedWord);
       })
     );
+  }
+
+   //Update used word when learning
+   updateUsedWord(request: UpdateUsedWordRequest) {
+    return this.http.put<Word>(this.baseUrl + 'word/UpdateUsedWord', request);
   }
 
   // Delete word by id and delete it from subject, too

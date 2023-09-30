@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { DropDownListModel } from 'src/app/common/interfaces/common.interface';
-import { LearnModeType, LearnSettingsModel, ListWordForLearnRequest, WordOrderingType } from 'src/app/interfaces/learn.interface';
+import { LearnModeType, LearnSettingsModel, WordOrderingType } from 'src/app/interfaces/learn.interface';
 import { Word } from 'src/app/interfaces/word.interface';
 import { LearnService } from 'src/app/services/learn.service';
 import { WordService } from 'src/app/services/word.service';
@@ -31,7 +31,6 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
   voices: DropDownListModel[] = [];
   selectedVoice: number = 3;
 
-  serviceRequest: ListWordForLearnRequest = {} as ListWordForLearnRequest;
   model: LearnSettingsModel = {} as LearnSettingsModel;
 
   wordListSubscription$: Subscription | undefined;

@@ -82,6 +82,9 @@
   "WordsManaging": "Szavak menedzselése",
   "DeleteAll": "Összes szó törlése",
   "ResetResults": "Szavak eredményeinek visszaállítása",
+  "NoWordList": "Jelenleg nincsenek mentve szavak. Kérem hozzon létre valamennyit.",
+  "Restart": "Újrakezd",
+
 
 
   "Learn": "Tanulás",
@@ -105,6 +108,9 @@
   "EnableSound": "Hang engedélyezése",
   "SelectSound": "hang kiválasztása",
   "Test": "Teszt",
+  "Good": "Jó",
+  "Bad": "Rossz",
+  "Result": "Eredmény",
 
   "Statistics": "Statisztika",
 

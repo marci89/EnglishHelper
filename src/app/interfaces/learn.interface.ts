@@ -1,10 +1,5 @@
-import { DropDownListModel } from "../common/interfaces/common.interface";
 
-//List word for learning modes request
-export interface ListWordForLearnRequest {
-  wordNumber: number;
-  wordOrderingType: number;
-}
+
 
 //basic datas to start to learn
 export interface LearnSettingsModel {
