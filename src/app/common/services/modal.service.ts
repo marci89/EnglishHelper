@@ -25,6 +25,7 @@ export class ModalService {
       width: `${dialogSize}px`,
       baseZIndex: 10000,
       showHeader: false,
+      styleClass: 'custom-dialog',
       modal: true,
       data: {
         request: request

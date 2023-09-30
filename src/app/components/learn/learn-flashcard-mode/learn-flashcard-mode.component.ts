@@ -91,17 +91,15 @@ export class LearnFlashcardModeComponent implements OnInit {
       next: words => {
         this.words = words;
 
-        //check the word count
+      //check the word count
         if (this.words && this.words.length > 0) {
           this.setFlashCard();
           this.setCurrentWord()
           this.wordListTotalCount = words.length;
-        } else {
-          this.serverError = "NoWordList";
-        }
+        } 
       },
-      error: error => {
-        this.toastr.error(this.translate.instant(error.error))
+      error: _ => {
+        this.serverError = "NoWordList";
       }
     })
   }
@@ -145,26 +143,30 @@ export class LearnFlashcardModeComponent implements OnInit {
 
   //Good button click
   correct() {
-    this.setFlashCard();
     this.correctWordListCount++;
-    this.solvedWordListCount++;
-    this.updateUsedWord(true);
-    this.deleteFirstElement();
-    this.calculateResult();
-    this.setCurrentWord();
-
+    this.setNextWord(true);
   }
 
   //Bad button click
   incorrect() {
-    this.setFlashCard();
     this.incorrectWordListCount++
-    this.solvedWordListCount++;
-    this.updateUsedWord(false);
-    this.deleteFirstElement();
-    this.calculateResult();
-    this.setCurrentWord();
+    this.setNextWord(false);
   }
+
+  // Common logic for both button clicks
+setNextWord(isCorrect: boolean) {
+  this.setFlashCard();
+
+// set timeout because of flipping
+  setTimeout(() => {
+  this.solvedWordListCount++;
+  this.updateUsedWord(isCorrect);
+  this.deleteFirstElement();
+  this.calculateResult();
+  this.setCurrentWord();
+}, 1000); 
+}
+  
 
   //Delete the first element from word list array
   deleteFirstElement() {

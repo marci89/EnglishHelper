@@ -32,13 +32,13 @@
 }
 
 /* Dialog styles */
+
+
 .p-dialog .p-dialog-content {
   background-color: darkslategrey;
   color: white;
   padding: 0  !important;
   padding-bottom: 10px !important;
-  border: 1px solid white;
-
 }
 
 .p-dialog .p-dialog-header {
@@ -53,6 +53,10 @@
 .p-dialog .p-dialog-footer {
   background-color: darkslategrey !important;
   color: white !important;
+}
+
+.custom-dialog{
+  border: 1px solid white;
 }
 
 

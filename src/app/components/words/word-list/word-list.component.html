@@ -35,7 +35,7 @@
         <td>{{ word.created | utcToLocalDate | translateDate:'LanguageDateFormat'}}</td>
 
         <td>
-          {{ word.lastUse !== null && word.lastUse !== '0001-01-01T00:00:00' ? (word.lastUse | utcToLocalDate | translateDate:'LanguageDateFormat') : 'N/A' }}
+          {{ word.lastUse !== null && word.lastUse !== '0001-01-01T00:00:00' ? (word.lastUse  | utcToLocalDate | timeago) : 'N/A' }}
         </td>
         <td style="text-align: right;">
           <i class="fa fa-pencil fa-lg text-info" (click)="openEditWordDialog(word.id)"></i>
