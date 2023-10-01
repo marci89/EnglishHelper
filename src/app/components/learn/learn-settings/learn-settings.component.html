@@ -1,7 +1,7 @@
-<!-- Basic settings panel -->
 <div class="mt-3">
   <div class="card col-12">
     <div class="card-body">
+      <!-- Basic settings panel -->
       <div class="text-center mt-3 mb-3">
         <h3>{{ 'LearnSettings' | translate }}</h3>
       </div>
@@ -49,6 +49,7 @@
           </div>
 
           <div class="row">
+            <!-- Sound settings -->
             <hr>
             <div class="text-center">
               <h3>{{ 'SoundSettings' | translate }}</h3>
@@ -62,37 +63,98 @@
                     offLabel="{{ 'No' | translate }}">
                   </p-toggleButton>
                 </div>
-                <div class="p-labeled-input mx-0 mx-md-4 mb-3">
+                <div *ngIf="model.enableSound" class="p-labeled-input mx-0 mx-md-4 mb-3">
                   <!-- Select Sound -->
                   <label for="selectSound">{{ 'SelectSound' | translate }}</label>
                   <p-dropdown [options]="voices" [(ngModel)]="selectedVoice" name="selectedVoice"
                     (onChange)="onVoiceChange($event)"></p-dropdown>
                 </div>
                 <!-- Test sound -->
-                <p-button type="button" class="mx-0 mx-md-4 mt-0 mt-md-4 mb-3" (click)="testSound()">{{ 'Test' | translate }}</p-button>
+                <div *ngIf="model.enableSound">
+                  <p-button type="button" class="mx-0 mx-md-4 mt-0 mt-md-4 mb-3" (click)="testSound()">{{ 'Test' |
+                    translate }}</p-button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-
+          <div *ngIf="selectedLearnMode === 1" class="row mb-3">
+            <!-- Flashcard settings -->
+            <hr>
+            <div class="text-center">
+              <h3>{{ 'FlashcardSettings' | translate }}</h3>
+            </div>
+            <div class="col-12 col-md-12 col-sm-6 mb-3">
+              <div class="d-flex flex-column flex-md-row">
+                <div class="p-labeled-input mb-3">
+                  <!-- enable Flashcard Automatic Flip -->
+                  <label for="enableFlashcardAutomaticFlip">{{ 'EnableFlashcardAutomaticFlip' | translate }}</label>
+                  <p-toggleButton [(ngModel)]="model.enableFlashcardAutomaticFlip" name="enableFlashcardAutomaticFlip"
+                    onLabel="{{ 'Yes' | translate }}" offLabel="{{ 'No' | translate }}">
+                  </p-toggleButton>
+                </div>
+                <div *ngIf="model.enableFlashcardAutomaticFlip" class="p-labeled-input mx-0 mx-md-4 mb-3">
+                  <!-- flip timer -->
+                  <label for="flashcardFlipTimer">{{ 'FlashcardFlipTimer' | translate }}</label>
+                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [(ngModel)]="model.flashcardFlipTimer"
+                    name="flashcardFlipTimer" [style]="{'width':'100px'}"
+                    [inputStyle]="{'width':'100px'}"></p-inputNumber>
+                </div>
               </div>
             </div>
           </div>
 
 
+          <div *ngIf="selectedLearnMode === 2" class="row mb-3">
+            <!-- Typing settings -->
+            <hr>
+            <div class="text-center">
+              <h3>{{ 'TypingSettings' | translate }}</h3>
+            </div>
+            <div class="col-12 col-md-12 col-sm-6 mb-3">
+              <div class="d-flex flex-column flex-md-row">
+                <!-- starter letters -->
+                <div class="p-labeled-input mb-3">
+                  <label for="numberOfStartLetter">{{ 'NumberOfStartLetter' | translate }}</label>
+                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [(ngModel)]="model.numberOfStartLetter"
+                    name="numberOfStartLetter" [style]="{'width':'100px'}"
+                    [inputStyle]="{'width':'100px'}"></p-inputNumber>
+                </div>
+                <!-- End letters -->
+                <div class="p-labeled-input mx-0 mx-md-4 mb-3">
+                  <label for="numberOfEndLetter">{{ 'NumberOfEndLetter' | translate }}</label>
+                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [(ngModel)]="model.numberOfEndLetter"
+                    name="numberOfEndLetter" [style]="{'width':'100px'}"
+                    [inputStyle]="{'width':'100px'}"></p-inputNumber>
+                </div>
+              </div>
+            </div>
+          </div>
 
-
-
-
-
-
-
-
-
-
-
+          <div *ngIf="selectedLearnMode === 3" class="row mb-3">
+            <!-- Selection settings -->
+            <hr>
+            <div class="text-center">
+              <h3>{{ 'SelectionSettings' | translate }}</h3>
+            </div>
+            <div class="col-12 col-md-12 col-sm-6 mb-3">
+              <div class="d-flex flex-column flex-md-row">
+                <!-- choosable Word Number -->
+                <div class="p-labeled-input mb-3">
+                  <label for="choosableWordNumber">{{ 'ChoosableWordNumber' | translate }}</label>
+                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [(ngModel)]="model.choosableWordNumber"
+                    name="choosableWordNumber" [style]="{'width':'100px'}"
+                    [inputStyle]="{'width':'100px'}"></p-inputNumber>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Buttons -->
+          <hr>
           <div class="row mt-3">
             <div class="col-12 d-flex justify-content-center text-center">
-              <p-button type="submit">{{ 'Start' | translate }}</p-button>
+              <p-button type="submit" styleClass="p-button-success p-button-lg">{{ 'Start' | translate }}</p-button>
             </div>
           </div>
 
@@ -100,9 +162,4 @@
       </form>
     </div>
   </div>
-
-
-
-
-
 </div>

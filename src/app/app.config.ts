@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
     domain: environment.domainUrl, // this is important to fit the domain
-    expiryDays: 1, // Set the cookie to expire after 1 day
+    expiryDays: 365, // Set the cookie to expire after 1 day
   },
   position: 'bottom',
   theme: "classic",

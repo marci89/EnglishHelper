@@ -1,13 +1,27 @@
 
-
-
 //basic datas to start to learn
 export interface LearnSettingsModel {
+  //how many words
   wordNumber: number;
+  //english-hungarian, hungarian-english
   isEnglishToHungarian: boolean;
+  //get words fom server with filter options
   wordOrderingType: number;
+  //typing, select, flashcard modes
   learnModeType: number;
+  //enable the voice
   enableSound: boolean;
+  //allow automatic flip
+  enableFlashcardAutomaticFlip: boolean;
+  //flipping after this value
+  flashcardFlipTimer: number;
+  //how many words you can choose from.
+  choosableWordNumber: number;
+  //how many letters you can see at the end
+  numberOfEndLetter: number;
+  //how many letters you can see at the begining
+  numberOfStartLetter: number;
+
 }
 
 //Learning mode

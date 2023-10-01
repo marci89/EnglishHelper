@@ -89,6 +89,13 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
     this.model.wordNumber = this.words.length;
     this.model.isEnglishToHungarian = true;
     this.model.enableSound = true;
+
+    this.model.enableFlashcardAutomaticFlip = false;
+    this.model.flashcardFlipTimer = 3;
+    this.model.choosableWordNumber = 3;
+    this.model.numberOfEndLetter = 0;
+    this.model.numberOfStartLetter = 0;
+
     this.voices = this.textToSpeechService.listVoices();
     this.selectedVoice = this.textToSpeechService.setDefaultVoiceIndex();
   }

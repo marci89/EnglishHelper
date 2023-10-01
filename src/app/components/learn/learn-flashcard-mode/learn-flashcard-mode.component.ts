@@ -1,6 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { LearnSettingsModel } from 'src/app/interfaces/learn.interface';
@@ -14,6 +13,7 @@ import { WordService } from 'src/app/services/word.service';
   templateUrl: './learn-flashcard-mode.component.html',
   styleUrls: ['./learn-flashcard-mode.component.css'],
   animations: [
+    //change language text
     trigger('flipState', [
       state('hungarian', style({
         transform: 'rotateY(179deg)'
@@ -23,7 +23,7 @@ import { WordService } from 'src/app/services/word.service';
       })),
       transition('hungarian => english', animate('500ms ease-out')),
       transition('english => hungarian', animate('500ms ease-in'))
-    ])
+    ]),
   ]
 })
 export class LearnFlashcardModeComponent implements OnInit {
@@ -50,14 +50,14 @@ export class LearnFlashcardModeComponent implements OnInit {
   flip: string = '';
 
   //finished
-  isFinished : boolean = false;
+  isFinished: boolean = false;
 
-  learnSettings: LearnSettingsModel = {} as LearnSettingsModel;
+  //settings variables
+  settings: LearnSettingsModel = {} as LearnSettingsModel;
 
   constructor(
     private wordService: WordService,
     private toastr: ToastrService,
-    private router: Router,
     private translate: TranslateService,
     private learnService: LearnService,
     private textToSpeechService: TextToSpeechService
@@ -72,7 +72,7 @@ export class LearnFlashcardModeComponent implements OnInit {
   //Set all of variables to start the learning
   initLearn() {
     //get settings options
-    this.learnSettings = this.learnService.readLearnSettings();
+    this.settings = this.learnService.readLearnSettings();
     //list learning words (filtered by settings option)
     this.listWord();
 
@@ -83,20 +83,21 @@ export class LearnFlashcardModeComponent implements OnInit {
     // Initialize the serviceRequest object
     const serviceRequest: ListWordWithFilter = {
       userId: 0,
-      wordNumber: this.learnSettings.wordNumber,
-      orderType: this.learnSettings.wordOrderingType,
+      wordNumber: this.settings.wordNumber,
+      orderType: this.settings.wordOrderingType,
     };
 
     this.wordService.listWithFilter(serviceRequest).subscribe({
       next: words => {
         this.words = words;
 
-      //check the word count
+        //check the word count
         if (this.words && this.words.length > 0) {
           this.setFlashCard();
-          this.setCurrentWord()
+          this.learnService.shuffleArray(this.words);
+          this.setCurrentWord();
           this.wordListTotalCount = words.length;
-        } 
+        }
       },
       error: _ => {
         this.serverError = "NoWordList";
@@ -104,12 +105,12 @@ export class LearnFlashcardModeComponent implements OnInit {
     })
   }
 
-   // Update used word
-   updateUsedWord(isCorrect: boolean) {
+  // Update used word
+  updateUsedWord(isCorrect: boolean) {
     // Initialize the serviceRequest object
     const serviceRequest: UpdateUsedWordRequest = {
-     id: this.currentWord?.id ?? 0,
-     isCorrect: isCorrect
+      id: this.currentWord?.id ?? 0,
+      isCorrect: isCorrect
     };
 
     this.wordService.updateUsedWord(serviceRequest).subscribe({
@@ -129,11 +130,18 @@ export class LearnFlashcardModeComponent implements OnInit {
     } else {
       this.isFinished = true;
     }
+
+    //automatic flip
+    if (this.settings.enableFlashcardAutomaticFlip) {
+      setTimeout(() => {
+        this.toggleFlashcard();
+      }, this.settings.flashcardFlipTimer * 1000);
+    }
   }
 
   //Set the flashcard at the begining
   setFlashCard() {
-    this.flip = this.learnSettings.isEnglishToHungarian ? 'english' : 'hungarian'
+    this.flip = this.settings.isEnglishToHungarian ? 'english' : 'hungarian'
   }
 
   //toggle flashcard
@@ -154,19 +162,24 @@ export class LearnFlashcardModeComponent implements OnInit {
   }
 
   // Common logic for both button clicks
-setNextWord(isCorrect: boolean) {
-  this.setFlashCard();
+  setNextWord(isCorrect: boolean) {
+    if (this.currentWord) {
+      this.currentWord.englishText = "";
+      this.currentWord.hungarianText = "";
+    }
 
-// set timeout because of flipping
-  setTimeout(() => {
-  this.solvedWordListCount++;
-  this.updateUsedWord(isCorrect);
-  this.deleteFirstElement();
-  this.calculateResult();
-  this.setCurrentWord();
-}, 1000); 
-}
-  
+    this.setFlashCard();
+
+    // set timeout because of flipping
+    setTimeout(() => {
+      this.solvedWordListCount++;
+      this.updateUsedWord(isCorrect);
+      this.deleteFirstElement();
+      this.calculateResult();
+      this.setCurrentWord();
+    }, 300);
+  }
+
 
   //Delete the first element from word list array
   deleteFirstElement() {
@@ -174,15 +187,18 @@ setNextWord(isCorrect: boolean) {
       this.words.shift();
     }
   }
-    //speak the word
-    speak() {
+
+  //speak the word
+  speak() {
+    if (this.settings.enableSound) {
       const text = this.flip === 'english' ? this.currentWord?.englishText : this.currentWord?.hungarianText;
       this.textToSpeechService.speak(text ?? '');
     }
-
-    //Calculate the result in percentage
-    calculateResult() {
-      const percentage = (this.correctWordListCount / this.solvedWordListCount) * 100;
-      this.result = parseFloat(percentage.toFixed(2));
-    }
   }
+
+  //Calculate the result in percentage
+  calculateResult() {
+    const percentage = (this.correctWordListCount / this.solvedWordListCount) * 100;
+    this.result = parseFloat(percentage.toFixed(2));
+  }
+}

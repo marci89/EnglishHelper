@@ -1,8 +1,8 @@
 .flash-card {
   border-radius: 5px;
   border: 1px solid white;
-  height: 200px;
-  width: 500px;
+  height:250px;
+  width: 100%;
   cursor: pointer;
   position: relative;
   background-color: #375A7F;
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .face {
@@ -30,4 +31,14 @@
 
 .front {
   transform: rotateY(180deg);
+}
+
+.face h2 {
+  max-width: 90%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.header-label {
+  font-size: 25px;
 }
