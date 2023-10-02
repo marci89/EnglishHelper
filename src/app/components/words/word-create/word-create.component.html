@@ -7,7 +7,7 @@
         <div class="col-12 col-md-3 mb-3">
           <div class="form-group">
             <label for="englishText">{{'EnglishText' | translate }}</label>
-             <input type="text" pInputText  formControlName="englishText"  maxlength="250" class="form-control">
+             <input type="text" pInputText  formControlName="englishText"  maxlength="200" class="form-control">
               <div *ngIf="createWordForm.get('englishText')?.errors && createWordForm.get('englishText')?.touched" class="text-danger">
                 <p *ngIf="createWordForm.get('englishText')?.hasError('required')">{{'EnglishTextRequired' | translate }}</p>
               </div>
@@ -18,7 +18,7 @@
         <div class="col-12 col-md-3 mb-3">
           <div class="form-group">
             <label for="hungarianText">{{'HungarianText' | translate }}</label>
-            <input type="text" pInputText  formControlName="hungarianText"  maxlength="250" class="form-control">
+            <input type="text" pInputText  formControlName="hungarianText"  maxlength="200" class="form-control">
              <div *ngIf="createWordForm.get('hungarianText')?.errors && createWordForm.get('hungarianText')?.touched" class="text-danger">
                <p *ngIf="createWordForm.get('hungarianText')?.hasError('required')">{{'HungarianTextRequired' | translate }}</p>
              </div>

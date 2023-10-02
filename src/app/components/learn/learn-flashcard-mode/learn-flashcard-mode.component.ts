@@ -7,6 +7,8 @@ import { ListWordWithFilter, UpdateUsedWordRequest, Word } from 'src/app/interfa
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
 import { WordService } from 'src/app/services/word.service';
+import { CreateLearnStatisticsRequest } from '../../../interfaces/learn-statistics.interface';
+import { LearnStatisticsService } from '../../../services/learn-statistics.service';
 
 @Component({
   selector: 'app-learn-flashcard-mode',
@@ -52,6 +54,9 @@ export class LearnFlashcardModeComponent implements OnInit {
   //finished
   isFinished: boolean = false;
 
+  //text long check
+  isTextTooLong: boolean = false;
+
   //settings variables
   settings: LearnSettingsModel = {} as LearnSettingsModel;
 
@@ -60,7 +65,8 @@ export class LearnFlashcardModeComponent implements OnInit {
     private toastr: ToastrService,
     private translate: TranslateService,
     private learnService: LearnService,
-    private textToSpeechService: TextToSpeechService
+    private textToSpeechService: TextToSpeechService,
+    private learnStatisticsService: LearnStatisticsService
 
   ) { }
 
@@ -128,6 +134,9 @@ export class LearnFlashcardModeComponent implements OnInit {
       this.currentWord = this.words[0];
       this.speak();
     } else {
+      //create static about the result
+      this.CreateLearnStatistics();
+      //end of the learn
       this.isFinished = true;
     }
 
@@ -142,11 +151,25 @@ export class LearnFlashcardModeComponent implements OnInit {
   //Set the flashcard at the begining
   setFlashCard() {
     this.flip = this.settings.isEnglishToHungarian ? 'english' : 'hungarian'
+    this.setTextsmaller();
   }
 
   //toggle flashcard
   toggleFlashcard() {
     this.flip = (this.flip == 'english') ? 'hungarian' : 'english';
+    this.setTextsmaller();
+  }
+
+  //check smaller font-size if you have longer word
+  isTextTooLongValidator(text: string) {
+    this.isTextTooLong = text.length > 100;
+  }
+
+  //set smaller font-size if you have longer word
+  setTextsmaller() {
+    this.flip === 'english'
+      ? this.isTextTooLongValidator(this.currentWord?.englishText ?? '')
+      : this.isTextTooLongValidator(this.currentWord?.hungarianText ?? '');
   }
 
   //Good button click
@@ -177,6 +200,7 @@ export class LearnFlashcardModeComponent implements OnInit {
       this.deleteFirstElement();
       this.calculateResult();
       this.setCurrentWord();
+      this.setTextsmaller();
     }, 300);
   }
 
@@ -199,6 +223,20 @@ export class LearnFlashcardModeComponent implements OnInit {
   //Calculate the result in percentage
   calculateResult() {
     const percentage = (this.correctWordListCount / this.solvedWordListCount) * 100;
-    this.result = parseFloat(percentage.toFixed(2));
+    this.result = parseFloat(percentage.toFixed(0));
+  }
+
+  // create learn statistics
+  CreateLearnStatistics() {
+    // Initialize the serviceRequest object
+    const serviceRequest: CreateLearnStatisticsRequest = {
+      userId: 0,
+      correctCount: this.correctWordListCount,
+      incorrectCount: this.incorrectWordListCount,
+      result: this.result,
+      LearnMode: this.settings.learnModeType
+    };
+
+    this.learnStatisticsService.create(serviceRequest).subscribe({})
   }
 }
