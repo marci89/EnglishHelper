@@ -10,9 +10,6 @@
     <div class="collapse navbar-collapse" id="bdNavbar">
           <!--  Links -->
       <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" routerLink="/" routerLinkActive="active"> {{'Home' | translate }} </a>
-        </li>
         <!-- ng-container for authorized links -->
         <ng-container *ngIf="accountService.currentUser$| async">
            <!--  Only admin role -->
@@ -34,7 +31,7 @@
       <hr class="d-md-none text-white-50">
 
       <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-        <li *ngIf="(accountService.currentUser$ | async) as user" class="nav-item col-6 col-md-auto mt-2 mx-3">
+        <li *ngIf="(accountService.currentUser$ | async) as user" class="nav-item col-6 col-md-auto mt-3 mx-3 ms-auto  text-end">
             <!--  User settings dropdown -->
       <div class="dropdown" dropdown>
         <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>{{user.username}}  <i class="fa fa-user fa-lg mx-2"></i></a>
@@ -50,7 +47,7 @@
         <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto">
          <p-button class="my-2 my-md-0 ms-md-3"  routerLink="/login"> {{'Login' | translate }} </p-button>
         </li>
-      <li class="nav-item col-12 col-md-auto mx-lg-2 mt-2 mt-lg-0 mt-md-0 mx-3">
+      <li class="nav-item col-6 col-md-auto mt-2 mx-3 ms-auto text-end">
          <!--  Language switch -->
       <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage">
         <ng-template pTemplate="selectedItem">
@@ -60,7 +57,7 @@
           </div>
       </ng-template>
         <ng-template let-language pTemplate="item">
-            <div class="flex align-items-center" (click)="switchLang(language.code)">
+            <div class="flex align-items-start text-start" (click)="switchLang(language.code)">
                 <img [src]="'./assets/images/' + language.code + '.png'" style="width: 20px" />
                 <span class="mx-2">{{ language.name | translate }}</span>
             </div>

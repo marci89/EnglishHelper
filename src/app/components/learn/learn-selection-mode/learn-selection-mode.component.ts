@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { CreateLearnStatisticsRequest } from 'src/app/interfaces/learn-statistics.interface';
 import { LearnSettingsModel } from 'src/app/interfaces/learn.interface';
-import { ListWordWithFilter, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
+import { ListWordWithFilterRequest, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
 import { LearnStatisticsService } from 'src/app/services/learn-statistics.service';
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
@@ -99,8 +99,7 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
   // list filtered words
   listWord() {
     // Initialize the serviceRequest object
-    const serviceRequest: ListWordWithFilter = {
-      userId: 0,
+    const serviceRequest: ListWordWithFilterRequest = {
       wordNumber: this.settings.wordNumber,
       orderType: this.settings.wordOrderingType,
     };
@@ -149,15 +148,15 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
         this.serverError = this.translate.instant('MinSelectableWord');
       }
       //Check maximum length
-      if (this.settings.choosableWordNumber > 10)
-        this.settings.choosableWordNumber == 10;
+      if (this.settings.selectableWordNumber > 10)
+        this.settings.selectableWordNumber == 10;
 
       this.selectableWords = [];
       this.learnService.shuffleArray(this.allWords);
 
-      const numberOfSelection = this.settings.choosableWordNumber > this.allWords.length
+      const numberOfSelection = this.settings.selectableWordNumber > this.allWords.length
         ? this.allWords.length
-        : this.settings.choosableWordNumber;
+        : this.settings.selectableWordNumber;
 
       this.selectableWords = [...this.allWords
         .slice(0, numberOfSelection)
@@ -287,7 +286,6 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
   CreateLearnStatistics() {
     // Initialize the serviceRequest object
     const serviceRequest: CreateLearnStatisticsRequest = {
-      userId: 0,
       correctCount: this.correctWordListCount,
       incorrectCount: this.incorrectWordListCount,
       result: this.result,

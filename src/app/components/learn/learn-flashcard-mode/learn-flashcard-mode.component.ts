@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { LearnSettingsModel } from 'src/app/interfaces/learn.interface';
-import { ListWordWithFilter, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
+import { ListWordWithFilterRequest, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
 import { WordService } from 'src/app/services/word.service';
@@ -87,8 +87,7 @@ export class LearnFlashcardModeComponent implements OnInit {
   // list filtered words
   listWord() {
     // Initialize the serviceRequest object
-    const serviceRequest: ListWordWithFilter = {
-      userId: 0,
+    const serviceRequest: ListWordWithFilterRequest = {
       wordNumber: this.settings.wordNumber,
       orderType: this.settings.wordOrderingType,
     };
@@ -230,7 +229,6 @@ export class LearnFlashcardModeComponent implements OnInit {
   CreateLearnStatistics() {
     // Initialize the serviceRequest object
     const serviceRequest: CreateLearnStatisticsRequest = {
-      userId: 0,
       correctCount: this.correctWordListCount,
       incorrectCount: this.incorrectWordListCount,
       result: this.result,

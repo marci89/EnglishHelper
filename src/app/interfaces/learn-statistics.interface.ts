@@ -2,8 +2,6 @@ import { LearnModeType } from "./learn.interface";
 
 //Create learn statistics server request
 export interface CreateLearnStatisticsRequest {
-  //User id
-  userId: number;
   //Good counts
   correctCount: number;
   //Bad counts

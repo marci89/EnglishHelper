@@ -16,7 +16,7 @@ export interface LearnSettingsModel {
   //flipping after this value
   flashcardFlipTimer: number;
   //how many words you can choose from.
-  choosableWordNumber: number;
+  selectableWordNumber: number;
   //how many letters you can see at the end
   numberOfEndLetter: number;
   //how many letters you can see at the begining

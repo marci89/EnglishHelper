@@ -13,7 +13,6 @@ export interface Word {
 
 //Request for word create
 export interface CreatewordRequest {
-  userId: number;
   englishText: string;
   hungarianText: string;
 }
@@ -21,7 +20,6 @@ export interface CreatewordRequest {
 //Request for word update
 export interface UpdateWordRequest {
   id: number;
-  userId: number;
   englishText: string;
   hungarianText: string;
   correctCount: number;
@@ -29,8 +27,7 @@ export interface UpdateWordRequest {
 }
 
 //List word for learning modes request
-export interface ListWordWithFilter {
-  userId: number;
+export interface ListWordWithFilterRequest {
   wordNumber: number;
   orderType: number;
 }

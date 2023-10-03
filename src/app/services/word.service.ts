@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../common/services/base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, map, of, switchMap } from 'rxjs';
-import { CreatewordRequest, ListWordWithFilter, UpdateUsedWordRequest, UpdateWordRequest, Word } from '../interfaces/word.interface';
+import { CreatewordRequest, ListWordWithFilterRequest, UpdateUsedWordRequest, UpdateWordRequest, Word } from '../interfaces/word.interface';
 
 //Word service
 @Injectable({
@@ -35,8 +35,8 @@ export class WordService extends BaseService {
     )
   }
 
-    // Get User's words by user id and filtering.
-    listWithFilter(request: ListWordWithFilter) {
+    // Get User's words by logined user id and filtering.
+    listWithFilter(request: ListWordWithFilterRequest) {
       const params = this.createParams(request);
       return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`,{ params });
     }

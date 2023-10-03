@@ -118,7 +118,7 @@
   "TypingSettings": "Gépelős mód beállítások",
   "EnableFlashcardAutomaticFlip": "Szeretnéd ha automatikusan megfordulna a kártya?",
   "FlashcardFlipTimer": "Flashcard fordulás időzítő másodpercben",
-  "ChoosableWordNumber": "Hány darab választható lehetőséget ajánljon fel?",
+  "SelectableWordNumber": "Hány darab választható lehetőséget ajánljon fel?",
   "NumberOfEndLetter": "Hány szó végi betűt jelenítsen meg?",
   "NumberOfStartLetter": "Hány kezdőbetűt jelenítsen meg?",
   "MinSelectableWord": "Minimum kettő választható szónak kell lennie. Kérem hozzon létre minimum kettő szót.",

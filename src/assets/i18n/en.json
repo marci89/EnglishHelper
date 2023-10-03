@@ -117,7 +117,7 @@
   "TypingSettings": "Typing mode settings",
   "EnableFlashcardAutomaticFlip": "Would you like the card to turn over automatically?",
   "FlashcardFlipTimer": "Flashcard turn timer in seconds",
-  "ChoosableWordNumber": "How many options should you offer?",
+  "SelectableWordNumber": "How many options should you offer?",
   "NumberOfEndLetter": "How many letters at the end of words should you display?",
   "NumberOfStartLetter": "How many letters at the start of words should you display?",
   "MinSelectableWord": "Must be at least two words. Please create at least two words.",

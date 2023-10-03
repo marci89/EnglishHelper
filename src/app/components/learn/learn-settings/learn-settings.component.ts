@@ -92,7 +92,7 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
 
     this.model.enableFlashcardAutomaticFlip = false;
     this.model.flashcardFlipTimer = 3;
-    this.model.choosableWordNumber = 3;
+    this.model.selectableWordNumber = 2;
     this.model.numberOfEndLetter = 0;
     this.model.numberOfStartLetter = 0;
 
