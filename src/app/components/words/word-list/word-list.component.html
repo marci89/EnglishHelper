@@ -1,6 +1,9 @@
 <!-- word list table -->
 <div class="mt-3">
-  <p-table [value]="words"
+  <p-table
+  #wordTable
+  [globalFilterFields]="['englishText', 'hungarianText']"
+  [value]="words"
   [paginator]="true"
   [rows]="10"
   [showCurrentPageReport]="true"
@@ -8,6 +11,20 @@
   currentPageReportTemplate="{{ 'AllResult' | translate }}: {totalRecords}"
   [rowsPerPageOptions]="[5, 10, 25, 50]"
   [styleClass]="'p-datatable-sm'">
+  <ng-template pTemplate="caption">
+    <div class="flex">
+        <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+            pInputText
+            type="text"
+            #inputField
+            (input)="wordTable?.filterGlobal(inputField.value, 'contains')"
+            placeholder="{{ 'Search' | translate }}"
+          />
+        </span>
+    </div>
+</ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="englishText">{{ 'EnglishText' | translate }} <p-sortIcon

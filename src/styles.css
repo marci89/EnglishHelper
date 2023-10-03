@@ -1,6 +1,9 @@
 /* Primeng theme css*/
 @import "primeng/resources/themes/bootstrap4-light-blue/theme.css";
 
+/* import prime ng icons*/
+@import "primeicons/primeicons.css";
+
 /* bootstrap custom css from common folder*/
 @import './app/common/css/bootstrap.css';
 /* Primeng custom css from common folder*/
