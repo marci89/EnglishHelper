@@ -121,6 +121,9 @@
   "ChoosableWordNumber": "Hány darab választható lehetőséget ajánljon fel?",
   "NumberOfEndLetter": "Hány szó végi betűt jelenítsen meg?",
   "NumberOfStartLetter": "Hány kezdőbetűt jelenítsen meg?",
+  "MinSelectableWord": "Minimum kettő választható szónak kell lennie. Kérem hozzon létre minimum kettő szót.",
+  "SelectedCorrectWord": "Helyes választás",
+  "SelectedIncorrectWord": "Helytelen választás. A helyes megoldás:",
 
 
   "Statistics": "Statisztika",

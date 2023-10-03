@@ -142,7 +142,7 @@
                 <!-- choosable Word Number -->
                 <div class="p-labeled-input mb-3">
                   <label for="choosableWordNumber">{{ 'ChoosableWordNumber' | translate }}</label>
-                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [(ngModel)]="model.choosableWordNumber"
+                  <p-inputNumber mode="decimal" [showButtons]="true" [min]="2" [max]="10" [(ngModel)]="model.choosableWordNumber"
                     name="choosableWordNumber" [style]="{'width':'100px'}"
                     [inputStyle]="{'width':'100px'}"></p-inputNumber>
                 </div>
