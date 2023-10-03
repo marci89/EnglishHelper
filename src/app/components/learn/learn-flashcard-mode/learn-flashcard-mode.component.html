@@ -33,13 +33,13 @@
         <!-- Buttons -->
         <div class="row">
           <div class="col-12 d-flex justify-content-center text-center mt-3">
-            <p-button type="button" styleClass="p-button-success p-button-lg" (click)="correct()">{{ 'Good' | translate
+            <p-button [disabled]="waiting" type="button" styleClass="p-button-success p-button-lg" (click)="correct()">{{ 'Good' | translate
               }}</p-button>
-            <p-button type="button" styleClass="p-button-danger p-button-lg" class="mx-2" (click)="incorrect()">{{ 'Bad'
+            <p-button [disabled]="waiting" type="button" styleClass="p-button-danger p-button-lg" class="mx-2" (click)="incorrect()">{{ 'Bad'
               | translate
               }}</p-button>
             <div *ngIf="settings.enableSound">
-              <p-button type="button" styleClass=" p-button-lg" class="mx-2" (click)="speak()">{{ 'Sound'
+              <p-button [disabled]="waiting" type="button" styleClass=" p-button-lg" class="mx-2" (click)="speak()">{{ 'Sound'
                 | translate
                 }}
                 <i class="fa fa-volume-up fa-lg" style="margin-left: 5px;"></i>

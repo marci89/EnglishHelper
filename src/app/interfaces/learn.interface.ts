@@ -47,3 +47,8 @@ export enum WordOrderingType {
   //starting from the worst good-bad balance
   Worst = 5,
 }
+// Helper interface for typing mode text length validity
+export interface startAndEndLetternumber{
+  startLetterNumber: number;
+  endLetterNumber: number;
+}

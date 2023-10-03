@@ -51,6 +51,8 @@ export class LearnFlashcardModeComponent implements OnInit {
   //flashcard
   flip: string = '';
 
+  //while waiting disabled the buttons
+  waiting: boolean = false;
   //finished
   isFinished: boolean = false;
 
@@ -98,9 +100,9 @@ export class LearnFlashcardModeComponent implements OnInit {
 
         //check the word count
         if (this.words && this.words.length > 0) {
-          this.setFlashCard();
           this.learnService.shuffleArray(this.words);
           this.setCurrentWord();
+          this.setFlashCard();
           this.wordListTotalCount = words.length;
         }
       },
@@ -141,8 +143,10 @@ export class LearnFlashcardModeComponent implements OnInit {
 
     //automatic flip
     if (this.settings.enableFlashcardAutomaticFlip) {
+      this.waiting = true;
       setTimeout(() => {
         this.toggleFlashcard();
+        this.waiting = false;
       }, this.settings.flashcardFlipTimer * 1000);
     }
   }
@@ -190,16 +194,23 @@ export class LearnFlashcardModeComponent implements OnInit {
       this.currentWord.hungarianText = "";
     }
 
+    if(!this.settings.enableFlashcardAutomaticFlip)
+    this.waiting = true;
+
     this.setFlashCard();
 
     // set timeout because of flipping
     setTimeout(() => {
+
       this.solvedWordListCount++;
       this.updateUsedWord(isCorrect);
       this.deleteFirstElement();
       this.calculateResult();
       this.setCurrentWord();
       this.setTextsmaller();
+      if(!this.settings.enableFlashcardAutomaticFlip)
+      this.waiting = false;
+
     }, 300);
   }
 
@@ -214,7 +225,8 @@ export class LearnFlashcardModeComponent implements OnInit {
   //speak the word
   speak() {
     if (this.settings.enableSound) {
-      const text = this.flip === 'english' ? this.currentWord?.englishText : this.currentWord?.hungarianText;
+      //const text = this.flip === 'english' ? this.currentWord?.englishText : this.currentWord?.hungarianText;
+      const text = this.settings.isEnglishToHungarian ? this.currentWord?.englishText : this.currentWord?.hungarianText;
       this.textToSpeechService.speak(text ?? '');
     }
   }

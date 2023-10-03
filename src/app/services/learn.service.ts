@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../common/services/base.service';
 import { HttpClient } from '@angular/common/http';
 import { LearnSettingsModel } from '../interfaces/learn.interface';
+import { Word } from '../interfaces/word.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,11 @@ export class LearnService extends BaseService {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+  }
+
+   //validate the actual word actual language and return the result (enought small or not)
+  checkTextLong(word: Word | null, isEnglishToHungarian: boolean ) : boolean {
+    return !!word && (isEnglishToHungarian ? word.englishText : word.hungarianText)?.length > 100;
   }
 
 }

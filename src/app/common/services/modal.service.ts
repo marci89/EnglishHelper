@@ -43,7 +43,6 @@ export class ModalService {
     this.confirmationService.confirm({
       message: this.translate.instant('DeleteConfirmationMessage') + '<br>' + itemName,
       header: this.translate.instant('DeleteConfirmationTitle'),
-      icon: 'pi pi-trash',
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
 
@@ -78,7 +77,6 @@ export class ModalService {
     this.confirmationService.confirm({
       message: text,
       header: this.translate.instant(header),
-      icon: 'pi pi-trash',
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
 

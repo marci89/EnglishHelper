@@ -29,28 +29,28 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
   wordListTotalCount: number = 0;
   //Solved learning word list count number
   solvedWordListCount: number = 0;
-
-  //Error
-  serverError: string = '';
-  //message
-  message: string = '';
-  isSuccesssMessage: boolean = false;
-
-  //Learn result in percent
-  result: number = 100;
   //good words
   correctWordListCount: number = 0;
   //bad words
   incorrectWordListCount: number = 0;
+  //Learn result in percent
+  result: number = 100;
 
   //card text
   cardText?: string | null = '';
-
-  //finished
-  isFinished: boolean = false;
-
   //text long check
   isTextTooLong: boolean = false;
+
+  //while waiting disabled the buttons
+  waiting: boolean = false;
+  //Error
+  serverError: string = '';
+  //message
+  message: string = '';
+  // check message is success or not
+  isSuccesssMessage: boolean = false;
+  //finished
+  isFinished: boolean = false;
 
   //settings variables
   settings: LearnSettingsModel = {} as LearnSettingsModel;
@@ -177,9 +177,7 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
       this.currentWord = this.words[0];
       this.setSelectableWordList();
       this.speak();
-      console.log(this.words.length)
     } else {
-      debugger;
       //create static about the result
       this.CreateLearnStatistics();
       //end of the learn
@@ -196,19 +194,13 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
 
   //check smaller font-size if you have longer word
   CheckCardTextLong(word: Word | null) {
-    this.isTextTooLong = this.CheckTextLong(word)
+    this.isTextTooLong = this.CheckTextLong(word);
   }
 
   //validate the actual word actual language and set smaller size if have to
   // or set the row column size in template depends on word long, too.
-  CheckTextLong(word: Word | null) {
-    if (word) {
-      const text = this.settings.isEnglishToHungarian
-        ? word.englishText ?? ''
-        : word.hungarianText ?? '';
-      return text.length > 100;
-    }
-    return false;
+  CheckTextLong(word: Word | null): boolean {
+    return this.learnService.checkTextLong(word, this.settings.isEnglishToHungarian);
   }
 
   //get selectable button text
@@ -245,6 +237,7 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
 
   // Common logic for set next word
   setNextWord(isCorrect: boolean) {
+    this.waiting = true;
     setTimeout(() => {
       this.serverError = "";
       this.message = "";
@@ -256,6 +249,7 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
       this.setCurrentWord();
       this.CheckCardTextLong(this.currentWord);
       this.setCardText();
+      this.waiting = false;
     }, 3000);
   }
 
