@@ -204,6 +204,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.serverError = "";
       this.message = "";
 
+
       this.solvedWordCount++;
       this.updateUsedWord(isCorrect);
       this.deleteFirstElement();
@@ -211,6 +212,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.setCurrentWord();
       this.checkCardTextLong(this.currentWord);
       this.setCardText();
+      this.wordInput = "";
       this.waiting = false;
     }, 4000);
   }

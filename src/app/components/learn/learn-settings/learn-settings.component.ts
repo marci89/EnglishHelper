@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { DropDownListModel } from 'src/app/common/interfaces/common.interface';
-import { LearnModeType, LearnSettingsModel, WordOrderingType } from 'src/app/interfaces/learn.interface';
+import { LearnModeType, LearnSettingsModel, WordOrderType } from 'src/app/interfaces/learn.interface';
 import { Word } from 'src/app/interfaces/word.interface';
 import { LearnService } from 'src/app/services/learn.service';
 import { WordService } from 'src/app/services/word.service';
@@ -47,7 +47,7 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initLearnModeTypes();
-    this.initWordOrderingTypes();
+    this.initWordOrderTypes();
 
     //subscribe word list to know the words counts
     this.wordListSubscription$ = this.wordService.wordList$.subscribe({
@@ -61,11 +61,11 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
   }
 
   //init word order type dropdown list
-  initWordOrderingTypes() {
-    for (const key in WordOrderingType) {
+  initWordOrderTypes() {
+    for (const key in WordOrderType) {
       if (!isNaN(Number(key))) {
         this.wordOrderingTypes.push({
-          label: WordOrderingType[key],
+          label: WordOrderType[key],
           value: +key,
         });
       }
@@ -142,6 +142,9 @@ export class LearnSettingsComponent implements OnInit, OnDestroy {
         break;
       case LearnModeType.Selection:
         this.router.navigate(['learn-selection']);
+        break;
+      case LearnModeType.Listening:
+        this.router.navigate(['learn-listening']);
         break;
       default:
         this.router.navigate(['learn-flashcard']);

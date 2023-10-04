@@ -1,0 +1,12 @@
+.header-label {
+  font-size: 25px;
+}
+
+.message {
+  text-align: center;
+  font-size: 25px;
+}
+
+.word-input-mask{
+  display: grid;
+}

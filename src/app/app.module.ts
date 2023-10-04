@@ -35,6 +35,7 @@ import { LearnTypingModeComponent } from './components/learn/learn-typing-mode/l
 import { LearnSelectionModeComponent } from './components/learn/learn-selection-mode/learn-selection-mode.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { LearnModeBaseComponent } from './components/learn/learn-mode-base/learn-mode-base.component';
+import { LearnListeningModeComponent } from './components/learn/learn-listening-mode/learn-listening-mode.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { LearnModeBaseComponent } from './components/learn/learn-mode-base/learn
     LearnSelectionModeComponent,
     StatisticsComponent,
     LearnModeBaseComponent,
+    LearnListeningModeComponent,
   ],
   imports: [
     BrowserModule,

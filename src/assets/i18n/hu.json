@@ -97,8 +97,9 @@
   "HungarianToEnglish" : "Magyar-Angol",
   "LearnModeType": "Tanulás típusa",
   "Flashcard": "Flashcard",
-  "Typing": "Gépelős",
-  "Selection": "Választós",
+  "Typing": "Gépelés",
+  "Selection": "Választás",
+  "Listening": "Hallgatás",
   "WordOrderingType": "Szavak rendezése",
   "Start": "Indítás",
   "Any": "Bármilyen lehet",
@@ -128,6 +129,7 @@
   "SelectedIncorrectWord": "Helytelen! A helyes megoldás:",
   "SelectAWord": "Válassz a lehetőségek közül",
   "TypeTextHere": "Írja be ide a szöveget",
+  "TypeListeningTextHere": "Írja be ide a hallott szöveget",
 
 
   "Statistics": "Statisztika",

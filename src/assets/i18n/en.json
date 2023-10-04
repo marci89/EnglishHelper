@@ -98,6 +98,7 @@
   "Flashcard": "Flashcard",
   "Typing": "Typing",
   "Selection": "Selection",
+  "Listening": "Listening",
   "WordOrderingType": "Order words",
   "Start": "Start",
   "Any": "Any",
@@ -126,7 +127,9 @@
   "SelectedCorrectWord": "Correct",
   "SelectedIncorrectWord": "Incorrect choice! The correct answer is:",
   "SelectAWord": "Choose from the options",
-  "TypeTextHere": "Type text here",
+  "TypeTextHere": "Enter the text here",
+  "TypeListeningTextHere": "Enter the text you hear",
+
 
   "Statistics": "Statistics",
 

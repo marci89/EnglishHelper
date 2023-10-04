@@ -31,11 +31,13 @@ export enum LearnModeType {
   // you can typing any text
   Typing = 2,
   // you can select more opportunity
-  Selection = 3
+  Selection = 3,
+  //you can hear the word only
+  Listening = 4
 }
 
 //Word ordering types
-export enum WordOrderingType {
+export enum WordOrderType {
   // it can be anything
   Any = 1,
   //starting the newest words
@@ -47,8 +49,9 @@ export enum WordOrderingType {
   //starting from the worst good-bad balance
   Worst = 5,
 }
+
 // Helper interface for typing mode text length validity
-export interface startAndEndLetternumber{
+export interface startAndEndLetternumber {
   startLetterNumber: number;
   endLetterNumber: number;
 }
