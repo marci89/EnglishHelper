@@ -15,6 +15,10 @@ export class WordService extends BaseService {
   private WordListSource = new BehaviorSubject<Word[] | null>(null);
   wordList$ = this.WordListSource.asObservable();
 
+  //Filtered word list subject
+  private FilteredWordListSource = new BehaviorSubject<Word[] | []>([]);
+  filteredwordList$ = this.FilteredWordListSource.asObservable();
+
   constructor(private http: HttpClient) {
     super();
   }
@@ -35,12 +39,24 @@ export class WordService extends BaseService {
     )
   }
 
-    // Get User's words by logined user id and filtering.
+  /*   // Get User's words by logined user id and filtering.
     listWithFilter(request: ListWordWithFilterRequest) {
       const params = this.createParams(request);
-      return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`,{ params });
+      return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`, { params });
     }
+   */
 
+  // Get User's words by logined user id and filtering.
+  listWithFilter(request: ListWordWithFilterRequest) {
+    const params = this.createParams(request);
+    return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`, { params }).pipe(
+      map(words => {
+        if (words) {
+          this.FilteredWordListSource.next(words);
+        }
+      })
+    )
+  }
 
   //Create word and add to the subject
   create(request: CreatewordRequest) {
@@ -69,8 +85,8 @@ export class WordService extends BaseService {
     );
   }
 
-   //Update used word when learning
-   updateUsedWord(request: UpdateUsedWordRequest) {
+  //Update used word when learning
+  updateUsedWord(request: UpdateUsedWordRequest) {
     return this.http.put<Word>(this.baseUrl + 'word/UpdateUsedWord', request);
   }
 

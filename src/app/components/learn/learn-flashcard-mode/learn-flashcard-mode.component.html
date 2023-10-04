@@ -10,7 +10,7 @@
         <!-- Header -->
         <div class="row">
           <div class="col-12 col-md-6 col-sm-6">
-            <h5>{{'Words' | translate}}: {{solvedWordListCount}}/{{wordListTotalCount}}</h5>
+            <h5>{{'Words' | translate}}: {{solvedWordCount}}/{{wordListTotalCount}}</h5>
 
           </div>
           <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
@@ -53,8 +53,8 @@
       <div *ngIf="isFinished">
         <div class="row">
           <div class="col-12 col-md-6 col-sm-6">
-            <span class="header-label">{{'Good' | translate}}: {{correctWordListCount}}</span>
-            <span class="mx-4 header-label">{{'Bad' | translate}}: {{incorrectWordListCount}}</span>
+            <span class="header-label">{{'Good' | translate}}: {{correctWordCount}}</span>
+            <span class="mx-4 header-label">{{'Bad' | translate}}: {{incorrectWordCount}}</span>
           </div>
           <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
             <span class="header-label">{{'Result' | translate}}: {{result}}%</span>

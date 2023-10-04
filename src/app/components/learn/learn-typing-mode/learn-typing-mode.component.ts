@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CreateLearnStatisticsRequest } from 'src/app/interfaces/learn-statistics.interface';
@@ -8,28 +8,15 @@ import { LearnStatisticsService } from 'src/app/services/learn-statistics.servic
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
 import { WordService } from 'src/app/services/word.service';
+import { LearnModeBaseComponent } from '../learn-mode-base/learn-mode-base.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-learn-typing-mode',
   templateUrl: './learn-typing-mode.component.html',
   styleUrls: ['./learn-typing-mode.component.css']
 })
-export class LearnTypingModeComponent implements OnInit {
-  //learning word list
-  words: Word[] = [];
-  //Actual word
-  currentWord: Word | null = {} as Word;
-  //learning word list count number
-  wordListTotalCount: number = 0;
-  //Solved learning word list count number
-  solvedWordListCount: number = 0;
-  //good words
-  correctWordListCount: number = 0;
-  //bad words
-  incorrectWordListCount: number = 0;
-  //Learn result in percent
-  result: number = 100;
-
+export class LearnTypingModeComponent extends LearnModeBaseComponent implements OnInit, OnDestroy {
   //word input
   wordInput: string = "";
   //word input mask
@@ -41,62 +28,26 @@ export class LearnTypingModeComponent implements OnInit {
   //end Letters
   endLetters: string = "";
 
-
-  //card text
-  cardText?: string | null = '';
-  //text long check
-  isTextTooLong: boolean = false;
-
-  //while waiting disabled the buttons
-  waiting: boolean = false;
-  //Error
-  serverError: string = '';
-  //message
-  message: string = '';
-  // check message is success or not
-  isSuccesssMessage: boolean = false;
-  //finished
-  isFinished: boolean = false;
-
-  //settings variables
-  settings: LearnSettingsModel = {} as LearnSettingsModel;
+  //Subscription
+  wordListSubscription$: Subscription | undefined;
 
   constructor(
-    private wordService: WordService,
-    private toastr: ToastrService,
-    private translate: TranslateService,
-    private learnService: LearnService,
-    private textToSpeechService: TextToSpeechService,
-    private learnStatisticsService: LearnStatisticsService
-
-  ) { }
+    wordService: WordService,
+    toastr: ToastrService,
+    translate: TranslateService,
+    learnService: LearnService,
+    textToSpeechService: TextToSpeechService,
+    learnStatisticsService: LearnStatisticsService
+  ) {
+    super(wordService, learnService, toastr, translate, textToSpeechService, learnStatisticsService);
+  }
 
 
   ngOnInit() {
-    this.initLearn();
-  }
-
-  //Set all of variables to start the learning
-  initLearn() {
-    //get settings options
-    this.settings = this.learnService.readLearnSettings();
-    //list learning words (filtered by settings option)
-    this.listWord();
-
-  }
-
-  // list filtered words
-  listWord() {
-    // Initialize the serviceRequest object
-    const serviceRequest: ListWordWithFilterRequest = {
-      wordNumber: this.settings.wordNumber,
-      orderType: this.settings.wordOrderingType,
-    };
-
-    this.wordService.listWithFilter(serviceRequest).subscribe({
+     //subscribe filterd word list
+    this.wordListSubscription$ = this.wordService.filteredwordList$.subscribe({
       next: words => {
         this.words = words;
-
         //check the word count
         if (this.words && this.words.length > 0) {
           this.learnService.shuffleArray(this.words);
@@ -105,28 +56,10 @@ export class LearnTypingModeComponent implements OnInit {
           this.setCardText();
           this.wordListTotalCount = words.length;
         }
-      },
-      error: _ => {
-        this.serverError = "NoWordList";
       }
-    })
-  }
+    });
 
-  // Update used word
-  updateUsedWord(isCorrect: boolean) {
-    // Initialize the serviceRequest object
-    const serviceRequest: UpdateUsedWordRequest = {
-      id: this.currentWord?.id ?? 0,
-      isCorrect: isCorrect
-    };
-
-    this.wordService.updateUsedWord(serviceRequest).subscribe({
-      next: _ => {
-      },
-      error: error => {
-        this.toastr.error(this.translate.instant(error.error))
-      }
-    })
+    this.initLearn();
   }
 
   //Set word input
@@ -189,7 +122,7 @@ export class LearnTypingModeComponent implements OnInit {
       } else if (start > 0 && end > 0) {
         if (textLength > 2) {
           const value = Math.floor(textLength / 2);
-          startLetterNumber = textLength % 2 === 0 || value % 2 ===0  ? value - 1 : value;
+          startLetterNumber = textLength % 2 === 0 || value % 2 === 0 ? value - 1 : value;
           endLetterNumber = value;
         } else {
           startLetterNumber = 1;
@@ -248,35 +181,17 @@ export class LearnTypingModeComponent implements OnInit {
     }
   }
 
-  //Set the card text
-  setCardText() {
-    this.cardText = this.settings.isEnglishToHungarian
-      ? this.currentWord?.englishText : this.currentWord?.hungarianText
-    this.CheckCardTextLong(this.currentWord);
-  }
-
-  //check smaller font-size if you have longer word
-  CheckCardTextLong(word: Word | null) {
-    this.isTextTooLong = this.CheckTextLong(word);
-  }
-
-  //validate the actual word actual language and set smaller size if have to
-  CheckTextLong(word: Word | null): boolean {
-    return this.learnService.checkTextLong(word, this.settings.isEnglishToHungarian);
-  }
-
   //click the button to check text input
   onClickNextButton() {
-
     //check by id
     if (this.wordInput === this.searchedWord) {
-      this.correctWordListCount++;
+      this.correctWordCount++;
       this.isSuccesssMessage = true;
       this.message = this.translate.instant('SelectedCorrectWord');
       this.setNextWord(true);
     }
     else {
-      this.incorrectWordListCount++;
+      this.incorrectWordCount++;
       this.isSuccesssMessage = false;
       this.message = this.translate.instant('SelectedIncorrectWord') + ' ' + this.searchedWord;
       this.setNextWord(false);
@@ -290,7 +205,7 @@ export class LearnTypingModeComponent implements OnInit {
       this.serverError = "";
       this.message = "";
 
-      this.solvedWordListCount++;
+      this.solvedWordCount++;
       this.updateUsedWord(isCorrect);
       this.deleteFirstElement();
       this.calculateResult();
@@ -301,39 +216,9 @@ export class LearnTypingModeComponent implements OnInit {
     }, 3000);
   }
 
-  //Delete the first element from word list array
-  deleteFirstElement() {
-    if (this.words && this.words.length > 0) {
-      this.words.shift();
+  ngOnDestroy() {
+    if (this.wordListSubscription$) {
+      this.wordListSubscription$.unsubscribe();
     }
-  }
-
-  //speak the word
-  speak() {
-    if (this.settings.enableSound) {
-      const text = this.settings.isEnglishToHungarian
-        ? this.currentWord?.englishText
-        : this.currentWord?.hungarianText;
-      this.textToSpeechService.speak(text ?? '');
-    }
-  }
-
-  //Calculate the result in percentage
-  calculateResult() {
-    const percentage = (this.correctWordListCount / this.solvedWordListCount) * 100;
-    this.result = parseFloat(percentage.toFixed(0));
-  }
-
-  // create learn statistics
-  CreateLearnStatistics() {
-    // Initialize the serviceRequest object
-    const serviceRequest: CreateLearnStatisticsRequest = {
-      correctCount: this.correctWordListCount,
-      incorrectCount: this.incorrectWordListCount,
-      result: this.result,
-      LearnMode: this.settings.learnModeType
-    };
-
-    this.learnStatisticsService.create(serviceRequest).subscribe({})
   }
 }

@@ -9,105 +9,46 @@ import { LearnStatisticsService } from 'src/app/services/learn-statistics.servic
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
 import { WordService } from 'src/app/services/word.service';
+import { LearnModeBaseComponent } from '../learn-mode-base/learn-mode-base.component';
 
 @Component({
   selector: 'app-learn-selection-mode',
   templateUrl: './learn-selection-mode.component.html',
   styleUrls: ['./learn-selection-mode.component.css']
 })
-export class LearnSelectionModeComponent implements OnInit, OnDestroy {
-  //learning word list
-  words: Word[] = [];
+export class LearnSelectionModeComponent extends LearnModeBaseComponent implements OnInit, OnDestroy {
   //All of words from server
   allWords: Word[] = [];
-  wordListSubscription$: Subscription | undefined;
   //selectable word list
   selectableWords: Word[] = [];
-  //Actual word
-  currentWord: Word | null = {} as Word;
-  //learning word list count number
-  wordListTotalCount: number = 0;
-  //Solved learning word list count number
-  solvedWordListCount: number = 0;
-  //good words
-  correctWordListCount: number = 0;
-  //bad words
-  incorrectWordListCount: number = 0;
-  //Learn result in percent
-  result: number = 100;
 
-  //card text
-  cardText?: string | null = '';
-  //text long check
-  isTextTooLong: boolean = false;
-
-  //while waiting disabled the buttons
-  waiting: boolean = false;
-  //Error
-  serverError: string = '';
-  //message
-  message: string = '';
-  // check message is success or not
-  isSuccesssMessage: boolean = false;
-  //finished
-  isFinished: boolean = false;
-
-  //settings variables
-  settings: LearnSettingsModel = {} as LearnSettingsModel;
+  //Subscriptions
+  wordListSubscription$: Subscription | undefined;
+  allWordListSubscription$: Subscription | undefined;
 
   constructor(
-    private wordService: WordService,
-    private toastr: ToastrService,
-    private translate: TranslateService,
-    private learnService: LearnService,
-    private textToSpeechService: TextToSpeechService,
-    private learnStatisticsService: LearnStatisticsService
-  ) { }
+    wordService: WordService,
+    toastr: ToastrService,
+    translate: TranslateService,
+    learnService: LearnService,
+    textToSpeechService: TextToSpeechService,
+    learnStatisticsService: LearnStatisticsService
+  ) {
+    super(wordService, learnService, toastr, translate, textToSpeechService, learnStatisticsService);
+  }
 
   ngOnInit() {
-
-    this.listAllWord();
-    this.initLearn();
-
-    //subscribe word list to update the table from different components
-    this.wordListSubscription$ = this.wordService.wordList$.subscribe({
+    //subscribe all words
+    this.allWordListSubscription$ = this.wordService.wordList$.subscribe({
       next: words => {
         this.allWords = words ?? [];
       }
     });
-  }
 
-  // list all of words from server
-  listAllWord() {
-    this.wordService.list().subscribe({
-      next: _ => { },
-      error: error => {
-        this.toastr.error(this.translate.instant(error.error))
-      }
-    })
-  }
-
-  //Set all of variables to start the learning
-  initLearn() {
-    //get settings options
-    this.settings = this.learnService.readLearnSettings();
-    //list learning words (filtered by settings option)
-    this.listWord();
-
-  }
-
-  // list filtered words
-  listWord() {
-    // Initialize the serviceRequest object
-    const serviceRequest: ListWordWithFilterRequest = {
-      wordNumber: this.settings.wordNumber,
-      orderType: this.settings.wordOrderingType,
-    };
-
-    this.wordService.listWithFilter(serviceRequest).subscribe({
+    //subscribe filterd word list
+    this.wordListSubscription$ = this.wordService.filteredwordList$.subscribe({
       next: words => {
         this.words = words;
-
         //check the word count
         if (this.words && this.words.length > 0) {
           this.learnService.shuffleArray(this.words);
@@ -116,24 +57,17 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
           this.setCardText();
           this.wordListTotalCount = words.length;
         }
-      },
-      error: _ => {
-        this.serverError = "NoWordList";
       }
-    })
+    });
+
+    this.listAllWord();
+    this.initLearn();
   }
 
-  // Update used word
-  updateUsedWord(isCorrect: boolean) {
-    // Initialize the serviceRequest object
-    const serviceRequest: UpdateUsedWordRequest = {
-      id: this.currentWord?.id ?? 0,
-      isCorrect: isCorrect
-    };
-
-    this.wordService.updateUsedWord(serviceRequest).subscribe({
-      next: _ => {
-      },
+  // list all of words from server
+  listAllWord() {
+    this.wordService.list().subscribe({
+      next: _ => { },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))
       }
@@ -185,24 +119,6 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
     }
   }
 
-  //Set the card text
-  setCardText() {
-    this.cardText = this.settings.isEnglishToHungarian
-      ? this.currentWord?.englishText : this.currentWord?.hungarianText
-    this.CheckCardTextLong(this.currentWord);
-  }
-
-  //check smaller font-size if you have longer word
-  CheckCardTextLong(word: Word | null) {
-    this.isTextTooLong = this.CheckTextLong(word);
-  }
-
-  //validate the actual word actual language and set smaller size if have to
-  // or set the row column size in template depends on word long, too.
-  CheckTextLong(word: Word | null): boolean {
-    return this.learnService.checkTextLong(word, this.settings.isEnglishToHungarian);
-  }
-
   //get selectable button text
   getSelectableButtonText(id: number): string | undefined {
     const word = this.selectableWords.find(item => item.id === id);
@@ -222,13 +138,13 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
 
     //check by id
     if (this.currentWord?.id === id) {
-      this.correctWordListCount++;
+      this.correctWordCount++;
       this.isSuccesssMessage = true;
       this.message = this.translate.instant('SelectedCorrectWord');
       this.setNextWord(true);
     }
     else {
-      this.incorrectWordListCount++;
+      this.incorrectWordCount++;
       this.isSuccesssMessage = false;
       this.message = this.translate.instant('SelectedIncorrectWord') + ' ' + text;
       this.setNextWord(false);
@@ -242,7 +158,7 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
       this.serverError = "";
       this.message = "";
 
-      this.solvedWordListCount++;
+      this.solvedWordCount++;
       this.updateUsedWord(isCorrect);
       this.deleteFirstElement();
       this.calculateResult();
@@ -253,43 +169,10 @@ export class LearnSelectionModeComponent implements OnInit, OnDestroy {
     }, 3000);
   }
 
-  //Delete the first element from word list array
-  deleteFirstElement() {
-    if (this.words && this.words.length > 0) {
-      this.words.shift();
-    }
-  }
-
-  //speak the word
-  speak() {
-    if (this.settings.enableSound) {
-      const text = this.settings.isEnglishToHungarian
-        ? this.currentWord?.englishText
-        : this.currentWord?.hungarianText;
-      this.textToSpeechService.speak(text ?? '');
-    }
-  }
-
-  //Calculate the result in percentage
-  calculateResult() {
-    const percentage = (this.correctWordListCount / this.solvedWordListCount) * 100;
-    this.result = parseFloat(percentage.toFixed(0));
-  }
-
-  // create learn statistics
-  CreateLearnStatistics() {
-    // Initialize the serviceRequest object
-    const serviceRequest: CreateLearnStatisticsRequest = {
-      correctCount: this.correctWordListCount,
-      incorrectCount: this.incorrectWordListCount,
-      result: this.result,
-      LearnMode: this.settings.learnModeType
-    };
-
-    this.learnStatisticsService.create(serviceRequest).subscribe({})
-  }
-
   ngOnDestroy() {
+    if (this.allWordListSubscription$) {
+      this.allWordListSubscription$.unsubscribe();
+    }
     if (this.wordListSubscription$) {
       this.wordListSubscription$.unsubscribe();
     }
