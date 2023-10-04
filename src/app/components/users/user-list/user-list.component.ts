@@ -58,6 +58,8 @@ export class UserListComponent implements OnInit, OnDestroy {
       next: response => {
         this.users = response.result;
         this.pagination = response.pagination;
+        this.filter.username = "";
+        this.filter.email = "";
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))

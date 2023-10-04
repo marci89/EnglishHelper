@@ -7,7 +7,7 @@
         <div class="col-12 col-md-3 mb-3">
           <div class="form-group">
             <label for="englishText">{{'EnglishText' | translate }}</label>
-             <input type="text" pInputText  formControlName="englishText"  maxlength="200" class="form-control">
+             <input #englishTextInput type="text" pInputText  formControlName="englishText"  maxlength="200" class="form-control">
               <div *ngIf="createWordForm.get('englishText')?.errors && createWordForm.get('englishText')?.touched" class="text-danger">
                 <p *ngIf="createWordForm.get('englishText')?.hasError('required')">{{'EnglishTextRequired' | translate }}</p>
               </div>

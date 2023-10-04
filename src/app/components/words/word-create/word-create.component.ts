@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -10,6 +10,10 @@ import { WordService } from '../../../services/word.service';
   styleUrls: ['./word-create.component.css']
 })
 export class WordCreateComponent implements OnInit {
+
+  //englishTextInput input viewchild
+  @ViewChild('englishTextInput') englishTextInput!: ElementRef;
+
   createWordForm: FormGroup = new FormGroup({})
 
   constructor(
@@ -36,6 +40,8 @@ export class WordCreateComponent implements OnInit {
       next: _ => {
         this.toastr.success(this.translate.instant('SaveSuccess'))
         this.createWordForm.reset();
+        //set focus to the first input
+        this.englishTextInput.nativeElement.focus();
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))

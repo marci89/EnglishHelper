@@ -68,7 +68,6 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.endLetters = '';
       //original text
       const text = this.getSearchedWordText();
-
       //checking start and end parts if we set it
       if ((this.settings.numberOfStartLetter > 0 || this.settings.numberOfEndLetter > 0) && text.length > 1) {
         this.setSplittedWord(text);
@@ -108,7 +107,6 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
     let startLetterNumber = 0;
     let endLetterNumber = 0;
 
-    debugger;
     //if the original text shorter than end+start
     if ((end + start) > textLength + 1) {
       if (start === 0 && end > 0) {
@@ -182,7 +180,6 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
 
   //click the button to check text input
   onClickNextButton() {
-
     if (!this.settings.isEnglishToHungarian)
     this.speak();
 

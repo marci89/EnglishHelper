@@ -75,7 +75,6 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
   //set selectable word list
   setSelectableWordList() {
     if (this.currentWord) {
-      debugger;
       //Check minimum length
       if (this.allWords.length < 2) {
         this.serverError = this.translate.instant('MinSelectableWord');
