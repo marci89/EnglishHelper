@@ -9,12 +9,15 @@
       <div *ngIf="!serverError && !isFinished">
         <!-- Header -->
         <div class="row">
-          <div class="col-12 col-md-6 col-sm-6">
+          <div class="col-12 col-md-6 col-sm-6 d-flex align-items-center">
             <h5>{{'Words' | translate}}: {{solvedWordCount}}/{{wordListTotalCount}}</h5>
-
           </div>
-          <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
-            <h5>{{'Result' | translate}}: {{result}}%</h5>
+          <div class="col-12 col-md-6 col-sm-6 d-flex flex-column flex-sm-row justify-content-end align-items-start">
+            <h5 style="margin-right: 10px;">{{'Result' | translate}}: {{result}}%</h5>
+            <button type="button" class="btn btn-info" (click)="setSound()">
+              <i *ngIf="enableSound" class="fa fa-volume-up fa-lg"></i>
+              <i *ngIf="!enableSound" class="fa fa-volume-down fa-lg"></i>
+            </button>
           </div>
         </div>
         <!--Flashcard-->
@@ -38,8 +41,8 @@
             <p-button [disabled]="waiting" type="button" styleClass="p-button-danger p-button-lg" class="mx-2" (click)="incorrect()">{{ 'Bad'
               | translate
               }}</p-button>
-            <div *ngIf="settings.enableSound">
-              <p-button [disabled]="waiting" type="button" styleClass=" p-button-lg" class="mx-2" (click)="speak()">{{ 'Sound'
+            <div *ngIf="enableSound">
+              <p-button [disabled]="waiting" type="button" styleClass=" p-button-lg" class="mx-2" (click)="speak()">{{ 'Listen'
                 | translate
                 }}
                 <i class="fa fa-volume-up fa-lg" style="margin-left: 5px;"></i>

@@ -68,7 +68,9 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
   setCurrentWord() {
     if (this.words && this.words.length > 0) {
       this.currentWord = this.words[0];
-      this.speak();
+
+      if (this.settings.isEnglishToHungarian)
+        this.speak();
     } else {
       //create static about the result
       this.CreateLearnStatistics();
@@ -80,6 +82,9 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
     if (this.settings.enableFlashcardAutomaticFlip) {
       this.waiting = true;
       setTimeout(() => {
+        if (!this.settings.isEnglishToHungarian)
+        this.speak();
+
         this.toggleFlashcard();
         this.waiting = false;
       }, this.settings.flashcardFlipTimer * 1000);
@@ -95,6 +100,9 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
   //toggle flashcard
   toggleFlashcard() {
     this.flip = (this.flip == 'english') ? 'hungarian' : 'english';
+    if (this.flip === 'english')
+    this.speak();
+
     this.setTextsmaller();
   }
 

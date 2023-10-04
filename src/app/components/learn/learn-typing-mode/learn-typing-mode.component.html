@@ -11,23 +11,39 @@
         <div class="row">
           <div class="col-12 col-md-6 col-sm-6">
             <h5>{{'Words' | translate}}: {{solvedWordCount}}/{{wordListTotalCount}}</h5>
-
           </div>
-          <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
-            <h5>{{'Result' | translate}}: {{result}}%</h5>
+          <div class="col-12 col-md-6 col-sm-6 d-flex flex-column flex-sm-row justify-content-end align-items-start">
+            <h5 style="margin-right: 10px;">{{'Result' | translate}}: {{result}}%</h5>
+            <button type="button" class="btn btn-info" (click)="setSound()">
+              <i *ngIf="enableSound" class="fa fa-volume-up fa-lg"></i>
+              <i *ngIf="!enableSound" class="fa fa-volume-down fa-lg"></i>
+            </button>
           </div>
         </div>
         <!--word card-->
         <div class="row">
           <div class="col-12 d-flex justify-content-center align-items-center text-center mt-3">
-            <div class="word-card" (click)="speak()">
+            <div class="word-card">
               <div class="face">
                 <h2 [class.small-font]="isTextTooLong">{{cardText}}</h2>
               </div>
             </div>
           </div>
         </div>
-
+        <!--Sound-->
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center align-items-center text-center mt-3">
+            <div *ngIf="enableSound">
+              <p-button [disabled]="waiting" type="button" styleClass=" p-button-lg" class="mx-2" (click)="speak()">{{
+                'Listen'
+                | translate
+                }}
+                <i class="fa fa-volume-up fa-lg" style="margin-left: 5px;"></i>
+              </p-button>
+            </div>
+          </div>
+        </div>
+        <hr>
         <!-- Any messages -->
         <div *ngIf="message"
           [ngClass]="{'alert alert-danger': !isSuccesssMessage, 'alert alert-success': isSuccesssMessage, 'message mt-3 mb-3': true}">

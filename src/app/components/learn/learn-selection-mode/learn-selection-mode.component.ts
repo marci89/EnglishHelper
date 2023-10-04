@@ -77,6 +77,7 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
   //set selectable word list
   setSelectableWordList() {
     if (this.currentWord) {
+
       //Check minimum length
       if (this.allWords.length < 2) {
         this.serverError = this.translate.instant('MinSelectableWord');
@@ -109,8 +110,11 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
   setCurrentWord() {
     if (this.words && this.words.length > 0) {
       this.currentWord = this.words[0];
-      this.setSelectableWordList();
+
+      if (this.settings.isEnglishToHungarian)
       this.speak();
+
+      this.setSelectableWordList();
     } else {
       //create static about the result
       this.CreateLearnStatistics();
@@ -135,6 +139,9 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
     const text = this.settings.isEnglishToHungarian
       ? this.currentWord?.hungarianText ?? ''
       : this.currentWord?.englishText ?? '';
+
+      if (!this.settings.isEnglishToHungarian)
+      this.speak();
 
     //check by id
     if (this.currentWord?.id === id) {

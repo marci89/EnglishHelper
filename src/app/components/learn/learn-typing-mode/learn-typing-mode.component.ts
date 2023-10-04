@@ -172,7 +172,10 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
     if (this.words && this.words.length > 0) {
       this.currentWord = this.words[0];
       this.setWordInput();
+
+      if (this.settings.isEnglishToHungarian)
       this.speak();
+
     } else {
       //create static about the result
       this.CreateLearnStatistics();
@@ -183,6 +186,10 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
 
   //click the button to check text input
   onClickNextButton() {
+
+    if (!this.settings.isEnglishToHungarian)
+    this.speak();
+
     //check by id
     if (this.wordInput === this.searchedWord) {
       this.correctWordCount++;

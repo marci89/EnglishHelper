@@ -51,6 +51,9 @@ export class LearnModeBaseComponent {
   //finished
   isFinished: boolean = false;
 
+  //enable sound
+  enableSound: boolean = true;
+
   constructor(
     protected wordService: WordService,
     protected learnService: LearnService,
@@ -64,6 +67,7 @@ export class LearnModeBaseComponent {
   initLearn() {
     //get settings options
     this.settings = this.learnService.readLearnSettings();
+    this.enableSound = this.settings.enableSound;
     //list learning words (filtered by settings option)
     this.listWord();
   }
@@ -124,10 +128,16 @@ export class LearnModeBaseComponent {
 
   //speak the word
   speak() {
-    if (this.settings.enableSound) {
-      const text = this.settings.isEnglishToHungarian ? this.currentWord?.englishText : this.currentWord?.hungarianText;
+    if (this.enableSound) {
+      /*   const text = this.settings.isEnglishToHungarian ? this.currentWord?.englishText : this.currentWord?.hungarianText; */
+      const text = this.currentWord?.englishText;
       this.textToSpeechService.speak(text ?? '');
     }
+  }
+
+  // turn on/off sound
+  setSound() {
+    this.enableSound = !this.enableSound;
   }
 
   //Calculate the result in percentage
