@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { CreateLearnStatisticsRequest } from 'src/app/interfaces/learn-statistics.interface';
-import { LearnSettingsModel, startAndEndLetternumber } from 'src/app/interfaces/learn.interface';
-import { ListWordWithFilterRequest, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
+import { startAndEndLetternumber } from 'src/app/interfaces/learn.interface';
 import { LearnStatisticsService } from 'src/app/services/learn-statistics.service';
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
@@ -52,7 +50,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
         if (this.words && this.words.length > 0) {
           this.learnService.shuffleArray(this.words);
           this.setCurrentWord();
-          this.CheckCardTextLong(this.currentWord);
+          this.checkCardTextLong(this.currentWord);
           this.setCardText();
           this.wordListTotalCount = words.length;
         }
@@ -69,9 +67,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.startLetters = '';
       this.endLetters = '';
       //original text
-      const text = this.settings.isEnglishToHungarian
-        ? this.currentWord?.hungarianText ?? ''
-        : this.currentWord?.englishText ?? '';
+      const text = this.getSearchedWordText();
 
       //checking start and end parts if we set it
       if ((this.settings.numberOfStartLetter > 0 || this.settings.numberOfEndLetter > 0) && text.length > 1) {
@@ -178,7 +174,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
 
     } else {
       //create static about the result
-      this.CreateLearnStatistics();
+      this.createLearnStatistics();
       //end of the learn
       this.isFinished = true;
     }
@@ -193,14 +189,13 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
     //check by id
     if (this.wordInput === this.searchedWord) {
       this.correctWordCount++;
-      this.isSuccesssMessage = true;
-      this.message = this.translate.instant('SelectedCorrectWord');
+      this.setMessage(true)
       this.setNextWord(true);
     }
     else {
+      const text = this.getSearchedWordText();
       this.incorrectWordCount++;
-      this.isSuccesssMessage = false;
-      this.message = this.translate.instant('SelectedIncorrectWord') + ' ' + this.searchedWord;
+      this.setMessage(false, text)
       this.setNextWord(false);
     }
   }
@@ -217,10 +212,16 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.deleteFirstElement();
       this.calculateResult();
       this.setCurrentWord();
-      this.CheckCardTextLong(this.currentWord);
+      this.checkCardTextLong(this.currentWord);
       this.setCardText();
       this.waiting = false;
-    }, 3000);
+    }, 4000);
+  }
+
+  getSearchedWordText(): string {
+    return this.settings.isEnglishToHungarian
+    ? this.currentWord?.hungarianText ?? ''
+    : this.currentWord?.englishText ?? '';
   }
 
   ngOnDestroy() {

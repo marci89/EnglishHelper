@@ -123,8 +123,10 @@
   "NumberOfEndLetter": "How many letters at the end of words should you display?",
   "NumberOfStartLetter": "How many letters at the start of words should you display?",
   "MinSelectableWord": "Must be at least two words. Please create at least two words.",
-  "SelectedCorrectWord": "Correct choice",
-  "SelectedIncorrectWord": "Incorrect choice. The correct answer is:",
+  "SelectedCorrectWord": "Correct",
+  "SelectedIncorrectWord": "Incorrect choice! The correct answer is:",
+  "SelectAWord": "Choose from the options",
+  "TypeTextHere": "Type text here",
 
   "Statistics": "Statistics",
 

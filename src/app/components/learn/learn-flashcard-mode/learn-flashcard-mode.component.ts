@@ -30,7 +30,7 @@ import { Subscription } from 'rxjs';
 export class LearnFlashcardModeComponent extends LearnModeBaseComponent implements OnInit, OnDestroy {
 
   //flashcard
-  flip: string = '';
+  flip: string = 'english';
 
   //Subscription
   wordListSubscription$: Subscription | undefined;
@@ -73,7 +73,7 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
         this.speak();
     } else {
       //create static about the result
-      this.CreateLearnStatistics();
+      this.createLearnStatistics();
       //end of the learn
       this.isFinished = true;
     }

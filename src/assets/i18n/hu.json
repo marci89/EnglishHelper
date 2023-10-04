@@ -124,8 +124,10 @@
   "NumberOfEndLetter": "Hány utolsó betűt jelenítsen meg?",
   "NumberOfStartLetter": "Hány kezdőbetűt jelenítsen meg?",
   "MinSelectableWord": "Minimum kettő választható szónak kell lennie. Kérem hozzon létre minimum kettő szót.",
-  "SelectedCorrectWord": "Helyes választás",
-  "SelectedIncorrectWord": "Helytelen választás. A helyes megoldás:",
+  "SelectedCorrectWord": "Helyes",
+  "SelectedIncorrectWord": "Helytelen! A helyes megoldás:",
+  "SelectAWord": "Válassz a lehetőségek közül",
+  "TypeTextHere": "Írja be ide a szöveget",
 
 
   "Statistics": "Statisztika",

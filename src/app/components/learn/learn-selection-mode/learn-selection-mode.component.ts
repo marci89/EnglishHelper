@@ -2,9 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { CreateLearnStatisticsRequest } from 'src/app/interfaces/learn-statistics.interface';
-import { LearnSettingsModel } from 'src/app/interfaces/learn.interface';
-import { ListWordWithFilterRequest, UpdateUsedWordRequest, Word } from 'src/app/interfaces/word.interface';
+import { Word } from 'src/app/interfaces/word.interface';
 import { LearnStatisticsService } from 'src/app/services/learn-statistics.service';
 import { LearnService } from 'src/app/services/learn.service';
 import { TextToSpeechService } from 'src/app/services/text-to-speech.service';
@@ -53,7 +51,7 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
         if (this.words && this.words.length > 0) {
           this.learnService.shuffleArray(this.words);
           this.setCurrentWord();
-          this.CheckCardTextLong(this.currentWord);
+          this.checkCardTextLong(this.currentWord);
           this.setCardText();
           this.wordListTotalCount = words.length;
         }
@@ -77,11 +75,13 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
   //set selectable word list
   setSelectableWordList() {
     if (this.currentWord) {
-
+      debugger;
       //Check minimum length
       if (this.allWords.length < 2) {
         this.serverError = this.translate.instant('MinSelectableWord');
+        return;
       }
+
       //Check maximum length
       if (this.settings.selectableWordNumber > 10)
         this.settings.selectableWordNumber == 10;
@@ -111,13 +111,13 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
     if (this.words && this.words.length > 0) {
       this.currentWord = this.words[0];
 
-      if (this.settings.isEnglishToHungarian)
-      this.speak();
+      if (this.settings.isEnglishToHungarian && this.allWords.length >= 2)
+        this.speak();
 
       this.setSelectableWordList();
     } else {
       //create static about the result
-      this.CreateLearnStatistics();
+      this.createLearnStatistics();
       //end of the learn
       this.isFinished = true;
     }
@@ -140,20 +140,18 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
       ? this.currentWord?.hungarianText ?? ''
       : this.currentWord?.englishText ?? '';
 
-      if (!this.settings.isEnglishToHungarian)
+    if (!this.settings.isEnglishToHungarian)
       this.speak();
 
     //check by id
     if (this.currentWord?.id === id) {
       this.correctWordCount++;
-      this.isSuccesssMessage = true;
-      this.message = this.translate.instant('SelectedCorrectWord');
+      this.setMessage(true)
       this.setNextWord(true);
     }
     else {
       this.incorrectWordCount++;
-      this.isSuccesssMessage = false;
-      this.message = this.translate.instant('SelectedIncorrectWord') + ' ' + text;
+      this.setMessage(false, text)
       this.setNextWord(false);
     }
   }
@@ -170,10 +168,10 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
       this.deleteFirstElement();
       this.calculateResult();
       this.setCurrentWord();
-      this.CheckCardTextLong(this.currentWord);
+      this.checkCardTextLong(this.currentWord);
       this.setCardText();
       this.waiting = false;
-    }, 3000);
+    }, 4000);
   }
 
   ngOnDestroy() {

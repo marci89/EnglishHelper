@@ -107,7 +107,7 @@ export class LearnModeBaseComponent {
   }
 
   // create learn statistics
-  CreateLearnStatistics() {
+  createLearnStatistics() {
     // Initialize the serviceRequest object
     const serviceRequest: CreateLearnStatisticsRequest = {
       correctCount: this.correctWordCount,
@@ -150,17 +150,26 @@ export class LearnModeBaseComponent {
   setCardText() {
     this.cardText = this.settings.isEnglishToHungarian
       ? this.currentWord?.englishText : this.currentWord?.hungarianText
-    this.CheckCardTextLong(this.currentWord);
+    this.checkCardTextLong(this.currentWord);
   }
 
   //check smaller font-size if you have longer word
-  CheckCardTextLong(word: Word | null) {
-    this.isTextTooLong = this.CheckTextLong(word);
+  checkCardTextLong(word: Word | null) {
+    this.isTextTooLong = this.checkTextLong(word);
   }
 
   //validate the actual word actual language and set smaller size if have to
   // or set the row column size in template depends on word long, too.
-  CheckTextLong(word: Word | null): boolean {
+  checkTextLong(word: Word | null): boolean {
     return this.learnService.checkTextLong(word, this.settings.isEnglishToHungarian);
+  }
+
+  setMessage(isSucces: boolean, text? : string){
+    this.isSuccesssMessage = isSucces;
+    if(isSucces){
+      this.message = this.translate.instant('SelectedCorrectWord');
+    } else {
+      this.message = this.translate.instant('SelectedIncorrectWord') + '<br>' + text;
+    }
   }
 }

@@ -46,11 +46,16 @@
         <hr>
         <!-- Any messages -->
         <div *ngIf="message"
+        [innerHTML]=" message"
           [ngClass]="{'alert alert-danger': !isSuccesssMessage, 'alert alert-success': isSuccesssMessage, 'message mt-3 mb-3': true}">
-          {{ message}}
         </div>
 
         <!-- Input -->
+
+        <div class="text-center">
+          <p>{{ 'TypeTextHere'| translate }}</p>
+        </div>
+
         <div class="row mt-3">
           <div class="col-lg-3 col-md-3 col-sm-12 mb-3 text-md-end text-center">
             <span class="word-part mt-2 mx-2">{{startLetters}}</span>
