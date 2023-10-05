@@ -49,3 +49,8 @@
   text-align: center;
   font-size: 25px;
 }
+
+.long-text{
+  justify-content: space-between !important;
+  overflow: hidden;
+}

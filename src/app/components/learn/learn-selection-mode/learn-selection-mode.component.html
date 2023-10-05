@@ -46,22 +46,20 @@
         <hr>
 
         <!-- Any messages -->
-        <div *ngIf="message"
-          [innerHTML]=" message"
+        <div *ngIf="message" [innerHTML]=" message"
           [ngClass]="{'alert alert-danger': !isSuccesssMessage, 'alert alert-success': isSuccesssMessage, 'message mt-3 mb-3': true}">
         </div>
 
         <!-- Selectable list -->
         <div class="container">
-
           <div class="text-center">
             <p>{{ 'SelectAWord'| translate }}</p>
           </div>
-
           <div class="row col-12">
             <ng-container *ngFor="let word of selectableWords; let i = index">
-              <div [ngClass]="{'col-md-6': !checkTextLong(word), 'col-12': checkTextLong(word)}" class="mb-2 mt-2">
-                <div class="d-flex justify-content-center text-center">
+              <div [ngClass]="{'col-md-6': !checkTextLong(word), 'col-12 long-text': checkTextLong(word)}"
+                class="mb-2 mt-2">
+                <div class="d-flex justify-content-start text-start">
                   <p-button [disabled]="waiting" type="button" styleClass="p-button-lg"
                     (click)="select(word.id)">{{getSelectableButtonText(word.id)}}</p-button>
                 </div>
@@ -69,32 +67,32 @@
             </ng-container>
           </div>
         </div>
-      </div>
-      <!-- If the lesson has done -->
-      <div *ngIf="isFinished">
-        <div class="row">
-          <div class="col-12 col-md-6 col-sm-6">
-            <span class="header-label">{{'Good' | translate}}: {{correctWordCount}}</span>
-            <span class="mx-4 header-label">{{'Bad' | translate}}: {{incorrectWordCount}}</span>
+        <!-- If the lesson has done -->
+        <div *ngIf="isFinished">
+          <div class="row">
+            <div class="col-12 col-md-6 col-sm-6">
+              <span class="header-label">{{'Good' | translate}}: {{correctWordCount}}</span>
+              <span class="mx-4 header-label">{{'Bad' | translate}}: {{incorrectWordCount}}</span>
+            </div>
+            <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
+              <span class="header-label">{{'Result' | translate}}: {{result}}%</span>
+            </div>
           </div>
-          <div class="col-12 col-md-6 col-sm-6 text-sm-start text-md-end text-lg-end">
-            <span class="header-label">{{'Result' | translate}}: {{result}}%</span>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center text-center mt-3">
+              <h2> {{ 'LearningFinished' | translate}}</h2>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center text-center mt-3">
-            <h2> {{ 'LearningFinished' | translate}}</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center text-center mt-3">
-            <p-button type="button" styleClass="p-button-success" (click)="restart()">{{ 'Restart' | translate
-            }}</p-button>
-          <p-button type="button" styleClass="p-button-danger mx-2" routerLink="/learn-settings">{{ 'BackToLearnSettings' | translate
-            }}</p-button>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center text-center mt-3">
+              <p-button type="button" styleClass="p-button-success" (click)="restart()">{{ 'Restart' | translate
+                }}</p-button>
+              <p-button type="button" styleClass="p-button-danger mx-2" routerLink="/learn-settings">{{
+                'BackToLearnSettings' | translate
+                }}</p-button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

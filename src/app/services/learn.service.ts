@@ -37,7 +37,7 @@ export class LearnService extends BaseService {
 
    //validate the actual word actual language and return the result (enought small or not)
   checkTextLong(word: Word | null, isEnglishToHungarian: boolean ) : boolean {
-    return !!word && (isEnglishToHungarian ? word.englishText : word.hungarianText)?.length > 100;
+    return !!word && (isEnglishToHungarian ? word.englishText : word.hungarianText)?.length > 50;
   }
 
 }
