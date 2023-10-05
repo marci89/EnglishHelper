@@ -12,6 +12,26 @@ export interface CreateLearnStatisticsRequest {
   LearnMode: LearnModeType;
 }
 
+//list learn statistics for chart server request
+export interface ListLearnStatisticsChartRequest {
+  //quantity
+  quantity: number;
+}
+
+//learn statistics response for chart
+export interface LearnStatisticsChart {
+  // Label list for chart diagram
+  chartLabel: string[];
+  //Flashcard chart data
+  flashcardChartData: string[];
+  //TypingChartData chart data
+  typingChartData: string[];
+  //SelectionChartData chart data
+  selectionChartData: string[];
+  //ListeningChartData chart data
+  listeningChartData: string[];
+}
+
 //Learn statistics
 export interface LearnStatistics {
   //identifier

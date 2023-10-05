@@ -133,6 +133,12 @@
 
 
   "Statistics": "Statisztika",
+  "StatisticsTitle": "Statisztika a fejlődés menetéről",
+  "StatisticsDescription": "A legutóbbi eredményeket mutatja be növekvő sorrendben a tanulás befejezésének időpontja szerint.",
+  "StatisticsNumber": "Mennyi tanulási eredményt mutasson?",
+  "Chart": "Diagram",
+  "Table": "Táblázat",
+
 
 
   "InvalidRequest": "Érvénytelen kérés.",

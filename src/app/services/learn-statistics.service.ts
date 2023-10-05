@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../common/services/base.service';
 import { HttpClient } from '@angular/common/http';
-import { CreateLearnStatisticsRequest, LearnStatistics } from '../interfaces/learn-statistics.interface';
+import { CreateLearnStatisticsRequest, LearnStatistics, LearnStatisticsChart, ListLearnStatisticsChartRequest } from '../interfaces/learn-statistics.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,14 @@ import { CreateLearnStatisticsRequest, LearnStatistics } from '../interfaces/lea
 
     //Get learn statistics list
     list() {
-      return this.http.get<LearnStatistics>(this.baseUrl + 'LearnStatistics/list');
+      return this.http.get<LearnStatistics[]>(this.baseUrl + 'LearnStatistics/list');
     }
+
+      //Get learn statistics list for chart
+      listForChart(request: ListLearnStatisticsChartRequest) {
+        const params = this.createParams(request);
+        return this.http.get<LearnStatisticsChart>(this.baseUrl + 'LearnStatistics/listForChart', { params });
+      }
 
     //Create learn statistics
     create(request: CreateLearnStatisticsRequest) {

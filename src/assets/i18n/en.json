@@ -132,6 +132,11 @@
 
 
   "Statistics": "Statistics",
+  "StatisticsTitle": "Statistics on the course of development",
+  "StatisticsDescription": "The results are presented in serial order according to the date of completion of the study.",
+  "StatisticsNumber": "How many learning results should it show?",
+  "Chart": "Chart",
+  "Table": "Table",
 
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",
