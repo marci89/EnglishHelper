@@ -80,7 +80,7 @@
   "IncorrectCount": "rossz",
   "LastUse": "Utolsó használat",
   "WordsManaging": "Szavak menedzselése",
-  "DeleteAll": "Összes szó törlése",
+  "DeleteAllWord": "Összes szó törlése",
   "ResetResults": "Szavak eredményeinek visszaállítása",
   "NoWordList": "Jelenleg nincsenek mentve szavak. Kérem hozzon létre valamennyit.",
   "Restart": "Újrakezd",
@@ -130,6 +130,7 @@
   "SelectAWord": "Válassz a lehetőségek közül",
   "TypeTextHere": "Írja be ide a szöveget",
   "TypeListeningTextHere": "Írja be ide a hallott szöveget",
+  "BackToLearnSettings": "Vissza a beállításokhoz",
 
 
   "Statistics": "Statisztika",

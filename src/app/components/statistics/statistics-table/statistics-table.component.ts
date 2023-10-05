@@ -69,6 +69,7 @@ export class StatisticsTableComponent implements OnInit {
     this.statisticsService.deleteAll().subscribe({
       next: _ => {
         this.toastr.success(this.translate.instant('DeleteSuccess'))
+        this.list();
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))

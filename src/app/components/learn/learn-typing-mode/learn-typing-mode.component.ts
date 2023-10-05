@@ -42,7 +42,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
 
 
   ngOnInit() {
-     //subscribe filterd word list
+    //subscribe filterd word list
     this.wordListSubscription$ = this.wordService.filteredwordList$.subscribe({
       next: words => {
         this.words = words;
@@ -168,7 +168,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.setWordInput();
 
       if (this.settings.isEnglishToHungarian)
-      this.speak();
+        this.speak();
 
     } else {
       //create static about the result
@@ -181,7 +181,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
   //click the button to check text input
   onClickNextButton() {
     if (!this.settings.isEnglishToHungarian)
-    this.speak();
+      this.speak();
 
     //check by id
     if (this.wordInput === this.searchedWord) {
@@ -214,13 +214,19 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
       this.setCardText();
       this.wordInput = "";
       this.waiting = false;
-    }, 4000);
+    }, 2000);
   }
 
   getSearchedWordText(): string {
     return this.settings.isEnglishToHungarian
-    ? this.currentWord?.hungarianText ?? ''
-    : this.currentWord?.englishText ?? '';
+      ? this.currentWord?.hungarianText ?? ''
+      : this.currentWord?.englishText ?? '';
+  }
+
+  //Restart the learn by the same learn settings
+  restart() {
+    this.resetVariables();
+    this.initLearn();
   }
 
   ngOnDestroy() {

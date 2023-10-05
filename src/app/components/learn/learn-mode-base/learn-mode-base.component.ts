@@ -63,6 +63,21 @@ export class LearnModeBaseComponent {
     protected learnStatisticsService: LearnStatisticsService
   ) { }
 
+  //Set all variable to default value
+  resetVariables(){
+  this.solvedWordCount = 0;
+  this.result = 100;
+  this.correctWordCount = 0;
+  this.incorrectWordCount = 0;
+  this.serverError = '';
+  this.cardText = '';
+  this.message = '';
+  this.isSuccesssMessage = false;
+  this.waiting = false;
+  this.isFinished = false;
+  this.enableSound = true;
+  }
+
   //Set all of variables to start the learning
   initLearn() {
     //get settings options

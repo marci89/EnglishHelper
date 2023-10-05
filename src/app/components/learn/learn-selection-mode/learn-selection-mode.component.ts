@@ -170,7 +170,13 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
       this.checkCardTextLong(this.currentWord);
       this.setCardText();
       this.waiting = false;
-    }, 4000);
+    }, 2000);
+  }
+
+  //Restart the learn by the same learn settings
+  restart() {
+    this.resetVariables();
+    this.initLearn();
   }
 
   ngOnDestroy() {

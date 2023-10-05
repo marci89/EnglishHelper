@@ -83,7 +83,7 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
       this.waiting = true;
       setTimeout(() => {
         if (!this.settings.isEnglishToHungarian)
-        this.speak();
+          this.speak();
 
         this.toggleFlashcard();
         this.waiting = false;
@@ -101,7 +101,7 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
   toggleFlashcard() {
     this.flip = (this.flip == 'english') ? 'hungarian' : 'english';
     if (this.flip === 'english')
-    this.speak();
+      this.speak();
 
     this.setTextsmaller();
   }
@@ -155,6 +155,12 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
         this.waiting = false;
 
     }, 300);
+  }
+
+  //Restart the learn by the same learn settings
+  restart() {
+    this.resetVariables();
+    this.initLearn();
   }
 
   ngOnDestroy() {

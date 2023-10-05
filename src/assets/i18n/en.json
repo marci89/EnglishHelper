@@ -81,7 +81,7 @@
   "IncorrectCount": "Bad",
   "LastUse": "Last use",
   "WordsManaging": "Managing words",
-  "DeleteAll": "Delete all of words",
+  "DeleteAllWord": "Delete all of words",
   "ResetResults": "Reset all word results",
   "NoWordList": "There are currently no words saved. Please create some.",
   "Restart": "Restart",
@@ -129,6 +129,7 @@
   "SelectAWord": "Choose from the options",
   "TypeTextHere": "Enter the text here",
   "TypeListeningTextHere": "Enter the text you hear",
+  "BackToLearnSettings": "Back to settings",
 
 
   "Statistics": "Statistics",

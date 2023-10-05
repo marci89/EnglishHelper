@@ -135,7 +135,13 @@ export class LearnListeningModeComponent extends LearnModeBaseComponent implemen
       this.setCurrentWord();
       this.wordInput = "";
       this.waiting = false;
-    }, 4000);
+    }, 2000);
+  }
+
+  //Restart the learn by the same learn settings
+  restart() {
+    this.resetVariables();
+    this.initLearn();
   }
 
   ngOnDestroy() {
