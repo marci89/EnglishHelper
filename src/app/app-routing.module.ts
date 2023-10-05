@@ -14,8 +14,8 @@ import { LearnSettingsComponent } from './components/learn/learn-settings/learn-
 import { LearnFlashcardModeComponent } from './components/learn/learn-flashcard-mode/learn-flashcard-mode.component';
 import { LearnTypingModeComponent } from './components/learn/learn-typing-mode/learn-typing-mode.component';
 import { LearnSelectionModeComponent } from './components/learn/learn-selection-mode/learn-selection-mode.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
 import { LearnListeningModeComponent } from './components/learn/learn-listening-mode/learn-listening-mode.component';
+import { StatisticsTabMenuComponent } from './components/statistics/statistics-tab-menu/statistics-tab-menu.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'learn-typing', component: LearnTypingModeComponent },
       { path: 'learn-selection', component: LearnSelectionModeComponent },
       { path: 'learn-listening', component: LearnListeningModeComponent },
-      { path: 'statistics', component: StatisticsComponent },
+      { path: 'statistics', component: StatisticsTabMenuComponent },
     ]
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' }

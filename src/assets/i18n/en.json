@@ -137,6 +137,8 @@
   "StatisticsNumber": "How many learning results should it show?",
   "Chart": "Chart",
   "Table": "Table",
+  "LearnResults":"Learn results",
+  "DeleteAllLearnResult": "Delete all of results",
 
   "InvalidRequest": "The request is invalid.",
   "ServerError" : "Oops! Something went wrong on our end. Please try again later.",

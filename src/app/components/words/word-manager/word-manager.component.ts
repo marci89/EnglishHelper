@@ -102,7 +102,7 @@ exportExcelWordList() {
       this.toastr.success(this.translate.instant('ImportSuccess'))
       this.listWord();
     }
-  
+
     //excel uploader event error handler
     onUploadExcelWordListError(event: FileUploadErrorEvent) {
       this.toastr.error(this.translate.instant(event.error?.error))

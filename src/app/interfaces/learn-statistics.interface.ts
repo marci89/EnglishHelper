@@ -45,7 +45,7 @@ export interface LearnStatistics {
   //Result percent
   result: number;
   //Learn mode
-  LearnMode: LearnModeType;
+  learnMode: LearnModeType;
   //creation date
   created: Date;
   //all count (good+bad)

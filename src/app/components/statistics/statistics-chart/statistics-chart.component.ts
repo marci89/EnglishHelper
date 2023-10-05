@@ -5,11 +5,11 @@ import { LearnStatisticsChart, ListLearnStatisticsChartRequest } from 'src/app/i
 import { LearnStatisticsService } from 'src/app/services/learn-statistics.service';
 
 @Component({
-  selector: 'app-statistics',
-  templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.css']
+  selector: 'app-statistics-chart',
+  templateUrl: './statistics-chart.component.html',
+  styleUrls: ['./statistics-chart.component.css']
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsChartComponent implements OnInit {
   quantity: number = 10;
   statistics: LearnStatisticsChart = {} as LearnStatisticsChart;
   chartData: any;
@@ -45,7 +45,13 @@ export class StatisticsComponent implements OnInit {
 
   //numeric input change detection
   handleInput(event: any) {
+    debugger;
     const value = event.value;
+    if(value >= 500){
+      this.quantity = 500;
+      return;
+    }
+
     this.quantity = value;
     this.listStatistics();
   }
@@ -124,3 +130,4 @@ export class StatisticsComponent implements OnInit {
     };
   }
 }
+

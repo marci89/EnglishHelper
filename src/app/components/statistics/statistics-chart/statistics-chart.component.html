@@ -1,0 +1,15 @@
+<!-- Filter panel -->
+<div class="text-center">
+  <h3>{{ 'StatisticsTitle' | translate }}</h3>
+  <p>{{ 'StatisticsDescription' | translate }}</p>
+</div>
+<hr>
+<div class="p-labeled-input">
+  <label for="quantity">{{ 'StatisticsNumber' | translate }}</label>
+  <p-inputNumber mode="decimal" [showButtons]="true" [min]="1" [max]="300" [(ngModel)]="quantity" name="quantity"
+    [style]="{'width':'100px'}" [inputStyle]="{'width':'100px'}" (onInput)="handleInput($event)"></p-inputNumber>
+</div>
+<!-- Chart -->
+<div class="card mt-3">
+  <p-chart type="line" [data]="chartData" [options]="chartOptions" class="diagram-style"></p-chart>
+</div>

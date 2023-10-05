@@ -33,9 +33,11 @@ import { LearnSettingsComponent } from './components/learn/learn-settings/learn-
 import { LearnFlashcardModeComponent } from './components/learn/learn-flashcard-mode/learn-flashcard-mode.component';
 import { LearnTypingModeComponent } from './components/learn/learn-typing-mode/learn-typing-mode.component';
 import { LearnSelectionModeComponent } from './components/learn/learn-selection-mode/learn-selection-mode.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
 import { LearnModeBaseComponent } from './components/learn/learn-mode-base/learn-mode-base.component';
 import { LearnListeningModeComponent } from './components/learn/learn-listening-mode/learn-listening-mode.component';
+import { StatisticsTabMenuComponent } from './components/statistics/statistics-tab-menu/statistics-tab-menu.component';
+import { StatisticsChartComponent } from './components/statistics/statistics-chart/statistics-chart.component';
+import { StatisticsTableComponent } from './components/statistics/statistics-table/statistics-table.component';
 
 
 @NgModule({
@@ -63,9 +65,11 @@ import { LearnListeningModeComponent } from './components/learn/learn-listening-
     LearnFlashcardModeComponent,
     LearnTypingModeComponent,
     LearnSelectionModeComponent,
-    StatisticsComponent,
     LearnModeBaseComponent,
     LearnListeningModeComponent,
+    StatisticsTabMenuComponent,
+    StatisticsChartComponent,
+    StatisticsTableComponent,
   ],
   imports: [
     BrowserModule,
