@@ -42,7 +42,7 @@ export class LearnListeningModeComponent extends LearnModeBaseComponent implemen
         this.words = words;
         //check the word count
         if (this.words && this.words.length > 0) {
-          this.learnService.shuffleArray(this.words);
+          this.shuffleArray(this.words);
           this.setCurrentWord();
           this.wordListTotalCount = words.length;
         }

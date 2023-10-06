@@ -1,25 +1,21 @@
-
 /* managing primeng inputs size to max*/
-.max-width{
+.max-width {
   width: 100%;
 }
 
-
 /* labeled primeng inputs fix*/
-.p-labeled-input > * {
+.p-labeled-input>* {
   display: block;
 }
 
 /* Togglebutton settings*/
-.p-togglebutton
-{
-  background-color:#4287f5  !important;
+.p-togglebutton {
+  background-color: #4287f5 !important;
   color: white !important;
   border-color: aliceblue !important;
 }
 
-.p-togglebutton.p-highlight
-{
+.p-togglebutton.p-highlight {
   background-color: #3175e0 !important;
   color: white !important;
   border-color: aliceblue !important;
@@ -32,11 +28,16 @@
 }
 
 /* Dialog styles */
+.p-dialog {
+  border: 1px solid white;
+}
+
 .p-dialog .p-dialog-content {
   background-color: darkslategrey;
   color: white;
-  padding: 0  !important;
+  padding: 0 !important;
   padding-bottom: 10px !important;
+  overflow-wrap: anywhere;
 }
 
 .p-dialog .p-dialog-header {
@@ -53,29 +54,82 @@
   color: white !important;
 }
 
-.custom-dialog{
-  border: 1px solid white;
-}
-
-
 /* tab styles */
-.p-tabview-panels{
+.p-tabview-panels {
   background-color: #585759 !important;
   color: white !important;
 }
 
-.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
   background-color: #585759;
   color: white;
 }
 
-.p-tabview .p-tabview-nav{
-  border:none;
+.p-tabview .p-tabview-nav {
+  border: none;
 }
 
-/* Remove focus outline on Tab buttons */
-.p-tabview-nav-link:focus {
+/* Remove focus*/
+.p-tabview-nav-link:focus,
+.p-datatable .p-sortable-column:focus {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
+}
+
+/* change focus*/
+.p-focus,
+.p-link:focus {
+  border: 1px solid aqua !important;
+  box-shadow: 0 0 0 0.1rem rgba(147, 185, 224, 0.5) !important;
+  outline: none !important;
+}
+
+/* Confirm buttons styles for primeng confirm dialog */
+.confirmation-yes-button {
+  background-color: #218838;
+  color: #ffffff;
+  border-color: #24d824;
+}
+
+.confirmation-no-button {
+  background-color: #C82333;
+  color: #ffffff;
+  border-color: #c47e16;
+}
+
+.p-inputtext:enabled:focus {
+  border-color: aqua !important;
+}
+
+/* basic (primary) button hover */
+.p-button:enabled:hover {
+  background: #3b629c;
+  color: #ffffff;
+  border-color: white;
+}
+
+/* danger button hover */
+.p-button.p-button-danger:enabled:hover,
+.p-buttonset.p-button-danger>.p-button:enabled:hover,
+.p-splitbutton.p-button-danger>.p-button:enabled:hover {
+  background: #a82e1e;
+  color: #ffffff;
+  border-color: white;
+}
+
+/* success button hover */
+.p-button.p-button-success:enabled:hover,
+.p-buttonset.p-button-success>.p-button:enabled:hover,
+.p-splitbutton.p-button-success>.p-button:enabled:hover {
+  background: #234723;
+  color: #ffffff;
+  border-color: white;
+}
+
+/* prime ng file-upload button hover */
+.p-file-upload:hover {
+  background: #3b629c !important;
+  color: #ffffff !important;
+  border-color: white !important;
 }

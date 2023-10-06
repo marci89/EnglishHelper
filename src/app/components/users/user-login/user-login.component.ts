@@ -47,5 +47,4 @@ export class UserLoginComponent {
     cancel(){
       this.router.navigateByUrl('/');
     }
-
 }

@@ -33,7 +33,6 @@ export class StatisticsTableComponent implements OnInit {
     this.statisticsService.list().subscribe({
       next: statistics => {
         this.statistics = statistics;
-        this.setLearnModeFilterOptions();
       },
       error: error => {
         this.toastr.error(this.translate.instant(error.error))
@@ -75,17 +74,6 @@ export class StatisticsTableComponent implements OnInit {
         this.toastr.error(this.translate.instant(error.error))
       }
     })
-  }
-
-  //set the enum filter and translate
-  setLearnModeFilterOptions(){
-    this.customLearnModeFilterOptions = [
-      { label: this.translate.instant('Any'), value: '' },
-      { label: this.translate.instant('Flashcard'), value: LearnModeType.Flashcard },
-      { label: this.translate.instant('Typing'), value: LearnModeType.Typing },
-      { label: this.translate.instant('Selection'), value: LearnModeType.Selection },
-      { label: this.translate.instant('Listening'), value: LearnModeType.Listening },
-    ];
   }
 
   //Get translated text for enum

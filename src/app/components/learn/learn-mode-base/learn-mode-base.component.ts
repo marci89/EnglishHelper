@@ -64,18 +64,18 @@ export class LearnModeBaseComponent {
   ) { }
 
   //Set all variable to default value
-  resetVariables(){
-  this.solvedWordCount = 0;
-  this.result = 100;
-  this.correctWordCount = 0;
-  this.incorrectWordCount = 0;
-  this.serverError = '';
-  this.cardText = '';
-  this.message = '';
-  this.isSuccesssMessage = false;
-  this.waiting = false;
-  this.isFinished = false;
-  this.enableSound = true;
+  resetVariables() {
+    this.solvedWordCount = 0;
+    this.result = 100;
+    this.correctWordCount = 0;
+    this.incorrectWordCount = 0;
+    this.serverError = '';
+    this.cardText = '';
+    this.message = '';
+    this.isSuccesssMessage = false;
+    this.waiting = false;
+    this.isFinished = false;
+    this.enableSound = true;
   }
 
   //Set all of variables to start the learning
@@ -176,15 +176,24 @@ export class LearnModeBaseComponent {
   //validate the actual word actual language and set smaller size if have to
   // or set the row column size in template depends on word long, too.
   checkTextLong(word: Word | null): boolean {
-    return this.learnService.checkTextLong(word, this.settings.isEnglishToHungarian);
+    return !!word && (this.settings.isEnglishToHungarian ? word.englishText : word.hungarianText)?.length > 30;
   }
 
-  setMessage(isSucces: boolean, text? : string){
+  setMessage(isSucces: boolean, text?: string) {
     this.isSuccesssMessage = isSucces;
-    if(isSucces){
+    if (isSucces) {
       this.message = this.translate.instant('SelectedCorrectWord');
     } else {
       this.message = this.translate.instant('SelectedIncorrectWord') + '<br>' + text;
     }
   }
+
+  //shuffle array (mix)
+  shuffleArray(array: any) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
 }

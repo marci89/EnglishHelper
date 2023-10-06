@@ -49,7 +49,7 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
         this.words = words;
         //check the word count
         if (this.words && this.words.length > 0) {
-          this.learnService.shuffleArray(this.words);
+          this.shuffleArray(this.words);
           this.setCurrentWord();
           this.checkCardTextLong(this.currentWord);
           this.setCardText();
@@ -86,7 +86,7 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
         this.settings.selectableWordNumber == 10;
 
       this.selectableWords = [];
-      this.learnService.shuffleArray(this.allWords);
+      this.shuffleArray(this.allWords);
 
       const numberOfSelection = this.settings.selectableWordNumber > this.allWords.length
         ? this.allWords.length
@@ -101,7 +101,7 @@ export class LearnSelectionModeComponent extends LearnModeBaseComponent implemen
         ? this.selectableWords[0] = this.currentWord
         : this.selectableWords.push(this.currentWord);
 
-      this.learnService.shuffleArray(this.selectableWords);
+      this.shuffleArray(this.selectableWords);
     }
   }
 

@@ -10,7 +10,7 @@ import { Word } from '../interfaces/word.interface';
 export class LearnService extends BaseService {
 
   //private learn settings model object
-  private learnSettings :LearnSettingsModel = {} as LearnSettingsModel;
+  private learnSettings: LearnSettingsModel = {} as LearnSettingsModel;
 
 
   constructor(private http: HttpClient) {
@@ -18,26 +18,12 @@ export class LearnService extends BaseService {
   }
 
   //Read settings
-  readLearnSettings(){
+  readLearnSettings() {
     return this.learnSettings;
   }
 
   //update settings
-  setLearnSettings(request: LearnSettingsModel){
+  setLearnSettings(request: LearnSettingsModel) {
     this.learnSettings = request;
   }
-
-  //shuffle array (mix)
-  shuffleArray(array : any) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
-
-   //validate the actual word actual language and return the result (enought small or not)
-  checkTextLong(word: Word | null, isEnglishToHungarian: boolean ) : boolean {
-    return !!word && (isEnglishToHungarian ? word.englishText : word.hungarianText)?.length > 50;
-  }
-
 }

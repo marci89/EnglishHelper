@@ -19,16 +19,12 @@
       <tr>
         <th style="width:15%" pSortableColumn="correctCount">{{ 'CorrectCount' | translate }} <p-sortIcon
             field="correctCount"></p-sortIcon></th>
-        <th pSortableColumn="incorrectCount">{{ 'IncorrectCount' | translate }} <p-sortIcon
+        <th  style="width:15%" pSortableColumn="incorrectCount">{{ 'IncorrectCount' | translate }} <p-sortIcon
             field="incorrectCount"></p-sortIcon></th>
-        <th pSortableColumn="result">{{ 'Result' | translate }} <p-sortIcon field="result"></p-sortIcon></th>
-        <th pSortableColumn="learnMode">{{ 'LearnModeType' | translate }} <p-sortIcon field="learnMode"></p-sortIcon>
-          <p-dropdown [options]="customLearnModeFilterOptions" [style]="{ width: '100%' }"
-          [showClear]="true"
-          (onChange)="statisticsTable.filter($event.value, 'learnMode', 'equals')">
-        </p-dropdown>
+        <th  style="width:15%" pSortableColumn="result">{{ 'Result' | translate }} <p-sortIcon field="result"></p-sortIcon></th>
+         <th  style="width:25%" pSortableColumn="learnMode">{{ 'LearnModeType' | translate }} <p-sortIcon field="learnMode"></p-sortIcon>
         </th>
-        <th pSortableColumn="created">{{ 'Created' | translate }} <p-sortIcon field="created"></p-sortIcon></th>
+        <th  style="width:25%" pSortableColumn="created">{{ 'Created' | translate }} <p-sortIcon field="created"></p-sortIcon></th>
         <th style="width:5%"> </th>
       </tr>
     </ng-template>

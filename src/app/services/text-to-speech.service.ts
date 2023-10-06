@@ -49,7 +49,7 @@ export class TextToSpeechService {
   }
 
   //set default voice index
-  setDefaultVoiceIndex() : number {
+  setDefaultVoiceIndex(): number {
     return 3;
   }
 }

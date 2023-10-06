@@ -43,7 +43,7 @@
   "UploadedFileFailed": "A fájl feltöltése sikertelen volt. Kérlek próbáld újra később.",
   "InvalidFileData": "Érvénytelen fájltartalom",
   "SendEmailFailed": "Sajnos jelenleg nem tudtuk elküldeni az e-mailt.",
-  "SendResetPasswordEmailSuccess": "E-mail küldés sikeres volt. Kérlek kattints az e-mailben található linkre, hogy megváltoztathasssad a jelszavad.",
+  "SendResetPasswordEmailSuccess": "E-mail küldés sikeres volt. Kérlek kattints az e-mailben található linkre, hogy megváltoztathasd a jelszavad.",
   "InvalidResetToken" : "Hoppá! Úgy tűnik, hogy a használt jelszó-visszaállítási hivatkozás érvénytelen vagy lejárt. Kérjük, ellenőrizze még egyszer a linket, vagy kérjen új jelszó-visszaállítási e-mailt.",
 
   "Filter": "Szűrés",

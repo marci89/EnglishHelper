@@ -1,3 +1,13 @@
 .dropdown-toggle, .dropdown-item {
   cursor: pointer;
 }
+
+.profile-dropdown {
+    background-color: honeydew;
+    padding: 10px;
+    border-radius: 65px;
+}
+
+.profile-icon {
+color:darkslategray;
+}

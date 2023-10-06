@@ -25,7 +25,6 @@ export class ModalService {
       width: `${dialogSize}px`,
       baseZIndex: 10000,
       showHeader: false,
-      styleClass: 'custom-dialog',
       modal: true,
       data: {
         request: request
@@ -45,6 +44,8 @@ export class ModalService {
       header: this.translate.instant('DeleteConfirmationTitle'),
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
+      acceptButtonStyleClass: 'confirmation-yes-button',
+      rejectButtonStyleClass: 'confirmation-no-button',
 
       accept: () => {
         deleteMethod(id);
@@ -79,6 +80,8 @@ export class ModalService {
       header: this.translate.instant(header),
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
+      acceptButtonStyleClass: 'confirmation-yes-button',
+      rejectButtonStyleClass: 'confirmation-no-button',
 
       accept: () => {
         method(id);

@@ -1,12 +1,11 @@
 
 .forgot-password {
-  color: aqua;
+  color: white;
   text-decoration: none;
   transition: color 0.2s;
-  margin-top: 10px;
 }
 
 .forgot-password:hover {
-  color: antiquewhite;
+  color: wheat;
   text-decoration: underline;
 }

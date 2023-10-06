@@ -39,13 +39,6 @@ export class WordService extends BaseService {
     )
   }
 
-  /*   // Get User's words by logined user id and filtering.
-    listWithFilter(request: ListWordWithFilterRequest) {
-      const params = this.createParams(request);
-      return this.http.get<Word[]>(`${this.baseUrl}word/ListWithFilter`, { params });
-    }
-   */
-
   // Get User's words by logined user id and filtering.
   listWithFilter(request: ListWordWithFilterRequest) {
     const params = this.createParams(request);
@@ -63,7 +56,7 @@ export class WordService extends BaseService {
     return this.http.post<Word>(this.baseUrl + 'word', request).pipe(
       map((createdWord: Word) => {
         const currentWords = this.WordListSource.value || [];
-        this.WordListSource.next([...currentWords, createdWord]);
+        this.WordListSource.next([createdWord, ...currentWords]);
       })
     );
   }
@@ -138,5 +131,4 @@ export class WordService extends BaseService {
       responseType: 'blob' as 'json', // Set the response type to Blob
     });
   }
-
 }

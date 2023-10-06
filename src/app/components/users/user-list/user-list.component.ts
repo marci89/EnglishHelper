@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       username: "",
       email: "",
       pageNumber: 1,
-      pageSize: 10,
+      pageSize: 5,
       fieldName: "username",
       isDescending: true
     };

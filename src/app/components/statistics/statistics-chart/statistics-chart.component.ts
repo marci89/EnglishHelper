@@ -45,7 +45,6 @@ export class StatisticsChartComponent implements OnInit {
 
   //numeric input change detection
   handleInput(event: any) {
-    debugger;
     const value = event.value;
     if(value >= 500){
       this.quantity = 500;
@@ -58,6 +57,7 @@ export class StatisticsChartComponent implements OnInit {
 
   //Set chart
   setChart() {
+
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -118,6 +118,11 @@ export class StatisticsChartComponent implements OnInit {
           }
         },
         y: {
+          title: {
+            display: true,
+            text: '%',
+            color: textColorSecondary
+          },
           ticks: {
             color: textColorSecondary
           },

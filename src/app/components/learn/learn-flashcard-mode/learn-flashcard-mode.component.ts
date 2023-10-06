@@ -53,7 +53,7 @@ export class LearnFlashcardModeComponent extends LearnModeBaseComponent implemen
         this.words = words;
         //check the word count
         if (this.words && this.words.length > 0) {
-          this.learnService.shuffleArray(this.words);
+          this.shuffleArray(this.words);
           this.setCurrentWord();
           this.setFlashCard();
           this.wordListTotalCount = words.length;

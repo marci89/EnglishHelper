@@ -31,11 +31,11 @@
                 <!-- File Uploads -->
                 <p-fileUpload #textFileUpload  mode="basic" [auto]="true" [chooseLabel]="'ImportText' | translate"
                     accept=".txt" [url]="textUploadUrl" (onUpload)="onUploadTextWordList($event)"
-                    (onError)="onUploadTextWordListError($event)" class="mt-2 mx-2">
+                    (onError)="onUploadTextWordListError($event)" class="mt-2 mx-2" styleClass="p-file-upload">
                 </p-fileUpload>
                 <p-fileUpload #excelFileUpload mode="basic" [auto]="true" [chooseLabel]="'ImportExcel' | translate"
                     accept=".xlsx, .xls" [url]="excelUploadUrl" (onUpload)="onUploadExcelWordList($event)"
-                    (onError)="onUploadExcelWordListError($event)" class="mt-2 mx-2" >
+                    (onError)="onUploadExcelWordListError($event)" class="mt-2 mx-2"  styleClass="p-file-upload">
                 </p-fileUpload>
             </div>
         </div>

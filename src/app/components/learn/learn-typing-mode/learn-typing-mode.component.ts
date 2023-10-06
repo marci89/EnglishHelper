@@ -48,7 +48,7 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
         this.words = words;
         //check the word count
         if (this.words && this.words.length > 0) {
-          this.learnService.shuffleArray(this.words);
+          this.shuffleArray(this.words);
           this.setCurrentWord();
           this.checkCardTextLong(this.currentWord);
           this.setCardText();
@@ -122,7 +122,11 @@ export class LearnTypingModeComponent extends LearnModeBaseComponent implements 
           startLetterNumber = 1;
         }
       }
-    } else {
+    } else if (textLength === 2) {
+      startLetterNumber = 0;
+      endLetterNumber = 0;
+    }
+    else {
       startLetterNumber = start;
       endLetterNumber = end;
     }

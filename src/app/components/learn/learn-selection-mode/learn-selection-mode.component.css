@@ -52,5 +52,5 @@
 
 .long-text{
   justify-content: space-between !important;
-  overflow: hidden;
+  overflow-wrap: anywhere;
 }
