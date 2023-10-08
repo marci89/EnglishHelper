@@ -54,13 +54,13 @@
       <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage">
         <ng-template pTemplate="selectedItem">
           <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
-            <img [src]="'./assets/images/' + selectedLanguage.code + '.png'" style="width: 20px"/>
+            <img [src]="'./assets/images/languages/' + selectedLanguage.code + '.png'" style="width: 20px"/>
             <span class="mx-2">{{ selectedLanguage.name | translate }}</span>
           </div>
       </ng-template>
         <ng-template let-language pTemplate="item">
             <div class="flex align-items-start text-start" (click)="switchLang(language.code)">
-                <img [src]="'./assets/images/' + language.code + '.png'" style="width: 20px" />
+                <img [src]="'./assets/images/languages/' + language.code + '.png'" style="width: 20px" />
                 <span class="mx-2">{{ language.name | translate }}</span>
             </div>
         </ng-template>

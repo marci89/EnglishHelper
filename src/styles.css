@@ -1,6 +1,26 @@
+/* Define global color variables */
+:root {
+  --focus-border-color: aqua;
+  --input-border-color: aliceblue;
+  --button-border-color: white;
+  --dialog-border-color: white;
+
+  --dialog-background-color: darkslategrey;
+  --tab-background-color: #585759;
+
+  --text-color: white;
+
+
+  --togglebutton-color-face: #007bff;
+  --togglebutton-color-back: #a82e1e;
+
+  --primary-color-hover: #3b629c;
+  --success-color-hover: #234723;
+  --danger-color-hover: #a82e1e;
+}
+
 /* Primeng theme css*/
  @import "primeng/resources/themes/bootstrap4-light-blue/theme.css";
-
 /* import prime ng icons*/
 @import "primeicons/primeicons.css";
 

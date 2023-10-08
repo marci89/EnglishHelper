@@ -153,16 +153,16 @@
   "AllResult": "Összes találat",
 
   "HomeModule": {
-    "Description": "Ezzel az ingyenes alkalmazással könnyebben tanulhat angol szavakat mint korábban. Regisztráció után tetszőleges szavakat hozhat létre, majd 4 különbőző módon gyakorolhatja őket.",
+    "Description": "Ezzel az ingyenes alkalmazással könnyebben tanulhat angol szavakat mint korábban. Regisztráció után tetszőleges szavakat hozhat létre, majd 4 különböző módon gyakorolhatja őket.",
     "ImportantFeatures": "Legfontosabb jellemzői:",
     "Free": "Teljesen ingyenes.",
-    "MobileFriendly": "Mobil barát.",
+    "MobileFriendly": "Mobilbarát.",
     "Words": "Korlátlan szó létrehozás.",
-    "Modes": "Négy különboző  módon tanulhatsz.",
+    "Modes": "Négy különböző  módon tanulhatsz.",
     "FlashcardMode": "Flashcard móddal kártyával memorizálhatod a szavakat és megfordítás után ellenőrizheted.",
     "TypingMode": "Gépelési móddal beírhatod a szavakat.",
     "SelectionMode": "Választós móddal beállított mennyiségű szó közül választhatsz.",
-    "ListeningMode": "Hallot szöveg értés során bekell írnod az elhangzott szót.",
+    "ListeningMode": "Hallott szövegértés során bekell írnod az elhangzott szót.",
     "Voice": "Kiválaszthatod a neked megfelelő hang típust.",
     "Chart": "Diagramon láthatod a fejlődésedet."
   },
