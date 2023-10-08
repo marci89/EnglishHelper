@@ -1,0 +1,26 @@
+ul {
+    font-size: 30px;
+}
+
+p,
+li {
+    font-size: 20px;
+}
+
+.learn-screen-img {
+    width: 95%;
+    border: 1px solid white;
+}
+
+.neon-text {
+    color: #fff;
+    text-shadow:
+        0 0 0px #c059bb,
+        0 0 1px #c059bb,
+        0 0 10px #c059bb,
+        0 0 15px #330220,
+        0 0 16px #330220,
+        0 0 9px #330220,
+        0 0 63px #330220,
+        0 0 130px #330220
+}

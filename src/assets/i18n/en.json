@@ -47,9 +47,6 @@
 
   "Filter": "Filter",
   "FilterReset": "Reset filter",
-
-
-
   "Username": "Username",
   "Password": "Password",
   "ConfirmPassword": "Confirm password",
@@ -131,7 +128,6 @@
   "TypeListeningTextHere": "Enter the text you hear",
   "BackToLearnSettings": "Back to settings",
 
-
   "Statistics": "Statistics",
   "StatisticsTitle": "Statistics on the course of development",
   "StatisticsDescription": "The results are presented in serial order according to the date of completion of the study.",
@@ -162,9 +158,22 @@
   "InvalidEmailFormat": "Please enter a valid email address.",
   "NoUsernameOrEmailExists": "No such username or email exists",
 
-
   "AllResult": "All result",
-
+  
+  "HomeModule": {
+    "Description": "With this free application, you can learn English words more easily than before. After registration, you can create any words you like and practice them in four different ways.",
+    "ImportantFeatures": "Key features:",
+    "Free": "Completely free.",
+    "MobileFriendly": "Mobile-friendly.",
+    "Words": "Unlimited word creation.",
+    "Modes": "You can learn in four different modes.",
+    "FlashcardMode": "In flashcard mode, you can memorize words with cards and check them after flipping.",
+    "TypingMode": "You can type in the words in typing mode.",
+    "SelectionMode": "In selection mode, you can choose from a set quantity of words.",
+    "ListeningMode": "You need to write down the spoken word during listening comprehension.",
+    "Voice": "You can select the voice type that suits you.",
+    "Chart": "You can see your progress on a chart."
+    },    
 
   "cookie": {
     "header": "Cookies used on the website!",

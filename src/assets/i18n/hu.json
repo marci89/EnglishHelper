@@ -1,9 +1,7 @@
 {
   "Hungarian": "Magyar",
   "English": "Angol",
-
   "LanguageDateFormat": "yyyy.MM.dd HH:mm",
-
   "Home": "Kezdőoldal",
   "Login": "Bejelentkezés",
   "Logout": "Kijelentkezés",
@@ -44,11 +42,9 @@
   "InvalidFileData": "Érvénytelen fájltartalom",
   "SendEmailFailed": "Sajnos jelenleg nem tudtuk elküldeni az e-mailt.",
   "SendResetPasswordEmailSuccess": "E-mail küldés sikeres volt. Kérlek kattints az e-mailben található linkre, hogy megváltoztathasd a jelszavad.",
-  "InvalidResetToken" : "Hoppá! Úgy tűnik, hogy a használt jelszó-visszaállítási hivatkozás érvénytelen vagy lejárt. Kérjük, ellenőrizze még egyszer a linket, vagy kérjen új jelszó-visszaállítási e-mailt.",
-
+  "InvalidResetToken": "Hoppá! Úgy tűnik, hogy a használt jelszó-visszaállítási hivatkozás érvénytelen vagy lejárt. Kérjük, ellenőrizze még egyszer a linket, vagy kérjen új jelszó-visszaállítási e-mailt.",
   "Filter": "Szűrés",
   "FilterReset": "Szűrés törlése",
-
   "Username": "Felhasználónév",
   "Password": "Jelszó",
   "ConfirmPassword": "Megerősítő jelszó",
@@ -65,8 +61,7 @@
   "Member": "Tag",
   "Users": "Felhasználók",
   "EditUsername": "Felhasználónév módosítása",
-  "RegisterSuccess" : "Sikeres regisztráció",
-
+  "RegisterSuccess": "Sikeres regisztráció",
   "Words": "Szavak",
   "EditWord": "Szó szerkesztése",
   "CreateWord": "Szó létrehozása",
@@ -86,15 +81,12 @@
   "Restart": "Újrakezd",
   "Search": "Keresés",
   "Next": "Következő",
-
-
-
   "Learn": "Tanulás",
   "LearnSettings": "Tanulási beállítások",
   "WordNumber": "Szavak mennyisége",
   "LanguageMode": "Nyelv mód",
-  "EnglishToHungarian" : "Angol-Magyar",
-  "HungarianToEnglish" : "Magyar-Angol",
+  "EnglishToHungarian": "Angol-Magyar",
+  "HungarianToEnglish": "Magyar-Angol",
   "LearnModeType": "Tanulás típusa",
   "Flashcard": "Flashcard",
   "Typing": "Gépelés",
@@ -131,26 +123,20 @@
   "TypeTextHere": "Írja be ide a szöveget",
   "TypeListeningTextHere": "Írja be ide a hallott szöveget",
   "BackToLearnSettings": "Vissza a beállításokhoz",
-
-
   "Statistics": "Statisztika",
   "StatisticsTitle": "Statisztika a fejlődés menetéről",
   "StatisticsDescription": "A legutóbbi eredményeket mutatja be növekvő sorrendben a tanulás befejezésének időpontja szerint.",
   "StatisticsNumber": "Mennyi tanulási eredményt mutasson?",
   "Chart": "Diagram",
   "Table": "Táblázat",
-  "LearnResults":"Tanulási Eredmények",
+  "LearnResults": "Tanulási Eredmények",
   "DeleteAllLearnResult": "Össszes eredmény törlése",
-
-
-
   "InvalidRequest": "Érvénytelen kérés.",
   "ServerError": "Hoppá! Valami hiba történt. Kérlek, próbáld újra később.",
   "AccessDenied": "Hozzáférés megtagadva",
-  "NotFound" : "A megadott azonosítójú erőforrás nem található.",
-
+  "NotFound": "A megadott azonosítójú erőforrás nem található.",
   "InvalidPasswordOrUsername": "Érvénytelen jelszó vagy felhasználónév.",
-  "InvalidPasswordOrUsernameOrEmail" : "Érvénytelen jelszó vagy felhasználónév vagy email cím.",
+  "InvalidPasswordOrUsernameOrEmail": "Érvénytelen jelszó vagy felhasználónév vagy email cím.",
   "UsernameOrEmailRequired": "A felhasználónév vagy email cím megadása kötelező.",
   "UsernameOrEmail": "Felhasználónév/email",
   "UsernameRequired": "A felhasználónév megadása kötelező.",
@@ -164,8 +150,22 @@
   "EmailExists": "Ez az email cím már regisztrálva van. Kérlek, használj másik email címet.",
   "InvalidEmailFormat": "Kérlek, adj meg egy érvényes email címet.",
   "NoUsernameOrEmailExists": "Nem létezik ilyen felhasználónév vagy e-mail cím",
-
   "AllResult": "Összes találat",
+
+  "HomeModule": {
+    "Description": "Ezzel az ingyenes alkalmazással könnyebben tanulhat angol szavakat mint korábban. Regisztráció után tetszőleges szavakat hozhat létre, majd 4 különbőző módon gyakorolhatja őket.",
+    "ImportantFeatures": "Legfontosabb jellemzői:",
+    "Free": "Teljesen ingyenes.",
+    "MobileFriendly": "Mobil barát.",
+    "Words": "Korlátlan szó létrehozás.",
+    "Modes": "Négy különboző  módon tanulhatsz.",
+    "FlashcardMode": "Flashcard móddal kártyával memorizálhatod a szavakat és megfordítás után ellenőrizheted.",
+    "TypingMode": "Gépelési móddal beírhatod a szavakat.",
+    "SelectionMode": "Választós móddal beállított mennyiségű szó közül választhatsz.",
+    "ListeningMode": "Hallot szöveg értés során bekell írnod az elhangzott szót.",
+    "Voice": "Kiválaszthatod a neked megfelelő hang típust.",
+    "Chart": "Diagramon láthatod a fejlődésedet."
+  },
 
   "cookie": {
     "header": "Sütik használata a webhelyen!",
@@ -176,7 +176,6 @@
     "link": "Tudj meg többet",
     "policy": "Süti szabályzat"
   },
-
   "primeng": {
     "startsWith": "Kezdetén tartalmazza",
     "contains": "Tartalmazza",
@@ -208,11 +207,61 @@
     "choose": "Válasszon",
     "upload": "Feltöltés",
     "cancel": "Mégse",
-    "dayNames": ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"],
-    "dayNamesShort": ["Vas", "Hét", "Ked", "Sze", "Csü", "Pén", "Szo"],
-    "dayNamesMin": ["V", "H", "K", "Sze", "Cs", "P", "Szo"],
-    "monthNames": ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"],
-    "monthNamesShort": ["Jan", "Feb", "Már", "Ápr", "Máj", "Jún", "Júl", "Aug", "Sze", "Okt", "Nov", "Dec"],
+    "dayNames": [
+      "Vasárnap",
+      "Hétfő",
+      "Kedd",
+      "Szerda",
+      "Csütörtök",
+      "Péntek",
+      "Szombat"
+    ],
+    "dayNamesShort": [
+      "Vas",
+      "Hét",
+      "Ked",
+      "Sze",
+      "Csü",
+      "Pén",
+      "Szo"
+    ],
+    "dayNamesMin": [
+      "V",
+      "H",
+      "K",
+      "Sze",
+      "Cs",
+      "P",
+      "Szo"
+    ],
+    "monthNames": [
+      "Január",
+      "Február",
+      "Március",
+      "Április",
+      "Május",
+      "Június",
+      "Július",
+      "Augusztus",
+      "Szeptember",
+      "Október",
+      "November",
+      "December"
+    ],
+    "monthNamesShort": [
+      "Jan",
+      "Feb",
+      "Már",
+      "Ápr",
+      "Máj",
+      "Jún",
+      "Júl",
+      "Aug",
+      "Sze",
+      "Okt",
+      "Nov",
+      "Dec"
+    ],
     "dateFormat": "yy/mm/dd",
     "firstDayOfWeek": 0,
     "today": "Ma",
@@ -224,7 +273,6 @@
     "emptyMessage": "Nincs találat",
     "emptyFilterMessage": "Nincs találat"
   },
-
   "ngx-timeago": {
     "second": "egy másodperce",
     "seconds": "%d másodperce",
@@ -239,5 +287,4 @@
     "year": "egy éve",
     "years": "%d éve"
   }
-
 }
