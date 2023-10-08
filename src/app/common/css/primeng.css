@@ -85,8 +85,8 @@
 }
 
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-  background-color: var(--tab-background-color) !important;
-  color: var(--text-color) !important;
+  background-color: var(--tab-background-color);
+  color: var(--text-color)
 }
 
 .p-tabview .p-tabview-nav {

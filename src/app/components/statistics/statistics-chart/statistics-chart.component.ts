@@ -57,12 +57,16 @@ export class StatisticsChartComponent implements OnInit {
 
   //Set chart
   setChart() {
+    //Set colors
+    const textColor = 'black';
+    const textColorSecondary = 'black';
+    const surfaceBorder = 'black';
+    const flashcardColor = 'green';
+    const typingColor = 'purple';
+    const selectionColor = 'red';
+    const listeningColor = 'blue';
 
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
+    //Set chart data
     this.chartData = {
       labels: this.statistics?.chartLabel,
       datasets: [
@@ -70,28 +74,28 @@ export class StatisticsChartComponent implements OnInit {
           label: this.translate.instant('Flashcard'),
           data: this.statistics.flashcardChartData,
           fill: false,
-          borderColor: documentStyle.getPropertyValue('--green-500'),
+          borderColor: flashcardColor,
           tension: 0.4
         },
         {
           label: this.translate.instant('Typing'),
           data: this.statistics.typingChartData,
           fill: false,
-          borderColor: documentStyle.getPropertyValue('--pink-500'),
+          borderColor: typingColor,
           tension: 0.4
         },
         {
           label:this.translate.instant('Selection'),
           data: this.statistics.selectionChartData,
           fill: false,
-          borderColor: documentStyle.getPropertyValue('--brown-500'),
+          borderColor: selectionColor,
           tension: 0.4
         },
         {
           label: this.translate.instant('Listening'),
           data: this.statistics.listeningChartData,
           fill: false,
-          borderColor: documentStyle.getPropertyValue('--blue-500'),
+          borderColor: listeningColor,
           tension: 0.4
         }
       ]
