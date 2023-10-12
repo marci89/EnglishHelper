@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: '/',
-  domainUrl: 'localhost'
+  apiUrl: 'http://localhost:83/EnglishHelperService/',
+  domainUrl: 'http://localhost:83/EnglishHelper'
 };
 
