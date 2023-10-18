@@ -30,7 +30,7 @@
     <!-- CorrectCount -->
     <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
       <label for="correctCount">{{'CorrectCount' | translate }}</label>
-      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" formControlName="correctCount" class="max-width" ></p-inputNumber>
+      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [max]="200000000" formControlName="correctCount" class="max-width" ></p-inputNumber>
       <div *ngIf="editWordForm.get('correctCount')?.errors && editWordForm.get('correctCount')?.touched" class="text-danger">
         <p *ngIf="editWordForm.get('correctCount')?.hasError('required')">{{'CorrectCountRequired' | translate }}</p>
       </div>
@@ -39,7 +39,7 @@
     <!-- IncorrectCount -->
     <div class="mb-3 mb-3 col-lg-6 col-md-12 col-sm-12">
       <label for="incorrectCount">{{'IncorrectCount' | translate }}</label>
-      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" formControlName="incorrectCount" class="max-width" ></p-inputNumber>
+      <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [max]="200000000" formControlName="incorrectCount" class="max-width" ></p-inputNumber>
        <div *ngIf="editWordForm.get('incorrectCount')?.errors && editWordForm.get('incorrectCount')?.touched" class="text-danger">
          <p *ngIf="editWordForm.get('incorrectCount')?.hasError('required')">{{'IncorrectCountRequired' | translate }}</p>
        </div>

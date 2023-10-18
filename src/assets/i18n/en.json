@@ -74,7 +74,7 @@
   "HungarianTextRequired": "Hungarian word is required.",
   "EnglishText": "English word",
   "HungarianText": "Hungarian word",
-  "CorrectCount": "Good",
+  "CorrectCount": "Correct",
   "IncorrectCount": "Bad",
   "LastUse": "Last use",
   "WordsManaging": "Managing words",
@@ -87,7 +87,7 @@
 
   "Learn": "Learn",
   "LearnSettings": "Learn settings",
-  "WordNumber": "Word number",
+  "WordNumber": "Number of words",
   "LanguageMode": "Language mode",
   "EnglishToHungarian" : "English-Hungarian",
   "HungarianToEnglish" : "Hungarian-English",
@@ -96,7 +96,7 @@
   "Typing": "Typing",
   "Selection": "Selection",
   "Listening": "Listening",
-  "WordOrderingType": "Order words",
+  "WordOrderingType": "Word order",
   "Start": "Start",
   "Any": "Any",
   "Newest": "Newest",
@@ -107,7 +107,7 @@
   "EnableSound": "Enable sound",
   "SelectSound": "Select sound",
   "Test": "Test",
-  "Good": "Good",
+  "Good": "Correct",
   "Bad": "Bad",
   "Result": "Result",
   "Listen": "Listen",
@@ -117,9 +117,9 @@
   "TypingSettings": "Typing mode settings",
   "EnableFlashcardAutomaticFlip": "Would you like the card to turn over automatically?",
   "FlashcardFlipTimer": "Flashcard turn timer in seconds",
-  "SelectableWordNumber": "How many options should you offer?",
-  "NumberOfEndLetter": "How many letters at the end of words should you display?",
-  "NumberOfStartLetter": "How many letters at the start of words should you display?",
+  "SelectableWordNumber": "How many options would you like to offer?",
+  "NumberOfEndLetter": "How many letters at the end of words would you like to display?",
+  "NumberOfStartLetter": "How many letters at the start of words would you like to display?",
   "MinSelectableWord": "Must be at least two words. Please create at least two words.",
   "SelectedCorrectWord": "Correct",
   "SelectedIncorrectWord": "Incorrect choice! The correct answer is:",
@@ -131,7 +131,7 @@
   "Statistics": "Statistics",
   "StatisticsTitle": "Statistics on the course of development",
   "StatisticsDescription": "The results are presented in serial order according to the date of completion of the study.",
-  "StatisticsNumber": "How many learning results should it show?",
+  "StatisticsNumber": "How many learning results would you like to see?",
   "Chart": "Chart",
   "Table": "Table",
   "LearnResults":"Learn results",
@@ -159,7 +159,7 @@
   "NoUsernameOrEmailExists": "No such username or email exists",
 
   "AllResult": "All result",
-  
+
   "HomeModule": {
     "Description": "With this free application, you can learn English words more easily than before. After registration, you can create any words you like and practice them in four different ways.",
     "ImportantFeatures": "Key features:",
@@ -173,7 +173,7 @@
     "ListeningMode": "You need to write down the spoken word during listening comprehension.",
     "Voice": "You can select the voice type that suits you.",
     "Chart": "You can see your progress on a chart."
-    },    
+    },
 
   "cookie": {
     "header": "Cookies used on the website!",
