@@ -78,10 +78,14 @@
             </div>
           </div>
 
-            <!-- Button -->
+            <!-- Buttons -->
           <div class="text-center">
             <p-button [disabled]="!changePasswordForm.valid " class="me-2"
               type="submit">{{'ChangePassword' | translate }}</p-button>
+          </div>
+          <hr>
+          <div class="text-center mt-3">
+            <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
           </div>
         </form>
       </div>

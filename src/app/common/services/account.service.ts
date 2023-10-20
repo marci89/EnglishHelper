@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChangeEmailRequest, ChangePasswordRequest, ForgotPasswordRequest, LoginUser, ResetPasswordRequest } from '../interfaces/account.interface';

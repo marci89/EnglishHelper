@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ModalService } from '../../../common/services/modal.service';
 import { ChangePasswordRequest } from '../../../common/interfaces/account.interface';
 import { ChangeEmailComponent } from '../change-email/change-email.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -33,13 +34,13 @@ export class UserEditComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private translate: TranslateService,
     private ModalService: ModalService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     //take logined user once
     this.CurrentUserSubscription$ = this.accountService.currentUser$.subscribe({
-      next: loginedUser =>
-      {
+      next: loginedUser => {
         this.loginedUser = loginedUser
       }
 
@@ -136,6 +137,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
         this.toastr.error(this.translate.instant(error.error))
       }
     })
+  }
+
+// return words page
+  cancel() {
+    this.router.navigateByUrl('/words');
   }
 
   ngOnDestroy() {

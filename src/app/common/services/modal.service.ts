@@ -1,4 +1,4 @@
-import { HostListener, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmEventType } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
