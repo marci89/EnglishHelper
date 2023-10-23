@@ -19,19 +19,19 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private translate: TranslateService
-    ) { }
+  ) { }
 
-    ngOnInit(): void {
-      this.serverError = "";
-      this.initForm();
-    }
+  ngOnInit(): void {
+    this.serverError = "";
+    this.initForm();
+  }
 
-    //Init form
-    initForm() {
-      this.forgotPasswordForm = new FormGroup({
-        identifier: new FormControl('', Validators.required),
-      });
-    }
+  //Init form
+  initForm() {
+    this.forgotPasswordForm = new FormGroup({
+      identifier: new FormControl('', Validators.required),
+    });
+  }
 
   // sending an email and after click the link on there and the reset password view will be visible
   resetPassword() {
@@ -46,9 +46,8 @@ export class ForgotPasswordComponent implements OnInit {
     })
   }
 
-    // return login
-    cancel(){
-      this.router.navigateByUrl('/login');
-    }
-
+  // return login
+  cancel() {
+    this.router.navigateByUrl('/login');
+  }
 }

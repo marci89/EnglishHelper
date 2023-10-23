@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription, take } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LoginUser } from 'src/app/common/interfaces/account.interface';
 import { AccountService } from 'src/app/common/services/account.service';
 import { UpdateUserRequest, User } from 'src/app/interfaces/user.interface';
@@ -33,7 +33,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private toastr: ToastrService,
     private translate: TranslateService,
-    private ModalService: ModalService,
+    private modalService: ModalService,
     private router: Router,
   ) { }
 
@@ -43,7 +43,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
       next: loginedUser => {
         this.loginedUser = loginedUser
       }
-
     });
 
     this.initForms();
@@ -118,7 +117,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   //Change email popup
   openChangeEmailDialog() {
-    this.ModalService.openDialog(ChangeEmailComponent, 600);
+    this.modalService.openDialog(ChangeEmailComponent, 600);
   }
 
   // change password

@@ -49,13 +49,12 @@ export class UserRegisterComponent implements OnInit {
   //User create (registration)
   register() {
     this.accountService.register(this.registerForm.value).subscribe({
-      next: response => {
+      next: _ => {
         this.toastr.success(this.translate.instant('RegisterSuccess'))
         this.router.navigateByUrl('/login');
       },
       error: error => {
         this.serverError = error.error;
-
       }
     })
   }
