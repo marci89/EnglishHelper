@@ -3,70 +3,77 @@
     <a class="navbar-brand mx-2" routerLink="/" routerLinkActive="active">English Helper</a>
 
     <!-- toggle button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar"
+      aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa fa-bars fa-lg mx-2"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="bdNavbar">
-          <!--  Links -->
+      <!--  Links -->
       <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
         <!-- ng-container for authorized links -->
         <ng-container *ngIf="accountService.currentUser$| async">
-           <!--  Only admin role -->
-        <li *appHasRole="'Admin'" class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" routerLink="/users" routerLinkActive="active"> {{'Users' | translate }} </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" routerLink="/words" routerLinkActive="active"> {{'Words' | translate }} </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" routerLink="/learn-settings" routerLinkActive="active"> {{'Learn' | translate }} </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" routerLink="/statistics" routerLinkActive="active"> {{'Statistics' | translate }} </a>
-        </li>
-      </ng-container>
+          <!--  Only admin role -->
+          <li *appHasRole="'Admin'" class="nav-item col-6 col-md-auto">
+            <a class="nav-link p-2" routerLink="/users" routerLinkActive="active"> {{'Users' | translate }} </a>
+          </li>
+          <li class="nav-item col-6 col-md-auto">
+            <a class="nav-link p-2" routerLink="/words" routerLinkActive="active"> {{'Words' | translate }} </a>
+          </li>
+          <li class="nav-item col-6 col-md-auto">
+            <a class="nav-link p-2" routerLink="/learn-settings" routerLinkActive="active"> {{'Learn' | translate }}
+            </a>
+          </li>
+          <li class="nav-item col-6 col-md-auto">
+            <a class="nav-link p-2" routerLink="/statistics" routerLinkActive="active"> {{'Statistics' | translate }}
+            </a>
+          </li>
+        </ng-container>
       </ul>
 
       <hr class="d-md-none text-white-50">
 
       <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-        <li *ngIf="(accountService.currentUser$ | async) as user" class="nav-item col-6 col-md-auto mt-3 mb-2 mx-3 ms-auto text-end">
-            <!--  User settings dropdown -->
-      <div class="dropdown" dropdown>
-        <a class="dropdown-toggle text-light text-decoration-none ms-2 profile-dropdown" dropdownToggle>  <i class="fa fa-user fa-lg mx-2 profile-icon"></i></a>
-        <div class="dropdown-menu mt-2" *dropdownMenu>
-          <a class="dropdown-item" routerLink="/user/edit">{{'Profile' | translate }}</a>
-          <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
-        </div>
-      </div>
-        </li>
-               <!--  Register button -->
-        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto mt-2">
-           <p-button class="my-2 my-md-0 ms-md-3"  routerLink="/register"> {{'Registration' | translate }} </p-button>
-        </li>
-               <!--  Login button -->
-        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto mt-2 me-3">
-         <p-button class="my-2 my-md-0 ms-md-3"  routerLink="/login"> {{'Login' | translate }} </p-button>
-        </li>
-      <li class="nav-item col-6 col-md-auto mt-2 mx-3 ms-auto text-end">
-         <!--  Language switch -->
-      <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage">
-        <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
-            <img [src]="'./assets/images/languages/' + selectedLanguage.code + '.png'" style="width: 20px"/>
-            <span class="mx-2">{{ selectedLanguage.name | translate }}</span>
+        <li *ngIf="(accountService.currentUser$ | async) as user"
+          class="nav-item col-6 col-md-auto mt-3 mb-2 mx-3 ms-auto text-end">
+          <!--  User settings dropdown -->
+          <div class="dropdown" dropdown>
+            <a class="dropdown-toggle text-light text-decoration-none ms-2 profile-dropdown" dropdownToggle> <i
+                class="fa fa-user fa-lg mx-2 profile-icon"></i></a>
+            <div class="dropdown-menu mt-2" *dropdownMenu>
+              <a class="dropdown-item" routerLink="/user/edit">{{'Profile' | translate }}</a>
+              <a class="dropdown-item" (click)="logout()">{{'Logout' | translate }}</a>
+            </div>
           </div>
-      </ng-template>
-        <ng-template let-language pTemplate="item">
-            <div class="flex align-items-start text-start" (click)="switchLang(language.code)">
+        </li>
+        <!--  Login button -->
+        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto mt-2">
+          <p-button class="my-2 my-md-0 ms-md-3" routerLink="/login"> {{'Login' | translate }} </p-button>
+        </li>
+
+        <!--  Register button -->
+        <li *ngIf="!(accountService.currentUser$ | async)" class="nav-item col-6 col-md-auto mt-2 me-3">
+          <p-button class="my-2 my-md-0 ms-md-3" routerLink="/register"> {{'Registration' | translate }} </p-button>
+        </li>
+
+        <li class="nav-item col-6 col-md-auto mt-2 mx-3 ms-auto text-end">
+          <!--  Language switch -->
+          <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage">
+            <ng-template pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
+                <img [src]="'./assets/images/languages/' + selectedLanguage.code + '.png'" style="width: 20px" />
+                <span class="mx-2">{{ selectedLanguage.name | translate }}</span>
+              </div>
+            </ng-template>
+            <ng-template let-language pTemplate="item">
+              <div class="flex align-items-start text-start" (click)="switchLang(language.code)">
                 <img [src]="'./assets/images/languages/' + language.code + '.png'" style="width: 20px" />
                 <span class="mx-2">{{ language.name | translate }}</span>
-            </div>
-        </ng-template>
-    </p-dropdown>
-      </li>
-    </ul>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
