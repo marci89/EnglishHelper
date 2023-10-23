@@ -38,6 +38,8 @@ import { LearnListeningModeComponent } from './components/learn/learn-listening-
 import { StatisticsTabMenuComponent } from './components/statistics/statistics-tab-menu/statistics-tab-menu.component';
 import { StatisticsChartComponent } from './components/statistics/statistics-chart/statistics-chart.component';
 import { StatisticsTableComponent } from './components/statistics/statistics-table/statistics-table.component';
+import { TermsOfServiceComponent } from './components/shared/terms-of-service/terms-of-service.component';
+import { PrivacyPolicyComponent } from './components/shared/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -70,6 +72,8 @@ import { StatisticsTableComponent } from './components/statistics/statistics-tab
     StatisticsTabMenuComponent,
     StatisticsChartComponent,
     StatisticsTableComponent,
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,

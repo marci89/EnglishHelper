@@ -1,66 +1,82 @@
-
-  <div class="row justify-content-center">
+<div class="row justify-content-center">
   <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-5">
-      <div class="card">
-        <div class="card-body">
-          <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
-            <h2 class="text-center">{{'Registration' | translate }}</h2>
-            <hr>
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+          <h2 class="text-center">{{'Registration' | translate }}</h2>
+          <hr>
 
-            <!-- Any error -->
-            <div *ngIf="serverError" class="alert alert-danger">
-              {{ serverError | translate}}
-            </div>
+          <!-- Any error -->
+          <div *ngIf="serverError" class="alert alert-danger">
+            {{ serverError | translate}}
+          </div>
 
-            <!-- User name -->
-            <div class="mb-3">
-              <label for="username">{{'Username' | translate }}</label>
-             <input type="text" pInputText  formControlName="username"  maxlength="50" class="form-control">
-              <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('username')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
-              </div>
+          <!-- User name -->
+          <div class="mb-3">
+            <label for="username">{{'Username' | translate }}</label>
+            <input type="text" pInputText formControlName="username" maxlength="50" class="form-control">
+            <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched"
+              class="text-danger">
+              <p *ngIf="registerForm.get('username')?.hasError('required')">{{'UsernameRequired' | translate }}</p>
             </div>
+          </div>
 
-            <!-- Email -->
-            <div class="mb-3">
-              <label for="email"> {{'Email' | translate }} </label>
-              <input type="text" pInputText formControlName="email" class="form-control">
-              <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('email')?.hasError('required')">{{'EmailRequired' | translate }}</p>
-                <p *ngIf="registerForm.get('email')?.hasError('email')"> {{'InvalidEmailFormat' | translate }}</p>
-              </div>
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email"> {{'Email' | translate }} </label>
+            <input type="text" pInputText formControlName="email" class="form-control">
+            <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-danger">
+              <p *ngIf="registerForm.get('email')?.hasError('required')">{{'EmailRequired' | translate }}</p>
+              <p *ngIf="registerForm.get('email')?.hasError('email')"> {{'InvalidEmailFormat' | translate }}</p>
             </div>
+          </div>
 
-            <!-- Password -->
-            <div class="mb-3">
-              <label for="password">{{'Password' | translate }}</label>
-          <p-password type="password" [toggleMask]="true"  formControlName="password" inputStyleClass="form-control" [style]="{'width':'100%'}" ></p-password>
-              <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
-                <p *ngIf="registerForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}</p>
-              </div>
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password">{{'Password' | translate }}</label>
+            <p-password type="password" [toggleMask]="true" formControlName="password" inputStyleClass="form-control"
+              [style]="{'width':'100%'}"></p-password>
+            <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched"
+              class="text-danger">
+              <p *ngIf="registerForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
+              <p *ngIf="registerForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}
+              </p>
             </div>
+          </div>
 
-           <!--  Confirm password -->
-            <div class="mb-3">
-              <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
-            <p-password type="password" [toggleMask]="true" formControlName="confirmPassword" styleClass="hide-password-panel" inputStyleClass="form-control"
-            [style]="{'width':'100%'}" >
-          </p-password>
-              <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" class="text-danger">
-                <p *ngIf="registerForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' | translate }}</p>
-                <p *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate }}</p>
-              </div>
+          <!--  Confirm password -->
+          <div class="mb-3">
+            <label for="confirmPassword">{{'ConfirmPassword' | translate }}</label>
+            <p-password type="password" [toggleMask]="true" formControlName="confirmPassword"
+              styleClass="hide-password-panel" inputStyleClass="form-control" [style]="{'width':'100%'}">
+            </p-password>
+            <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched"
+              class="text-danger">
+              <p *ngIf="registerForm.get('confirmPassword')?.hasError('required')"> {{'ConfirmPasswordRequired' |
+                translate }}</p>
+              <p *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')"> {{'PasswordNotMatch' | translate
+                }}</p>
             </div>
+          </div>
 
-            <!-- Buttons -->
-            <div class="text-center">
-              <p-button [disabled]="!registerForm.valid" styleClass="p-button-succes me-2" type="submit">{{'Registration' | translate }}</p-button>
-              <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
-            </div>
-          </form>
+          <!-- Terms -->
+          <div  class="mb-3">
+          <p-checkbox formControlName="acceptTerms" value="true" inputId="term"></p-checkbox>
+          <label for="term" style="margin-left: 5px;">
+            {{'AgreeToTerms' | translate }}
+            <a class="term-link" routerLink="/terms-of-service" target="_blank"> {{'TermsofService' | translate }}</a> {{'And' | translate }}
+            <a class="term-link" routerLink="/privacy-policy" target="_blank">{{'PrivacyPolicy' | translate }}</a>.
+          </label>
         </div>
+
+          <!-- Buttons -->
+          <div class="text-center">
+            <p-button [disabled]="!registerForm.valid" styleClass="p-button-succes me-2" type="submit">{{'Registration'
+              | translate }}</p-button>
+            <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
+</div>

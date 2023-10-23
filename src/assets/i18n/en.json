@@ -84,6 +84,11 @@
   "InvalidEmailFormat": "Please enter a valid email address.",
   "NoUsernameOrEmailExists": "No such username or email exists",
   "Search": "Search",
+  "AllResult": "All result",
+  "AgreeToTerms": "By signing up, you agree to our ",
+  "TermsofService": "Terms of Service",
+  "And": "and",
+  "PrivacyPolicy": "Privacy Policy",
 
   "Words" : "Words",
   "EditWord": "Edit word",
@@ -155,7 +160,6 @@
   "Table": "Table",
   "LearnResults":"Learn results",
   "DeleteAllLearnResult": "Delete all of results",
-  "AllResult": "All result",
 
   "HomeModule": {
     "Description": "With this free application, you can learn English words more easily than before. After registration, you can create any words you like and practice them in four different ways.",

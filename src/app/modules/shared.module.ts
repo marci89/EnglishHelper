@@ -20,6 +20,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ChartModule } from 'primeng/chart';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 import { cookieConfig } from '../app.config';
@@ -57,6 +58,7 @@ import { cookieConfig } from '../app.config';
     ToggleButtonModule,
     InputMaskModule,
     ChartModule,
+    CheckboxModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   exports: [
@@ -79,6 +81,7 @@ import { cookieConfig } from '../app.config';
     ToggleButtonModule,
     InputMaskModule,
     ChartModule,
+    CheckboxModule,
     NgcCookieConsentModule
   ]
 })

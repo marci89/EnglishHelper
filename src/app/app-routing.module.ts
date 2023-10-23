@@ -16,6 +16,8 @@ import { LearnTypingModeComponent } from './components/learn/learn-typing-mode/l
 import { LearnSelectionModeComponent } from './components/learn/learn-selection-mode/learn-selection-mode.component';
 import { LearnListeningModeComponent } from './components/learn/learn-listening-mode/learn-listening-mode.component';
 import { StatisticsTabMenuComponent } from './components/statistics/statistics-tab-menu/statistics-tab-menu.component';
+import { TermsOfServiceComponent } from './components/shared/terms-of-service/terms-of-service.component';
+import { PrivacyPolicyComponent } from './components/shared/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'terms-of-service', component: TermsOfServiceComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   {
     path: '',
