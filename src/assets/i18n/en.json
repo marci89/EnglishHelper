@@ -69,6 +69,7 @@
   "AccessDenied": "Access Denied.",
   "NotFound" : "The resource with the specified ID was not found.",
   "InvalidPasswordOrUsername": "Invalid password or username.",
+  "InvalidPasswordOrEmail": "Invalid password or email.",
   "InvalidPasswordOrUsernameOrEmail" : "Invalid password or username or email.",
   "UsernameOrEmailRequired": "Username or Email is required",
   "UsernameOrEmail": "Username/email",
@@ -89,6 +90,10 @@
   "TermsofService": "Terms of Service",
   "And": "and",
   "PrivacyPolicy": "Privacy Policy",
+  "ProfileDelete": "Delete profile",
+  "ProfileDeleteConfirmationMessage": "Are you sure you want to delete your profile?",
+  "ProfileDeleteInformation": "This action is irreversible. Deleting your profile will result in the permanent loss of all your account data.",
+  "DeleteProfileSuccess": "Profile delete successful",
 
   "Words" : "Words",
   "EditWord": "Edit word",

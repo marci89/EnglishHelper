@@ -40,6 +40,7 @@ import { StatisticsChartComponent } from './components/statistics/statistics-cha
 import { StatisticsTableComponent } from './components/statistics/statistics-table/statistics-table.component';
 import { TermsOfServiceComponent } from './components/shared/terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './components/shared/privacy-policy/privacy-policy.component';
+import { AccountDeleteComponent } from './components/users/account-delete/account-delete.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { PrivacyPolicyComponent } from './components/shared/privacy-policy/priva
     StatisticsTableComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
+    AccountDeleteComponent,
   ],
   imports: [
     BrowserModule,

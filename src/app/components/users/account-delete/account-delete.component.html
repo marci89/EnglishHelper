@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="deleteAccountForm" (ngSubmit)="deleteAccount()" autocomplete="off">
+    <h3 class="text-center mt-2">{{'ProfileDelete' | translate }}</h3>
+    <hr>
+
+    <!-- warning message -->
+    <div class="alert alert-warning warning-text">
+      {{ 'ProfileDeleteInformation' | translate}}
+    </div>
+
+    <!-- Any error -->
+    <div *ngIf="serverError" class="alert alert-danger">
+      {{ serverError | translate}}
+    </div>
+
+    <!-- User name or email -->
+    <div class="mb-3">
+      <label for="identifier">{{'UsernameOrEmail' | translate }}</label>
+      <input type="text" pInputText formControlName="identifier" class="form-control">
+      <div *ngIf="deleteAccountForm.get('identifier')?.errors && deleteAccountForm.get('identifier')?.touched"
+        class="text-danger">
+        <p *ngIf="deleteAccountForm.get('identifier')?.hasError('required')">{{'UsernameOrEmailRequired' | translate }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password">{{'Password' | translate }}</label>
+      <p-password type="password" [toggleMask]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+        formControlName="password" styleClass="hide-password-panel"></p-password>
+      <div *ngIf="deleteAccountForm.get('password')?.errors && deleteAccountForm.get('password')?.touched"
+        class="text-danger">
+        <p *ngIf="deleteAccountForm.get('password')?.hasError('required')"> {{'PasswordRequired' | translate }}</p>
+        <p *ngIf="deleteAccountForm.get('password')?.hasError('minlength')"> {{'InvalidPasswordFormat' | translate }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="text-center">
+      <p-button [disabled]="!deleteAccountForm.valid" class="me-2" type="submit">{{'Delete' | translate }}</p-button>
+      <p-button styleClass="p-button-danger" (click)="cancel()" type="button">{{'Cancel' | translate }}</p-button>
+    </div>
+  </form>
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { LoginRequest, RegistrationRequest } from '../../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ChangeEmailRequest, ChangePasswordRequest, ForgotPasswordRequest, LoginUser, ResetPasswordRequest } from '../interfaces/account.interface';
+import { ChangeEmailRequest, ChangePasswordRequest, DeleteAccountRequest, ForgotPasswordRequest, LoginUser, ResetPasswordRequest } from '../interfaces/account.interface';
 import { BaseService } from './base.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -48,7 +48,7 @@ export class AccountService extends BaseService {
       'Accept-Language': selectedLanguage
     });
 
-    return this.http.post<LoginUser>(this.baseUrl + 'account/register', request, {headers}).pipe(
+    return this.http.post<LoginUser>(this.baseUrl + 'account/register', request, { headers }).pipe(
       map(user => {
         if (user) {
           this.setCurrentUser(user);
@@ -69,19 +69,19 @@ export class AccountService extends BaseService {
   }
 
   //Forgot password
-  forgotPassword(request: ForgotPasswordRequest){
-      // Get the current language from ngx-translate
-      const selectedLanguage = this.translate.currentLang;
+  forgotPassword(request: ForgotPasswordRequest) {
+    // Get the current language from ngx-translate
+    const selectedLanguage = this.translate.currentLang;
 
-      const headers = new HttpHeaders({
-        'Accept-Language': selectedLanguage
-      });
+    const headers = new HttpHeaders({
+      'Accept-Language': selectedLanguage
+    });
 
-    return this.http.post(this.baseUrl + 'account/forgotPassword', request, {headers});
+    return this.http.post(this.baseUrl + 'account/forgotPassword', request, { headers });
   }
 
-    //Reset password
-    resetPassword(request: ResetPasswordRequest){
+  //Reset password
+  resetPassword(request: ResetPasswordRequest) {
     return this.http.put(this.baseUrl + 'account/resetPassword', request);
   }
 
@@ -116,5 +116,11 @@ export class AccountService extends BaseService {
       (currentUser as any)[propertyName] = newValue;
       this.setCurrentUser(currentUser);
     }
+  }
+
+  //Delete user by id
+  deleteAccount(request: DeleteAccountRequest) {
+    const params = this.createParams(request);
+    return this.http.delete(`${this.baseUrl}account/delete`, { params });
   }
 }

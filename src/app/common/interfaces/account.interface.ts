@@ -30,3 +30,10 @@ export interface ResetPasswordRequest {
   token?: string;
 }
 
+//delete account request
+export interface DeleteAccountRequest {
+  identifier: string;
+  password: string;
+}
+
+

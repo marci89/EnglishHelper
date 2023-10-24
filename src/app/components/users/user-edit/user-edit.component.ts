@@ -11,6 +11,7 @@ import { ModalService } from '../../../common/services/modal.service';
 import { ChangePasswordRequest } from '../../../common/interfaces/account.interface';
 import { ChangeEmailComponent } from '../change-email/change-email.component';
 import { Router } from '@angular/router';
+import { AccountDeleteComponent } from '../account-delete/account-delete.component';
 
 @Component({
   selector: 'app-user-edit',
@@ -138,7 +139,18 @@ export class UserEditComponent implements OnInit, OnDestroy {
     })
   }
 
-// return words page
+  // Opening delete profile confirmation dialog to open the popup
+  openDeleteProfileConfirmation() {
+    this.modalService.openCustomConfirmation(0, this.openDeleteProfileDialog.bind(this), 'ConfirmationTitle', 'ProfileDeleteConfirmationMessage');
+  }
+
+  //delete profile popup
+  openDeleteProfileDialog() {
+    this.modalService.openDialog(AccountDeleteComponent, 600);
+  }
+
+
+  // return words page
   cancel() {
     this.router.navigateByUrl('/words');
   }
