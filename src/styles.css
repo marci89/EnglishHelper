@@ -28,3 +28,5 @@
 @import './app/common/css/bootstrap.css';
 /* Primeng custom css from common folder*/
 @import './app/common/css/primeng.css';
+/* scrollbar css from common folder*/
+@import './app/common/css/scrollbar.css';
