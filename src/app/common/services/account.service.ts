@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class AccountService extends BaseService {
-  private readonly USER_STORAGE_KEY = 'user';
+  private readonly USER_STORAGE_KEY = 'englishHelperUser';
 
   //Logined user subject
   private currentUserSource = new BehaviorSubject<LoginUser | null>(null);
@@ -93,7 +93,6 @@ export class AccountService extends BaseService {
       localStorage.setItem(this.USER_STORAGE_KEY, JSON.stringify(user))
       this.currentUserSource.next(user);
     } else {
-      console.error('user.token is undefined or null');
     }
   }
 
@@ -104,7 +103,6 @@ export class AccountService extends BaseService {
       const tokenPayloadJson = atob(tokenPayloadBase64);
       return JSON.parse(tokenPayloadJson);
     } catch (error) {
-      console.error('Error decoding JWT token:', error);
       return null;
     }
   }

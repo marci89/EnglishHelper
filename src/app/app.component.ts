@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   //Setting the user from a cookie if the user have already logged in before
   setCurrentUser() {
-    const userString = localStorage.getItem('user');
+    const userString = localStorage.getItem('englishHelperUser');
     if (!userString) return;
     const user: LoginUser = JSON.parse(userString);
     this.accountService.setCurrentUser(user);
